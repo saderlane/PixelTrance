@@ -5,6 +5,11 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+
+import saderlane.pixeltrance.command.TranceCommand;
+
+
 public class PixelTrance implements ModInitializer {
 	public static final String MOD_ID = "pixeltrance";
 
@@ -19,6 +24,11 @@ public class PixelTrance implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("[PixelTrance] PixelTrance mod loaded!");
+
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+			dispatcher.register(TranceCommand.create());
+		});
+
 	}
 }

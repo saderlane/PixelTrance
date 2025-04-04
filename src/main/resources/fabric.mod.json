@@ -3,15 +3,15 @@
 	"id": "pixeltrance",
 	"version": "${version}",
 	"name": "PixelTrance",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Minecraft mod that pays homage to the art of hypnosis",
 	"authors": [
-		"Me!"
+		"saderlane"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "CCNC-4.0",
 	"icon": "assets/pixeltrance/icon.png",
 	"environment": "*",
 	"entrypoints": {

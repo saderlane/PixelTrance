@@ -15,7 +15,7 @@ repositories {
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories
+	// for more information about repositories.
 }
 
 loom {
@@ -30,14 +30,29 @@ loom {
 
 }
 
+sourceSets {
+	main {
+		java.srcDirs = ["src/main/java"]
+		resources.srcDirs = ["src/main/resources"]
+	}
+	client {
+		java.srcDirs = ["src/client/java"]
+		resources.srcDirs = ["src/client/resources"]
+		compileClasspath += main.compileClasspath
+		runtimeClasspath += main.runtimeClasspath
+	}
+}
+
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
 }
 
 processResources {

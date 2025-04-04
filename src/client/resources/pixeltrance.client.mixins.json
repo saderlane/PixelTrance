@@ -3,7 +3,7 @@
 	"package": "saderlane.pixeltrance.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-		"ExampleClientMixin"
+		"PlayerHUDMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
