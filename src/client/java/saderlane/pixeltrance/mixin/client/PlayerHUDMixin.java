@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import saderlane.pixeltrance.data.ClientTranceState;
 
+
+
 // Mixin to inject trance bar above food bar
 @Mixin(InGameHud.class)
 public abstract class PlayerHUDMixin {
@@ -28,20 +30,36 @@ public abstract class PlayerHUDMixin {
 
         float trance = ClientTranceState.getTrance();
 
-        // Bar settings
-        int fullWidth = 81; // same width as food bar
-        int height = 6;
-        int filled = (int)(fullWidth * (trance / 100f));
+        // Layout
+        int maxIcons = 10;
+        int iconSize = 7;
+        int spacing = 1;
 
-        // Position: above food bar (typically bottom-right)
-        int x = client.getWindow().getScaledWidth() / 2 + 10; // food bar starts at center + 91
-        int y = client.getWindow().getScaledHeight() - 45;   // just above the food bar (y = -39 is food)
+        // Position: above food bar
+        int xStart = client.getWindow().getScaledWidth() / 2 + 10;
+        int y = client.getWindow().getScaledHeight() - 48;
 
-        // Background (dark gray)
-        context.fill(x, y, x + fullWidth, y + height, 0xFF333333);
+        for (int i = 0; i < maxIcons; i++)
+        {
+            int iconX = xStart + i * (iconSize + spacing);
+            float iconMin = i * 10f;
+            float iconMax = iconMin + 10f;
 
-        // Filled portion (purple)
-        context.fill(x, y, x + filled, y + height, 0xFFAA00FF);
+            // Draw background slot (dark gray currently)
+            context.fill(iconX, y, iconX + iconSize, y + iconSize, 0xFF222222);
+
+            if (trance >= iconMax)
+            {
+                context.fill(iconX, y, iconX + iconSize, y + iconSize, 0xFFAA00FF);
+            }
+            else if (trance > iconMin)
+            {
+                // Partial fill
+                float percent = (trance - iconMin) / 10f;
+                int fillWidth = (int)(iconSize * percent);
+                context.fill(iconX, y, iconX + fillWidth, y + iconSize, 0xFFAA00FF);
+            }
+        }
     }
 
 }
