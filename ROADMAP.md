@@ -21,7 +21,7 @@
 
 - [x] Mod loads and logs successfully
 - [X] Implement trance meter (player data + HUD)
-  - [ ] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
+  - [X] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
 - [X] Trance syncing in multiplayer
 - [ ] Create base hypnosis item (Pocket Watch)
 - [ ] Implement **Passive Focus Lock**
