@@ -26,7 +26,11 @@
 - [X] Create base hypnosis item (Pocket Watch)
 - [X] Implement basic **Passive Focus Lock**
 - [X] Trance gain/decay logic
-- [ ] Visual/audio feedback
+- [X] Visual/audio feedback
+  - [X] Binaural plays when trance is at a certain percent
+    - Scales with volume
+  - [X] Purple vignette when trance is at a certain percent
+    - Pulses gently at even higher trance
 
 ---
 
@@ -36,7 +40,7 @@
 - [ ] Add resistance stat (perks/gear based)
 - [ ] Create Pendulum (AoE pulse-based trance)
 - [ ] Create Candle (stationary aura trance)
-- [ ] **Passive Focus Lock** draws attention to hypnotist.
+- [ ] **Passive Focus Lock** draws attention to hypnotist
 
 ---
 

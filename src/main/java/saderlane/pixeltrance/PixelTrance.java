@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 import saderlane.pixeltrance.command.TranceCommand;
 import saderlane.pixeltrance.item.ModItems;
+import saderlane.pixeltrance.sound.TranceSounds;
 
 
 public class PixelTrance implements ModInitializer {
@@ -24,6 +25,7 @@ public class PixelTrance implements ModInitializer {
 		LOGGER.info("PixelTrance mod loaded!");
 
 		ModItems.init();
+		TranceSounds.register();
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(TranceCommand.create());

@@ -1,0 +1,10 @@
+{
+  "trance_trigger": {
+    "sounds": [
+      {
+        "name": "pixeltrance:trance_trigger",
+        "stream": false
+      }
+    ]
+  }
+}

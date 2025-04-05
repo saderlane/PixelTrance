@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.data.ClientTranceState;
 
 // Mixin to inject trance bar above food bar
@@ -49,6 +50,7 @@ public abstract class PlayerHUDMixin {
         int xStart = client.getWindow().getScaledWidth() / 2 + 10;
         int yBase = client.getWindow().getScaledHeight() - 48;
 
+        TranceAudioHandler.updateTranceSound(trance,ClientTranceState.getClientFocus());
 
         // Fill icons based on trance status
         for (int i = 0; i < maxIcons; i++)
@@ -94,11 +96,10 @@ public abstract class PlayerHUDMixin {
                     textureWidth, textureHeight                  // full texture size
             );
             context.getMatrices().pop();
-
-
-
-
         }
+
+
+
     }
 
 }

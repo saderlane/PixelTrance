@@ -79,7 +79,7 @@ public class TranceData {
     // Sync the server data with the player
     private void syncToPlayer() {
         if (owner instanceof ServerPlayerEntity serverPlayer) {
-            TranceSyncS2CPacket.send(serverPlayer, trance);
+            TranceSyncS2CPacket.send(serverPlayer, trance, focus);
         }
     }
 

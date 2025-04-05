@@ -6,8 +6,9 @@ package saderlane.pixeltrance.data;
 
 public class ClientTranceState {
 
-    // Cached trance value for the local player
+    // Cached trance and focus values for the local player
     private static float trance = 0.0f;
+    private static float focus = 0.0f;
 
     // Get caches trance value
     public static float getTrance() {
@@ -17,5 +18,14 @@ public class ClientTranceState {
     // Update trance value
     public static void setTrance(float value) {
         trance = value;
+    }
+
+    // Exposes focus for client
+    public static float getClientFocus() {
+        return focus;
+    }
+
+    public static void setFocus(float value) {
+        focus = value;
     }
 }
