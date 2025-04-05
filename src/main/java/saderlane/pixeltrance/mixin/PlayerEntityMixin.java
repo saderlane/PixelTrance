@@ -36,7 +36,7 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
     @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
     private void loadTrance(NbtCompound nbt, CallbackInfo ci) {
         if (nbt.contains("PixelTrance")) {
-            PTLog.info("[PixelTrance] Loaded trance from NBT");
+            PTLog.info("Loaded trance from NBT");
             tranceData.readFromNbt(nbt.getCompound("PixelTrance"));
         }
     }

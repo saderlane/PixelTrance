@@ -23,7 +23,7 @@
 - [X] Implement trance meter (player data + HUD)
   - [X] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
 - [X] Trance syncing in multiplayer
-- [ ] Create base hypnosis item (Pocket Watch)
+- [X] Create base hypnosis item (Pocket Watch)
 - [ ] Implement **Passive Focus Lock**
 - [ ] Trance gain/decay logic
 - [ ] Visual/audio feedback
@@ -60,7 +60,7 @@
 ### 🧟 Phase 5: Hypnotic Mobs
 
 - [ ] Mob trance resistance stat
-- [ ] Suggestion control for tameable mobs
+- [ ] Suggestion control for tamable mobs
 - [ ] Custom mob with hypnosis (e.g., Siren)
 - [ ] Mobs that resist or break trance
 
@@ -73,6 +73,10 @@
 - [ ] Multiplayer trance duels
 - [ ] Hypnotic scripting API
 - [ ] Config menus (via Cloth Config, etc.)
+
+### 🎨 Phase X: Passive Development
+- [ ] Create 3D Model for Pocket Watch item
+  - [ ] Create swinging animation when item is in use
 
 ---
 

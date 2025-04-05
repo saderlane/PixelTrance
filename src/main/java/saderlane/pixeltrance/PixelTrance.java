@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 import saderlane.pixeltrance.command.TranceCommand;
+import saderlane.pixeltrance.item.ModItems;
 
 
 public class PixelTrance implements ModInitializer {
@@ -20,11 +21,9 @@ public class PixelTrance implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		LOGGER.info("PixelTrance mod loaded!");
 
-		LOGGER.info("[PixelTrance] PixelTrance mod loaded!");
+		ModItems.init();
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(TranceCommand.create());
