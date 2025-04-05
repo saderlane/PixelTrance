@@ -44,5 +44,11 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
         }
     }
 
+    // After mob tick, run trance tick to see if trance will decay
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void tickTrance(CallbackInfo ci) {
+        this.getTranceData().tick();
+    }
+
 
 }

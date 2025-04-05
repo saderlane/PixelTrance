@@ -41,4 +41,10 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
         }
     }
 
+    // After player tick, run trance tick to see if trance will decay
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void tickTrance(CallbackInfo ci) {
+        this.getTranceData().tick();
+    }
+
 }
