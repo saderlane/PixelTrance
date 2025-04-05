@@ -7,6 +7,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
+import saderlane.pixeltrance.logic.FocusLockConditions;
 import saderlane.pixeltrance.util.PTLog;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -86,8 +87,15 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
 
         if (entityHit != null && entityHit.getEntity() instanceof LivingEntity target)
         {
-            // PTLog.info("Looking at: " + target.getName().getString());
-            lookingAtHypnoticTarget = true;
+            if (FocusLockConditions.isHypnoticTarget(target))
+            {
+                // PTLog.info("Looking at: " + target.getName().getString());
+                lookingAtHypnoticTarget = true;
+            }
+            else
+            {
+                //PTLog.info(player.getName().getString() + " is looking at: " + target.getName().getString() + " but is not getting hypnotized");
+            }
         }
         else {
             // PTLog.info("Not looking at any entity.");

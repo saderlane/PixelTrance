@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import saderlane.pixeltrance.data.TranceData;
 import saderlane.pixeltrance.api.TranceDataAccess;
+import saderlane.pixeltrance.logic.FocusLockConditions;
 import saderlane.pixeltrance.util.PTLog;
 
 @Mixin(MobEntity.class)
@@ -80,8 +81,16 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
 
         if (hit != null && hit.getEntity() instanceof PlayerEntity player)
         {
-            lookingAtPlayer = true;
-            //PTLog.info(self.getName().getString() + " is looking at: " + player.getName().getString());
+            if (FocusLockConditions.isHypnoticTarget(player))
+            {
+                lookingAtPlayer = true;
+                //PTLog.info(self.getName().getString() + " is looking at: " + player.getName().getString());
+            }
+            else
+            {
+                //PTLog.info(self.getName().getString() + " is looking at: " + player.getName().getString() + " but is not getting hypnotized");
+            }
+
         }
 
         trance.tickFocus(lookingAtPlayer);
