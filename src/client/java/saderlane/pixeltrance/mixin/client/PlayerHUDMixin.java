@@ -56,13 +56,14 @@ public abstract class PlayerHUDMixin {
 
             float iconMin = i * 10f;
             float iconMax = iconMin + 10f;
+            float iconValue = trance - iconMin;
 
             int u = frameSize * 2; // Default to empty icon
-            if (trance >= iconMax) // Set to full icon
+            if (iconValue >= 7f) // Set to full icon
             {
                 u = 0;
             }
-            else if (trance > iconMin) // Set to half icon
+            else if (iconValue >= 1f) // Set to half icon
             {
                 u = frameSize;
             }
