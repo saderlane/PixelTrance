@@ -25,7 +25,7 @@
 - [X] Trance syncing in multiplayer
 - [X] Create base hypnosis item (Pocket Watch)
 - [ ] Implement **Passive Focus Lock**
-- [ ] Trance gain/decay logic
+- [X] Trance gain/decay logic
 - [ ] Visual/audio feedback
 
 ---
