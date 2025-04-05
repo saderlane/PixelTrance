@@ -24,7 +24,7 @@
   - [X] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
 - [X] Trance syncing in multiplayer
 - [X] Create base hypnosis item (Pocket Watch)
-- [ ] Implement **Passive Focus Lock**
+- [X] Implement basic **Passive Focus Lock**
 - [X] Trance gain/decay logic
 - [ ] Visual/audio feedback
 
@@ -36,6 +36,7 @@
 - [ ] Add resistance stat (perks/gear based)
 - [ ] Create Pendulum (AoE pulse-based trance)
 - [ ] Create Candle (stationary aura trance)
+- [ ] **Passive Focus Lock** draws attention to hypnotist.
 
 ---
 
@@ -59,6 +60,8 @@
 
 ### 🧟 Phase 5: Hypnotic Mobs
 
+- [ ] Mobs visually drawn to hypnotic players
+  - In order to utilize the Passive Focus Lock system
 - [ ] Mob trance resistance stat
 - [ ] Suggestion control for tamable mobs
 - [ ] Custom mob with hypnosis (e.g., Siren)

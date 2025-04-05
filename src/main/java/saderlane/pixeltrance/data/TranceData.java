@@ -108,4 +108,42 @@ public class TranceData {
         }
     }
 
+
+
+    // === Focus Lock Fields ===
+    private float focus = 0f;              // Current focus value (0–100)
+    private boolean focusLocked = false;   // Is the entity in focus lock state?
+
+    private static final float FOCUS_LOCK_THRESHOLD = 100f;
+    private static final float FOCUS_BUILD_RATE = 0.7f; // Change per tick when conditions are met
+    private static final float FOCUS_DECAY_RATE = 0.5f; // If broken (no line of sight, etc.)
+
+    public void tickFocus(boolean shouldBuild) {
+        if (shouldBuild) {
+            focus = clamp(focus + FOCUS_BUILD_RATE, 0f, 100f);
+            // PTLog.info(owner.getName().getString() + " focus: " + focus + " (locked?: " + focusLocked);
+        } else {
+            focus = clamp(focus - FOCUS_DECAY_RATE, 0f, 100f);
+        }
+
+        if (!focusLocked && focus >= FOCUS_LOCK_THRESHOLD) {
+            focusLocked = true;
+            PTLog.info(owner.getName().getString() + " has entered Focus Lock!");
+            // Additional behavior here: increase trance gain, etc.
+        }
+
+        if (focusLocked && focus <= 0f) {
+            focusLocked = false;
+            // PTLog.info(owner.getName().getString() + " has broken out of Focus Lock.");
+        }
+    }
+
+    public boolean isFocusLocked() {
+        return focusLocked;
+    }
+
+    public float getFocus() {
+        return focus;
+    }
+
 }

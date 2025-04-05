@@ -24,7 +24,21 @@ public class PocketWatchItem extends Item {
 
             if (target instanceof TranceDataAccess tranceTarget)
             {
-                tranceTarget.getTranceData().addTrance(10);
+                // Get trance data from target
+                var tranceData = tranceTarget.getTranceData();
+
+                // Base trance gain
+                float tranceGain = 10f;
+
+                // Apply trance multiplier if the target is in Focus Lock
+                if (tranceData.isFocusLocked())
+                {
+                    tranceGain *= 1.5f;
+                    PTLog.info(target.getName().getString() + " is Focus Locked — applying trance bonus!");
+                }
+
+                // Apply trance
+                tranceTarget.getTranceData().addTrance(tranceGain);
                 PTLog.info("Added trance via Pocket Watch to " + target.getName().getString());
             }
             else

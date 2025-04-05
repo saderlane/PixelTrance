@@ -1,4 +1,12 @@
 package saderlane.pixeltrance.mixin;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.ProjectileUtil;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.RaycastContext;
+import net.minecraft.world.World;
 import saderlane.pixeltrance.util.PTLog;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,7 +26,7 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
 
     // Adds tranceData field to every unique player
     @Unique
-    private final TranceData tranceData = new TranceData((PlayerEntity)(Object)this);
+    private final TranceData tranceData = new TranceData((PlayerEntity) (Object) this);
 
     // Method to let other classes access trance data attached to player
     @Override
@@ -36,7 +44,7 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
     @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
     private void loadTrance(NbtCompound nbt, CallbackInfo ci) {
         if (nbt.contains("PixelTrance")) {
-            PTLog.info("Loaded trance from NBT");
+            PTLog.info("Loaded player trance from NBT");
             tranceData.readFromNbt(nbt.getCompound("PixelTrance"));
         }
     }
@@ -44,7 +52,48 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
     // After player tick, run trance tick to see if trance will decay
     @Inject(method = "tick", at = @At("TAIL"))
     private void tickTrance(CallbackInfo ci) {
-        this.getTranceData().tick();
-    }
+        TranceData trance = this.getTranceData();
+        trance.tick(); // Handles trance decay
 
+        PlayerEntity player = (PlayerEntity) (Object) this;
+
+        // Run only on server side
+        if (player.getWorld().isClient) return;
+
+        // === Begin entity raycast test ===
+
+        World world = player.getWorld();
+        Vec3d eyePos = player.getCameraPosVec(1.0F);
+        Vec3d lookVec = player.getRotationVec(1.0F);
+        Vec3d reachVec = eyePos.add(lookVec.multiply(10.0D));
+
+        // PTLog.info("Raycasting from " + eyePos + " to " + reachVec);
+
+        // Search for any living entity in line of sight
+        Box searchBox = player.getBoundingBox().stretch(lookVec.multiply(10.0D)).expand(1.0D);
+        // PTLog.info("Search box: " + searchBox);
+
+        EntityHitResult entityHit = ProjectileUtil.getEntityCollision(
+                world,
+                player,
+                eyePos,
+                reachVec,
+                searchBox,
+                entity -> entity instanceof LivingEntity && entity.isAlive() && !entity.isSpectator()
+        );
+
+        boolean lookingAtHypnoticTarget = false;
+
+        if (entityHit != null && entityHit.getEntity() instanceof LivingEntity target)
+        {
+            // PTLog.info("Looking at: " + target.getName().getString());
+            lookingAtHypnoticTarget = true;
+        }
+        else {
+            // PTLog.info("Not looking at any entity.");
+        }
+
+        trance.tickFocus(lookingAtHypnoticTarget);
+
+    }
 }
