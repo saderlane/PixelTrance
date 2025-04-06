@@ -27,10 +27,7 @@
 
 ## 🛠 Development Status
 
-PixelTrance is currently in active development. Major systems being built include:
-- Core trance meter
-- Item interaction logic
-- Multiplayer sync and basic skills
+PixelTrance is currently in active development. Major systems and core gameplay are being built.
 
 See the [ROADMAP.md](./ROADMAP.md) for a full breakdown of features and progress.
 
