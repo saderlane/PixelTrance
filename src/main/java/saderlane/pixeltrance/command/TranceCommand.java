@@ -46,7 +46,7 @@ public class TranceCommand {
                                     trance.setTrance(value);
 
                                     // Confirm to the user
-                                    ctx.getSource().sendFeedback(() -> Text.literal("Set trance to " + value), false);
+                                    player.sendMessage(Text.literal("Set trance to " + value), true);
                                     return 1;
                                 })
                         )
@@ -66,7 +66,7 @@ public class TranceCommand {
                                     TranceData trance = ((TranceDataAccess)player).getTranceData();
                                     trance.addTrance(amount);
 
-                                    ctx.getSource().sendFeedback(() -> Text.literal("Increased trance by " + amount), false);
+                                    player.sendMessage(Text.literal("Increased trance by " + amount), true);
                                     return 1;
                                 })
                         )
@@ -86,7 +86,7 @@ public class TranceCommand {
                                     TranceData trance = ((TranceDataAccess)player).getTranceData();
                                     trance.decay(amount);
 
-                                    ctx.getSource().sendFeedback(() -> Text.literal("Reduced trance by " + amount), false);
+                                    player.sendMessage(Text.literal("Reduced trance by " + amount), true);
                                     return 1;
                                 })
                         )
