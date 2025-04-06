@@ -23,13 +23,26 @@ public class PocketWatchItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient) {
-            // Server side log for debugging
-            PTLog.info(user.getName().getString() + " toggled focus session (server side)");
+            if (user instanceof TranceDataAccess tranceUser)
+            {
+                var tranceData = tranceUser.getTranceData();
+
+                // Toggle focus session state
+                boolean wasActive = tranceData.isFocusSessionActive();
+                tranceData.setFocusSessionActive(!wasActive);
+
+                // Server side log for debugging
+                PTLog.info(user.getName().getString() + " toggled focus session to: " + (!wasActive));
+            }
         }
         else
         {
-            // Client side feedback
-            user.sendMessage(Text.literal("Toggled Focus Session!"), true);
+            if (user instanceof TranceDataAccess tranceUser) {
+                boolean state = tranceUser.getTranceData().isFocusSessionActive();
+                user.sendMessage(Text.literal(
+                        state ? "Focus Session: Activated" : "Focus Session: Deactivated"
+                ), true);
+            }
         }
 
         return TypedActionResult.success(user.getStackInHand(hand), world.isClient);

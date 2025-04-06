@@ -39,7 +39,7 @@
 **The goal of this phase is to establish a **functional gameplay loop**—players can hypnotize others, experience visible effects, and use tools meaningfully.**
 
 ### 🕰️ Pocket Watch Toggle Mode
-- [ ] Right-click toggles “focus session” on/off
+- [X] Right-click toggles “focus session” on/off
 - [ ] Visual particles, subtle glow, looping ticking sound
 - [ ] Increases Passive Focus Lock buildup for viewers
 - [ ] Only functions when targeting another entity (player or mob)

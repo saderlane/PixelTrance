@@ -14,10 +14,11 @@ public class TranceSyncS2CPacket {
     public static final Identifier ID = new Identifier(PixelTrance.MOD_ID,"trance_sync");
 
     // Send given trance and focus value to specific player
-    public static void send(ServerPlayerEntity player, float trance, float focus) {
+    public static void send(ServerPlayerEntity player, float trance, float focus, boolean focusSessionActive) {
         PacketByteBuf buf = new PacketByteBuf(io.netty.buffer.Unpooled.buffer());
         buf.writeFloat(trance);
         buf.writeFloat(focus);
+        buf.writeBoolean(focusSessionActive);
 
         ServerPlayNetworking.send(player,ID, buf);
     }

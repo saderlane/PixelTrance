@@ -15,33 +15,58 @@ import saderlane.pixeltrance.util.PTLog;
  */
 public class TranceData {
 
-    // Trance value for entity
-    private float trance = 0.0f;
+    // Set trance final variables
+    private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // 20 ticks = 1 second
+    private static final int TRANCE_DECAY_AMOUNT = 1; // Amount of trance lost per decay tick
 
-    private final LivingEntity owner;
+    // Set focus final variables
+    private static final float FOCUS_LOCK_THRESHOLD = 100f; // Maximum that focus can be set to
+    private static final float FOCUS_BUILD_RATE = 0.7f; // Focus build rate per tick
+    private static final float FOCUS_DECAY_RATE = 0.5f; // Focus decay rate per tick if broken
 
+    private final LivingEntity owner; // Tracks the entity being tranced/focus locked
+
+    // Variables:
+    private float trance = 0.0f; // Trance value for entity
+    private int ticksSinceLastDecay = 0; // Internal counter to track time between trance decay
+
+    private float focus = 0f;              // Current focus value (0–100)
+    private boolean focusLocked = false;   // Is the entity in focus lock state?
+    private boolean focusSessionActive = false;
+
+
+
+    // Return the entity
     public TranceData(LivingEntity owner) {
         this.owner = owner;
     }
 
-    // Return current trance value
-    public float getTrance() {
-        return trance;
+
+    // === Server->Client Syncing
+
+    // Sync the server data with the player
+    private void syncToPlayer() {
+        if (owner instanceof ServerPlayerEntity serverPlayer) {
+            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusSessionActive);
+        }
     }
 
-    // === Trance Value Modifiers ===
 
-    // Set trance value but does not allow it to exceed 0 and 100
-    // 0 - fully awake
-    // 100 - deeply hypnotized
+
+
+
+
+    // === Trance Methods ===
+
+    // Set the trance value between 0 and 100
     public void setTrance(float value) {
         this.trance = clamp(value,0f,100f);
         syncToPlayer();
     }
 
-    // Utility method to clamp a float value between min and max
-    private float clamp(float value, float min, float max) {
-        return Math.max(min, Math.min(max, value));
+    // Return current trance value
+    public float getTrance() {
+        return trance;
     }
 
     // Increase trance by <amount>
@@ -54,6 +79,79 @@ public class TranceData {
     public void decay(float amount) {
         setTrance(trance - amount);
     }
+
+    // == Trance Decay and Cooldown ==
+
+    // Called once per tick to handle trance decay over time
+    //  Must be hooked externally
+    public void tick() {
+        // If trance is 0, do nothing
+        if (trance <= 0) return;
+
+        ticksSinceLastDecay++;
+
+        // Apply decay every DECAY_INTERVAL_TICKS
+        if (ticksSinceLastDecay >= TRANCE_DECAY_INTERVAL_TICKS)
+        {
+            decay(TRANCE_DECAY_AMOUNT);
+            ticksSinceLastDecay = 0; // Reset counter
+            PTLog.info("Trance for " + owner.getName().getString() + " is now " + trance);
+        }
+    }
+
+
+
+    // === Focus Lock Methods ===
+    public void tickFocus(boolean shouldBuild) {
+        float previousFocus = focus;
+        boolean wasLocked = focusLocked;
+
+        if (shouldBuild) {
+            focus = clamp(focus + FOCUS_BUILD_RATE, 0f, 100f);
+            // PTLog.info(owner.getName().getString() + " focus: " + focus + " (locked?: " + focusLocked);
+        } else {
+            focus = clamp(focus - FOCUS_DECAY_RATE, 0f, 100f);
+        }
+
+        if (!focusLocked && focus >= FOCUS_LOCK_THRESHOLD) {
+            focusLocked = true;
+            PTLog.info(owner.getName().getString() + " has entered Focus Lock!");
+            // Additional behavior here: increase trance gain, etc.
+        }
+
+        if (focusLocked && focus <= 0f) {
+            focusLocked = false;
+            PTLog.info(owner.getName().getString() + " has broken out of Focus Lock.");
+        }
+
+        // Sync if the focus value or lock state changed
+        if (focus != previousFocus || wasLocked != focusLocked) {
+            syncToPlayer();
+        }
+    }
+
+    public boolean isFocusLocked() {
+        return focusLocked;
+    }
+
+    public float getFocus() {
+        return focus;
+    }
+
+    public boolean isFocusSessionActive() {
+        return focusSessionActive;
+    }
+
+    public void setFocusSessionActive(boolean active) {
+        this.focusSessionActive = active;
+        syncToPlayer();
+    }
+
+
+
+
+
+
 
     // === NBT Functions ===
 
@@ -73,77 +171,9 @@ public class TranceData {
         }
     }
 
-
-    // === Server->Client Syncing
-
-    // Sync the server data with the player
-    private void syncToPlayer() {
-        if (owner instanceof ServerPlayerEntity serverPlayer) {
-            TranceSyncS2CPacket.send(serverPlayer, trance, focus);
-        }
-    }
-
-
-    // === Trance Decay and Cooldown ===
-    private static final int DECAY_INTERVAL_TICKS = 40; // 20 ticks = 1 second
-    private static final int DECAY_AMOUNT = 1; // Amount of trance lost per decay tick
-
-    // Internal counter to track time between decay
-    private int ticksSinceLastDecay = 0;
-
-    // Called once per tick to handle trance decay over time
-    //  Must be hooked externally
-    public void tick() {
-        // If trance is 0, do nothing
-        if (trance <= 0) return;
-
-        ticksSinceLastDecay++;
-
-        // Apply decay every DECAY_INTERVAL_TICKS
-        if (ticksSinceLastDecay >= DECAY_INTERVAL_TICKS)
-        {
-            decay(DECAY_AMOUNT);
-            ticksSinceLastDecay = 0; // Reset counter
-            PTLog.info("Trance for " + owner.getName().getString() + " is now " + trance);
-        }
-    }
-
-
-
-    // === Focus Lock Fields ===
-    private float focus = 0f;              // Current focus value (0–100)
-    private boolean focusLocked = false;   // Is the entity in focus lock state?
-
-    private static final float FOCUS_LOCK_THRESHOLD = 100f;
-    private static final float FOCUS_BUILD_RATE = 0.7f; // Change per tick when conditions are met
-    private static final float FOCUS_DECAY_RATE = 0.5f; // If broken (no line of sight, etc.)
-
-    public void tickFocus(boolean shouldBuild) {
-        if (shouldBuild) {
-            focus = clamp(focus + FOCUS_BUILD_RATE, 0f, 100f);
-            // PTLog.info(owner.getName().getString() + " focus: " + focus + " (locked?: " + focusLocked);
-        } else {
-            focus = clamp(focus - FOCUS_DECAY_RATE, 0f, 100f);
-        }
-
-        if (!focusLocked && focus >= FOCUS_LOCK_THRESHOLD) {
-            focusLocked = true;
-            PTLog.info(owner.getName().getString() + " has entered Focus Lock!");
-            // Additional behavior here: increase trance gain, etc.
-        }
-
-        if (focusLocked && focus <= 0f) {
-            focusLocked = false;
-            // PTLog.info(owner.getName().getString() + " has broken out of Focus Lock.");
-        }
-    }
-
-    public boolean isFocusLocked() {
-        return focusLocked;
-    }
-
-    public float getFocus() {
-        return focus;
+    // Utility method to clamp a float value between min and max
+    private float clamp(float value, float min, float max) {
+        return Math.max(min, Math.min(max, value));
     }
 
 }

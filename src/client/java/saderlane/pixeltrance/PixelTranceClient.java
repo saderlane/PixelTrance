@@ -4,8 +4,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
+import net.minecraft.text.Text;
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.data.ClientTranceState;
+import saderlane.pixeltrance.item.PocketWatchClientHandler;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -26,11 +28,20 @@ public class PixelTranceClient implements ClientModInitializer {
 				(client, handler, buf, responseSender) -> {
 					float trance = buf.readFloat();
 					float focus = buf.readFloat();
+					boolean focusSessionActive = buf.readBoolean();
 
 					// Update client-side trance cache on the render thread
 					client.execute(() -> {
+						// Capture old state BEFORE updating
+						boolean oldState = ClientTranceState.getFocusSessionActive();
+
 						ClientTranceState.setTrance(trance);
 						ClientTranceState.setFocus(focus);
+						ClientTranceState.setFocusSessionActive(focusSessionActive);
+
+						PocketWatchClientHandler.showFocusSessionMessage(oldState, focusSessionActive);
+
+
 					});
 				}
 		);
