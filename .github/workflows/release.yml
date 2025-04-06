@@ -21,6 +21,9 @@ on:
         required: false
         default: 'false'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -48,6 +51,6 @@ jobs:
           name: ${{ github.event.inputs.release_title }}
           body: ${{ github.event.inputs.release_notes }}
           prerelease: ${{ github.event.inputs.prerelease }}
-          files: ${{ github.event.inputs.jar_path }}
+          files: "${{ github.event.inputs.jar_path }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
