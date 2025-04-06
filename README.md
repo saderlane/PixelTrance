@@ -18,7 +18,10 @@
 
 ## 📦 Installation
 
-> *(Instructions to be added when a release is available)*
+1. Download `PixelTrance-<MC_VERSION>-fabric-<VERSION>.jar` and add to your `mods` folder
+   - Typically found in `C:\Users\<USER>\AppData\Roaming\.minecraft`
+2. Run Minecraft
+3. Enjoy!
 
 ---
 
@@ -56,6 +59,3 @@ You are free to fork, remix, and build add-ons for this mod, as long as they are
 
 For commercial inquiries or exceptions, please contact the developer.
 
----
-
-**Crafted with care for the dreamers and the deep thinkers.**
