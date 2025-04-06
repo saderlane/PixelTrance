@@ -1,4 +1,3 @@
-
 name: Build Mod Manually
 
 on:
@@ -29,7 +28,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Upload JAR Artifact
+      - name: Upload JAR Artifact (Public Only)
+        if: ${{ github.event.inputs.release_type == 'public' }}
         uses: actions/upload-artifact@v3
         with:
           name: PixelTrance-${{ github.event.inputs.release_type }}

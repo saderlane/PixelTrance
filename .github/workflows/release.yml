@@ -1,0 +1,53 @@
+name: Create GitHub Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag for the release (e.g. v0.2.0)'
+        required: true
+      release_title:
+        description: 'Title of the release'
+        required: true
+      release_notes:
+        description: 'Description or patch notes for this release'
+        required: false
+      jar_path:
+        description: 'Path to JAR file (default: build/libs/*.jar)'
+        required: false
+        default: 'build/libs/*.jar'
+      prerelease:
+        description: 'Mark as prerelease? (true/false)'
+        required: false
+        default: 'false'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build JAR
+        run: ./gradlew build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.tag_name }}
+          name: ${{ github.event.inputs.release_title }}
+          body: ${{ github.event.inputs.release_notes }}
+          prerelease: ${{ github.event.inputs.prerelease }}
+          files: ${{ github.event.inputs.jar_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
