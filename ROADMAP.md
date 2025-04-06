@@ -40,7 +40,8 @@
 
 ### 🕰️ Pocket Watch Toggle Mode
 - [X] Right-click toggles “focus session” on/off
-- [ ] Visual particles, subtle glow, looping ticking sound
+- [X] ~~Visual particles~~, ~~subtle glow~~, looping ticking sound
+  - Couldn't get visual particles to work and I don't think glow is a good effect
 - [ ] Increases Passive Focus Lock buildup for viewers
 - [ ] Only functions when targeting another entity (player or mob)
 

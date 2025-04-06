@@ -4,18 +4,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
-import net.minecraft.text.Text;
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.data.ClientTranceState;
 import saderlane.pixeltrance.item.PocketWatchClientHandler;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
-
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
-
-import com.mojang.blaze3d.systems.RenderSystem;
 
 
 public class PixelTranceClient implements ClientModInitializer {

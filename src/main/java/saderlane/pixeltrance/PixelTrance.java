@@ -2,6 +2,7 @@ package saderlane.pixeltrance;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,6 +10,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 import saderlane.pixeltrance.command.TranceCommand;
 import saderlane.pixeltrance.item.ModItems;
+import saderlane.pixeltrance.server.item.PocketWatchServerEffects;
 import saderlane.pixeltrance.sound.TranceSounds;
 
 
@@ -26,6 +28,8 @@ public class PixelTrance implements ModInitializer {
 
 		ModItems.init();
 		TranceSounds.register();
+		ServerTickEvents.END_SERVER_TICK.register(PocketWatchServerEffects::tick);
+
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(TranceCommand.create());
