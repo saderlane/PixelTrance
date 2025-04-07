@@ -33,12 +33,11 @@ See the [ROADMAP.md](./ROADMAP.md) for a full breakdown of features and progress
 
 ---
 
-## 🔮 Planned Content
+## 🔮 Support the Project
 
-- Trance zones and aura blocks
-- Anchors and suggestion scripting
-- Trance duels and multiplayer events
-- Custom mobs with unique hypnotic AI
+Updates, community polls and more will be posted on the project [Patreon](https://www.patreon.com/c/PixelTranceMod)!
+
+Until we get a more substantial project, we're going to keep updates and all versions free, but if you want to throw a buck or two our way 👀
 
 ---
 
