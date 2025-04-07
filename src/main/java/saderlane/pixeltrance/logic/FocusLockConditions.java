@@ -2,8 +2,12 @@ package saderlane.pixeltrance.logic;
 
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.DyeColor;
+import saderlane.pixeltrance.api.TranceDataAccess;
 import saderlane.pixeltrance.item.ModItems;
 
 /*
@@ -13,18 +17,30 @@ import saderlane.pixeltrance.item.ModItems;
 public class FocusLockConditions {
 
     public static boolean isHypnoticTarget(PlayerEntity player) {
-        // Check both hands for the pocket watch
-        ItemStack mainHand = player.getMainHandStack();
-        ItemStack offHand = player.getOffHandStack();
 
-        return mainHand.isOf(ModItems.POCKET_WATCH) || offHand.isOf(ModItems.POCKET_WATCH);
+        if (!(player instanceof TranceDataAccess tranceUser)) return false;
+
+        var tranceData = tranceUser.getTranceData();
+
+        // Check both hands for the pocket watch
+        boolean holdingWatch =
+                player.getMainHandStack().isOf(ModItems.POCKET_WATCH) ||
+                        player.getOffHandStack().isOf(ModItems.POCKET_WATCH);
+
+        return holdingWatch && tranceData.isFocusSessionActive();
     }
 
     public static boolean isHypnoticTarget(LivingEntity entity) {
-        // For now, only players holding the Pocket Watch are hypnotic
+        // Players holding active pocket watch trigger focus gain
         if (entity instanceof PlayerEntity player) {
             return isHypnoticTarget(player);
         }
+
+        // Allow sheep to be hypnotic (for testing / later behavior)
+        if (entity instanceof SheepEntity sheep) {
+            return sheep.getColor() == DyeColor.PINK;
+        }
+
 
         // Later: Check if this mob has trance aura, is glowing, etc.
         return false;

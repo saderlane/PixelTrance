@@ -3,7 +3,6 @@ package saderlane.pixeltrance.mixin.client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
@@ -11,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import saderlane.pixeltrance.data.ClientTranceState;
+import saderlane.pixeltrance.client.data.ClientTranceState;
 
 @Mixin(InGameHud.class)
 public class PlayerVignetteMixin {

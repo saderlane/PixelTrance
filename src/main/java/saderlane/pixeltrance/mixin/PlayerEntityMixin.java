@@ -83,25 +83,24 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
                 entity -> entity instanceof LivingEntity && entity.isAlive() && !entity.isSpectator()
         );
 
-        boolean lookingAtHypnoticTarget = false;
+        LivingEntity target = null;
 
-        if (entityHit != null && entityHit.getEntity() instanceof LivingEntity target)
-        {
-            if (FocusLockConditions.isHypnoticTarget(target))
-            {
-                // PTLog.info("Looking at: " + target.getName().getString());
-                lookingAtHypnoticTarget = true;
-            }
-            else
-            {
-                //PTLog.info(player.getName().getString() + " is looking at: " + target.getName().getString() + " but is not getting hypnotized");
+        if (entityHit != null && entityHit.getEntity() instanceof LivingEntity potential) {
+            if (FocusLockConditions.isHypnoticTarget(potential)) {
+                target = potential;
             }
         }
-        else {
-            // PTLog.info("Not looking at any entity.");
+
+        if (entityHit != null) {
+            // PTLog.info("Player is looking at: " + entityHit.getEntity().getName().getString());
         }
 
-        trance.tickFocus(lookingAtHypnoticTarget);
+        if (target != null) {
+            // PTLog.info("Player sees valid hypnotic target: " + target.getName().getString());
+        }
+
+        trance.tickFocus(target != null, target);
+
 
     }
 }

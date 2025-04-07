@@ -3,9 +3,12 @@ package saderlane.pixeltrance.data;
 import java.lang.Math;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 
 import net.minecraft.server.network.ServerPlayerEntity;
+import saderlane.pixeltrance.logic.FocusLockConditions;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 import saderlane.pixeltrance.util.PTLog;
 
@@ -34,6 +37,10 @@ public class TranceData {
     private boolean focusLocked = false;   // Is the entity in focus lock state?
     private boolean focusSessionActive = false;
 
+    private LivingEntity hypnoticTarget = null; //determine if the entity is a valid hypnotic target
+
+
+
 
 
     // Return the entity
@@ -47,7 +54,7 @@ public class TranceData {
     // Sync the server data with the player
     private void syncToPlayer() {
         if (owner instanceof ServerPlayerEntity serverPlayer) {
-            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusSessionActive);
+            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusSessionActive, hypnoticTarget);
         }
     }
 
@@ -102,30 +109,46 @@ public class TranceData {
 
 
     // === Focus Lock Methods ===
-    public void tickFocus(boolean shouldBuild) {
+    public void tickFocus(boolean shouldBuild, LivingEntity target) {
         float previousFocus = focus;
-        boolean wasLocked = focusLocked;
 
-        if (shouldBuild) {
+        if (shouldBuild)
+        {
+
+            //PTLog.info(owner.getName().getString() + " is building focus. Target: " +
+            //        (target != null ? target.getName().getString() : "null") +
+            //        ", Focus: " + focus);
+
+
+
             focus = clamp(focus + FOCUS_BUILD_RATE, 0f, 100f);
-            // PTLog.info(owner.getName().getString() + " focus: " + focus + " (locked?: " + focusLocked);
-        } else {
+
+            // Store the hypnotic target if it's valid and not already set
+            if (hypnoticTarget == null && target != null)
+            {
+                this.hypnoticTarget = target;
+            }
+
+        } else
+        {
             focus = clamp(focus - FOCUS_DECAY_RATE, 0f, 100f);
         }
 
-        if (!focusLocked && focus >= FOCUS_LOCK_THRESHOLD) {
+        // Handle focus lock transitions
+        if (!focusLocked && focus >= FOCUS_LOCK_THRESHOLD)
+        {
             focusLocked = true;
             PTLog.info(owner.getName().getString() + " has entered Focus Lock!");
-            // Additional behavior here: increase trance gain, etc.
         }
 
-        if (focusLocked && focus <= 0f) {
+        if (focusLocked && focus <= 0f)
+        {
             focusLocked = false;
             PTLog.info(owner.getName().getString() + " has broken out of Focus Lock.");
         }
 
-        // Sync if the focus value or lock state changed
-        if (focus != previousFocus || wasLocked != focusLocked) {
+        if (focus != previousFocus)
+        {
             syncToPlayer();
         }
     }
@@ -146,6 +169,17 @@ public class TranceData {
         this.focusSessionActive = active;
         syncToPlayer();
     }
+
+
+    // === Hypnotic Target Methods ===
+    public void setHypnoticTarget(LivingEntity entity) {
+        this.hypnoticTarget = entity;
+    }
+
+    public LivingEntity getHypnoticTarget() {
+        return this.hypnoticTarget;
+    }
+
 
 
 

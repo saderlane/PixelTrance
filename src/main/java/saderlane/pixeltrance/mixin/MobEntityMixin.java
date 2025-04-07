@@ -52,6 +52,7 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
     // After mob tick, run trance tick to see if trance will decay
     @Inject(method = "tick", at = @At("TAIL"))
     private void tickTrance(CallbackInfo ci) {
+
         TranceData trance = this.getTranceData();
         trance.tick(); // Handles trance decay
 
@@ -61,7 +62,6 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
         // Server-side only
         if (world.isClient) return;
 
-        boolean lookingAtPlayer = false;
 
         // Set up mob eye position and look direction
         Vec3d eyePos = self.getEyePos();
@@ -79,21 +79,25 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
         );
 
 
-        if (hit != null && hit.getEntity() instanceof PlayerEntity player)
-        {
-            if (FocusLockConditions.isHypnoticTarget(player))
-            {
-                lookingAtPlayer = true;
-                //PTLog.info(self.getName().getString() + " is looking at: " + player.getName().getString());
-            }
-            else
-            {
-                //PTLog.info(self.getName().getString() + " is looking at: " + player.getName().getString() + " but is not getting hypnotized");
-            }
+        // Check if valid hypnotic target
+        LivingEntity target = null;
 
+        if (hit != null && hit.getEntity() instanceof PlayerEntity potential) {
+
+            // PTLog.info(self.getName().getString() + " is looking at potential target: " + potential.getName().getString());
+
+            if (FocusLockConditions.isHypnoticTarget(potential)) {
+                target = potential;
+            }
         }
 
-        trance.tickFocus(lookingAtPlayer);
+        if (target != null) {
+            // PTLog.info(self.getName().getString() + " sees valid hypnotic target: " + target.getName().getString());
+        }
+        trance.tickFocus(target != null, target);
+
+
+
     }
 
 

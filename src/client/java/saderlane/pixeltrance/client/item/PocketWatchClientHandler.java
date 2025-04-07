@@ -1,4 +1,4 @@
-package saderlane.pixeltrance.item;
+package saderlane.pixeltrance.client.item;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
