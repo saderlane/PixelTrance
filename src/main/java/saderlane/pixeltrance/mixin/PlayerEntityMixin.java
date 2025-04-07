@@ -53,6 +53,7 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
     // After player tick, run trance tick to see if trance will decay
     @Inject(method = "tick", at = @At("TAIL"))
     private void tickTrance(CallbackInfo ci) {
+
         TranceData trance = this.getTranceData();
         trance.tick(); // Handles trance decay
 
@@ -84,10 +85,12 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
         );
 
         LivingEntity target = null;
+        float focusRate = 0f;
 
         if (entityHit != null && entityHit.getEntity() instanceof LivingEntity potential) {
             if (FocusLockConditions.isHypnoticTarget(potential)) {
                 target = potential;
+                focusRate = FocusLockConditions.getFocusGainRate(potential);
             }
         }
 
@@ -99,7 +102,15 @@ public abstract class PlayerEntityMixin implements TranceDataAccess {
             // PTLog.info("Player sees valid hypnotic target: " + target.getName().getString());
         }
 
-        trance.tickFocus(target != null, target);
+        trance.tickFocus(focusRate > 0f, target, focusRate);
+
+        // Mutual gaze: gain trance if target is looking back at us
+        boolean tranceBuild = false;
+        if (target != null && FocusLockConditions.isLookingAt(target, player)) {
+            tranceBuild = true;
+        }
+        trance.tickTrance(tranceBuild);
+
 
 
     }

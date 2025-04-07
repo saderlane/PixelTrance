@@ -20,7 +20,8 @@ public class TranceData {
 
     // Set trance final variables
     private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // 20 ticks = 1 second
-    private static final int TRANCE_DECAY_AMOUNT = 1; // Amount of trance lost per decay tick
+    private static final float TRANCE_DECAY_AMOUNT = 0.2f; // Amount of trance lost per decay tick
+    private static final float TRANCE_BUILD_RATE = 0.4f;
 
     // Set focus final variables
     private static final float FOCUS_LOCK_THRESHOLD = 100f; // Maximum that focus can be set to
@@ -87,7 +88,7 @@ public class TranceData {
         setTrance(trance - amount);
     }
 
-    // == Trance Decay and Cooldown ==
+    // == Trance Decay and Build Methods ==
 
     // Called once per tick to handle trance decay over time
     //  Must be hooked externally
@@ -106,22 +107,33 @@ public class TranceData {
         }
     }
 
+    public void tickTrance(boolean shouldBuild) {
+        if (shouldBuild) {
+            trance = clamp(trance + TRANCE_BUILD_RATE, 0f, 100f);
+        } else {
+            trance = clamp(trance - TRANCE_DECAY_AMOUNT, 0f, 100f);
+        }
+
+        syncToPlayer(); // Optional, if you want real-time updates
+    }
+
+
 
 
     // === Focus Lock Methods ===
-    public void tickFocus(boolean shouldBuild, LivingEntity target) {
+    public void tickFocus(boolean shouldBuild, LivingEntity target, float focusRate) {
         float previousFocus = focus;
 
         if (shouldBuild)
         {
 
-            //PTLog.info(owner.getName().getString() + " is building focus. Target: " +
-            //        (target != null ? target.getName().getString() : "null") +
-            //        ", Focus: " + focus);
+            PTLog.info(owner.getName().getString() + " is building focus. Target: " +
+                    (target != null ? target.getName().getString() : "null") +
+                    ", Focus: " + focus);
 
 
 
-            focus = clamp(focus + FOCUS_BUILD_RATE, 0f, 100f);
+            focus = clamp(focus + focusRate, 0f, 100f);
 
             // Store the hypnotic target if it's valid and not already set
             if (hypnoticTarget == null && target != null)

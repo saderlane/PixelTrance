@@ -45,8 +45,8 @@
 - [X] Increases Passive Focus Lock buildup for viewers
 - [X] Screen pulls attention to source of Focus Lock
   - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
-- [ ] Only functions when targeting another entity (player or mob)
-- [ ] Re-implement trance gain from pocket watch (currently just builds focus)
+- [X] Only functions when targeting another entity (player or mob)
+- [X] Re-implement trance gain from pocket watch
 
 ### 🌀 Hypnosis Effect Trigger
 - [ ] Trigger hypnosis event when trance threshold is reached

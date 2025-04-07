@@ -81,6 +81,7 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
 
         // Check if valid hypnotic target
         LivingEntity target = null;
+        float focusRate = 0f;
 
         if (hit != null && hit.getEntity() instanceof PlayerEntity potential) {
 
@@ -88,14 +89,21 @@ public abstract class MobEntityMixin extends LivingEntity implements TranceDataA
 
             if (FocusLockConditions.isHypnoticTarget(potential)) {
                 target = potential;
+                focusRate = FocusLockConditions.getFocusGainRate(potential);
             }
         }
 
         if (target != null) {
             // PTLog.info(self.getName().getString() + " sees valid hypnotic target: " + target.getName().getString());
         }
-        trance.tickFocus(target != null, target);
+        trance.tickFocus(focusRate > 0f, target, focusRate);
 
+        // Mutual gaze: gain trance if target is looking at the mob
+        boolean tranceBuild = false;
+        if (target != null && FocusLockConditions.isLookingAt(target, self)) {
+            tranceBuild = true;
+        }
+        trance.tickTrance(tranceBuild);
 
 
     }
