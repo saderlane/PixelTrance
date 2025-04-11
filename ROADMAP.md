@@ -48,11 +48,34 @@
 - [X] Only functions when targeting another entity (player or mob)
 - [X] Re-implement trance gain from pocket watch
 
-### 🌀 Hypnosis Effect Trigger
-- [ ] Trigger hypnosis event when trance threshold is reached
-- [ ] Enter “hypnotized” state (immobile or slowed)
-- [ ] Visual swirl or blur overlay
-- [ ] Temporary control reduction
+### 🌀 Hypnotic Visual Feedback & Player Effects
+Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.
+
+This also includes a purple vignette that grows in intensity (until pulsing) as the trance progresses.
+
+#### ✨ Low Trance (30–50%)
+- [ ] Fade/blur edges of the screen
+- [ ] Gentle motion trails on hand swing or GUI
+- [ ] Slight input smoothing or camera easing
+- [ ] Tooltip delay to simulate sluggish thought
+
+#### 🌀 Mid Trance (50–70%)
+- [ ] Screen sway or subtle camera tilt
+- [ ] Crosshair distortion or flicker
+- [ ] Chat text starts to blur or fade
+- [ ] Inventory screen desaturates or dims
+
+#### 🧠 High Trance (70–90%)
+- [ ] Mouse latency increases slightly
+- [ ] Directional “drift” or delayed stopping after movement
+- [ ] UI shimmer or low-opacity filter
+- [ ] Slight auto-walk forward when trance surges
+
+#### 💤 Full Trance (100%)
+- [ ] Brightness fades in from the screen edges (vignette intensifies further)
+- [ ] Player can’t jump or sprint
+- [ ] Display centered trance prompt: “You feel completely relaxed…”
+- [ ] Slowed visual feedback (fake motion blur or tick-rate-like delay)
 
 ### 🔁 Escape Mechanic (Struggle System)
 - [ ] Shake mouse or press keys to resist hypnosis
