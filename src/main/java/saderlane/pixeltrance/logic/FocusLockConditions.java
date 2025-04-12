@@ -2,6 +2,7 @@ package saderlane.pixeltrance.logic;
 
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.GlowSquidEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -45,6 +46,10 @@ public class FocusLockConditions {
             return sheep.getColor() == DyeColor.PINK;
         }
 
+        if (entity instanceof GlowSquidEntity squid) {
+            return true;
+        }
+
 
         // Later: Check if this mob has trance aura, is glowing, etc.
         return false;
@@ -71,6 +76,9 @@ public class FocusLockConditions {
 
         if (entity instanceof SheepEntity sheep && sheep.getColor() == DyeColor.PINK) {
             return 0.3f; // Pink sheep: slower buildup
+        }
+        if (entity instanceof GlowSquidEntity squid) {
+            return 0.5f;
         }
 
         return 0f;

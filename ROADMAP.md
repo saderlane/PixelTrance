@@ -123,7 +123,18 @@ This also includes a purple vignette that grows in intensity (until pulsing) as 
 
 ---
 
-## 🎭 Phase 5: RP & Customization Tools
+## 🐍 Phase 5: Mobs and More
+
+**Begin to develop mobs that fit the hypnotic theme.**
+
+- [ ] Manual triggers via commands/UI
+- [ ] Custom emotes or actions during trance
+- [ ] Configurable trance scene scripting
+- [ ] Session tools for private/co-op RP
+- [ ] Pose-based idle animations for trance
+
+
+## 🎭 Phase 6: RP & Customization Tools
 
 **Optional, immersive features for RP players and content creators.**
 
@@ -135,7 +146,7 @@ This also includes a purple vignette that grows in intensity (until pulsing) as 
 
 ---
 
-## 🧩 Phase 6: Advanced Multiplayer & Mod Support
+## 🧩 Phase 7: Advanced Multiplayer & Mod Support
 
 - [ ] Server-side syncing of trance and focus
 - [ ] Optional API for mod/plugin support

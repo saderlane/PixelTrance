@@ -9,6 +9,13 @@ import saderlane.pixeltrance.api.TranceDataAccess;
 import saderlane.pixeltrance.item.ModItems;
 import saderlane.pixeltrance.sound.TranceSounds;
 
+
+/*
+ * Server-side logic for processing Pocket Watch effects.
+ * This class runs every server tick and:
+ * - Plays ticking sound if the watch is active
+ * - Adds trance and focus sources for nearby players
+ */
 public class PocketWatchServerEffects {
 
     private static int tickCounter = 0;
@@ -23,7 +30,6 @@ public class PocketWatchServerEffects {
                 // Must have trance data and be in an active focus session
                 if (!(player instanceof TranceDataAccess tranceUser)) continue;
                 var tranceData = tranceUser.getTranceData();
-
                 if (!tranceData.isFocusSessionActive()) continue;
 
                 // Must be holding the Pocket Watch
@@ -34,7 +40,6 @@ public class PocketWatchServerEffects {
                         break;
                     }
                 }
-
                 if (!holdingWatch) continue;
 
                 // Every 20 ticks (~1 second)

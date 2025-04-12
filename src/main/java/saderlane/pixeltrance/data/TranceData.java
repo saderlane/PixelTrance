@@ -19,20 +19,21 @@ import saderlane.pixeltrance.util.PTLog;
 public class TranceData {
 
     // Set trance final variables
-    private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // 20 ticks = 1 second
-    private static final float TRANCE_DECAY_AMOUNT = 0.2f; // Amount of trance lost per decay tick
-    private static final float TRANCE_BUILD_RATE = 0.4f;
+    private static float TRANCE_DECAY_AMOUNT = 0.05f;
+    private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
 
     // Set focus final variables
-    private static final float FOCUS_LOCK_THRESHOLD = 100f; // Maximum that focus can be set to
-    private static final float FOCUS_BUILD_RATE = 0.7f; // Focus build rate per tick
-    private static final float FOCUS_DECAY_RATE = 0.5f; // Focus decay rate per tick if broken
+    private static final float FOCUS_DECAY_RATE = 0.15f;
+    private static final float FOCUS_BUILD_THRESHOLD = 30f;
+    private static final float FOCUS_LOCK_THRESHOLD = 80f;
+
 
     private final LivingEntity owner; // Tracks the entity being tranced/focus locked
 
+
     // Variables:
     private float trance = 0.0f; // Trance value for entity
-    private int ticksSinceLastDecay = 0; // Internal counter to track time between trance decay
+    private int ticksSinceLastDecay = 0;
 
     private float focus = 0f;              // Current focus value (0–100)
     private boolean focusLocked = false;   // Is the entity in focus lock state?
@@ -95,26 +96,15 @@ public class TranceData {
     public void tick() {
         // If trance is 0, do nothing
         if (trance <= 0) return;
-
         ticksSinceLastDecay++;
 
-        // Apply decay every DECAY_INTERVAL_TICKS
-        if (ticksSinceLastDecay >= TRANCE_DECAY_INTERVAL_TICKS)
-        {
-            decay(TRANCE_DECAY_AMOUNT);
-            ticksSinceLastDecay = 0; // Reset counter
-            PTLog.info("Trance for " + owner.getName().getString() + " is now " + trance);
+        if (ticksSinceLastDecay >= TRANCE_DECAY_INTERVAL_TICKS) {
+            ticksSinceLastDecay = 0;
+            if (trance > 0f) {
+                trance = clamp(trance - TRANCE_DECAY_AMOUNT, 0f, 100f);
+                syncToPlayer();
+            }
         }
-    }
-
-    public void tickTrance(boolean shouldBuild) {
-        if (shouldBuild) {
-            trance = clamp(trance + TRANCE_BUILD_RATE, 0f, 100f);
-        } else {
-            trance = clamp(trance - TRANCE_DECAY_AMOUNT, 0f, 100f);
-        }
-
-        syncToPlayer(); // Optional, if you want real-time updates
     }
 
 
@@ -132,7 +122,6 @@ public class TranceData {
                     ", Focus: " + focus);
 
 
-
             focus = clamp(focus + focusRate, 0f, 100f);
 
             // Store the hypnotic target if it's valid and not already set
@@ -140,10 +129,13 @@ public class TranceData {
             {
                 this.hypnoticTarget = target;
             }
-
         } else
         {
             focus = clamp(focus - FOCUS_DECAY_RATE, 0f, 100f);
+        }
+
+        if (!shouldBuild || focus < FOCUS_BUILD_THRESHOLD || hypnoticTarget == null) {
+            hypnoticTarget = null;
         }
 
         // Handle focus lock transitions
@@ -165,22 +157,25 @@ public class TranceData {
         }
     }
 
-    public boolean isFocusLocked() {
-        return focusLocked;
+
+    public void setFocusSessionActive(boolean active) {
+        this.focusSessionActive = active;
+        syncToPlayer();
     }
 
-    public float getFocus() {
-        return focus;
+    public boolean isFocusLocked() {
+        return focusLocked;
     }
 
     public boolean isFocusSessionActive() {
         return focusSessionActive;
     }
 
-    public void setFocusSessionActive(boolean active) {
-        this.focusSessionActive = active;
-        syncToPlayer();
+    public float getFocus() {
+        return focus;
     }
+
+
 
 
     // === Hypnotic Target Methods ===
