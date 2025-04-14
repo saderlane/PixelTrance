@@ -3,16 +3,20 @@ package saderlane.pixeltrance;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.server.world.ServerWorld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
+import saderlane.pixeltrance.api.TranceDataAccess;
 import saderlane.pixeltrance.command.TranceCommand;
 import saderlane.pixeltrance.item.ModItems;
-import saderlane.pixeltrance.logic.FocusSourceHandler;
-import saderlane.pixeltrance.logic.HypnoticSourceProcessor;
-import saderlane.pixeltrance.logic.TranceSourceHandler;
+import saderlane.pixeltrance.logic.FocusHandler;
+import saderlane.pixeltrance.logic.MobInducerHandler;
+import saderlane.pixeltrance.logic.TranceDecayHandler;
+import saderlane.pixeltrance.registry.InducerRegistry;
 import saderlane.pixeltrance.server.item.PocketWatchServerEffects;
 import saderlane.pixeltrance.sound.TranceSounds;
 
@@ -24,32 +28,44 @@ public class PixelTrance implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 
-	public static final TranceSourceHandler TRANCE_SOURCE_HANDLER = new TranceSourceHandler();
-	public static final FocusSourceHandler FOCUS_SOURCE_HANDLER = new FocusSourceHandler();
-
-
-
 	@Override
 	public void onInitialize() {
 		LOGGER.info("PixelTrance mod loaded!");
 
-		ModItems.init();
-		TranceSounds.register();
 
+		// === Registration ===
+
+		ModItems.init(); // Register items
+		TranceSounds.register(); // Register sounds
+
+		// === Server Tick Logic ===
+		// Tick hook for trance/focus sources and item effects
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (var world : server.getWorlds()) {
-				for (var entity : world.getPlayers()) {
-					TRANCE_SOURCE_HANDLER.tickForEntity(entity);
-					FOCUS_SOURCE_HANDLER.tickForEntity(entity);
+
+				// Clear inducer list
+				InducerRegistry.clear();
+
+				// Add held item inducers
+				InducerRegistry.scanHeldItems(world.getPlayers());
+
+				// Add mob-based inducers (pink sheep, etc.)
+				MobInducerHandler.scan(world); // already a ServerWorld
+
+				// Tick all subjects
+				for (var subject : world.iterateEntities()) {
+					if (subject instanceof LivingEntity living && subject instanceof TranceDataAccess) {
+						TranceDecayHandler.tickForSubject(living);
+						FocusHandler.tickForSubject(world, living);
+					}
 				}
 			}
 
-			// Centralized trance/focus processing for all hypnotic sources
-			HypnoticSourceProcessor.tick(server);
+			PocketWatchServerEffects.tick(server);
 		});
 
 
-
+		// Register /trance debug command
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(TranceCommand.create());
 		});

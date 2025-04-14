@@ -11,8 +11,8 @@ public class ClientTranceState {
     // Cached variables for the local player
     private static float trance = 0.0f;
     private static float focus = 0.0f;
-    private static boolean focusSessionActive = false;
-    private static LivingEntity hypnoticTarget = null;
+    private static boolean focusLocked = false;
+
 
 
     // Get caches trance value
@@ -36,23 +36,13 @@ public class ClientTranceState {
     }
 
     // Get focus session status
-    public static boolean getFocusSessionActive() {
-        return focusSessionActive;
+    public static boolean getFocusLocked() {
+        return focusLocked;
     }
 
     // Set focus session status
-    public static void setFocusSessionActive(boolean value) {
-        focusSessionActive = value;
-    }
-
-    // Get hypnotic target
-    public static LivingEntity getHypnoticTarget() {
-        return hypnoticTarget;
-    }
-
-    // Set hypnotic target
-    public static void setHypnoticTarget(LivingEntity target) {
-        hypnoticTarget = target;
+    public static void setFocusLocked(boolean value) {
+        focusLocked = value;
     }
 
 }

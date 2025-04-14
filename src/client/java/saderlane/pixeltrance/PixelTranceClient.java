@@ -22,32 +22,15 @@ public class PixelTranceClient implements ClientModInitializer {
 				(client, handler, buf, responseSender) -> {
 					float trance = buf.readFloat();
 					float focus = buf.readFloat();
-					boolean focusSessionActive = buf.readBoolean();
-					int targetId = buf.readInt();
+					boolean focusLocked = buf.readBoolean();
+
 
 
 					// Update client-side trance cache on the render thread
 					client.execute(() -> {
-						// Capture old state BEFORE updating
-						boolean oldState = ClientTranceState.getFocusSessionActive();
-
 						ClientTranceState.setTrance(trance);
 						ClientTranceState.setFocus(focus);
-						ClientTranceState.setFocusSessionActive(focusSessionActive);
-
-						// Resolve entity by ID
-						if (targetId != -1 && client.world != null) {
-							var entity = client.world.getEntityById(targetId);
-							if (entity instanceof LivingEntity living) {
-								ClientTranceState.setHypnoticTarget(living);
-							}
-						} else {
-							ClientTranceState.setHypnoticTarget(null);
-						}
-
-						PocketWatchClientHandler.showFocusSessionMessage(oldState, focusSessionActive);
-
-
+						ClientTranceState.setFocusLocked(focusLocked);
 					});
 				}
 		);
@@ -65,7 +48,7 @@ public class PixelTranceClient implements ClientModInitializer {
 			TranceAudioHandler.updateTranceSound(trance, 0);
 
 			// === Screen Pull for Focus Lock ===
-			ScreenPullHandler.tick();
+			//ScreenPullHandler.tick();
 		});
 
 

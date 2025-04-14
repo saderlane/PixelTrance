@@ -84,7 +84,7 @@ public class TranceCommand {
 
                                     // Get the TranceData attached to the player and subtract from it
                                     TranceData trance = ((TranceDataAccess)player).getTranceData();
-                                    trance.decay(amount);
+                                    trance.tranceDecay(amount);
 
                                     player.sendMessage(Text.literal("Reduced trance by " + amount), true);
                                     return 1;

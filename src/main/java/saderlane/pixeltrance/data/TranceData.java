@@ -3,12 +3,9 @@ package saderlane.pixeltrance.data;
 import java.lang.Math;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 
 import net.minecraft.server.network.ServerPlayerEntity;
-import saderlane.pixeltrance.logic.FocusLockConditions;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 import saderlane.pixeltrance.util.PTLog;
 
@@ -19,35 +16,32 @@ import saderlane.pixeltrance.util.PTLog;
 public class TranceData {
 
     // Set trance final variables
-    private static float TRANCE_DECAY_AMOUNT = 0.05f;
+    private static float TRANCE_DECAY_AMOUNT = 0.05f; // Amount trance decays
     private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
 
     // Set focus final variables
-    private static final float FOCUS_DECAY_RATE = 0.15f;
-    private static final float FOCUS_BUILD_THRESHOLD = 30f;
-    private static final float FOCUS_LOCK_THRESHOLD = 80f;
+    private static final float FOCUS_DECAY_RATE = 0.15f; // Amount focus decays
+    private static final float FOCUS_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
+    private static final float FOCUS_LOCK_THRESHOLD = 80f; // Threshold for when entity becomes focus locked
 
 
-    private final LivingEntity owner; // Tracks the entity being tranced/focus locked
+    private final LivingEntity subject; // Tracks the entity being tranced/focus locked
 
 
     // Variables:
     private float trance = 0.0f; // Trance value for entity
-    private int ticksSinceLastDecay = 0;
+    private int ticksSinceLastTranceDecay = 0;
 
-    private float focus = 0f;              // Current focus value (0–100)
-    private boolean focusLocked = false;   // Is the entity in focus lock state?
-    private boolean focusSessionActive = false;
-
-    private LivingEntity hypnoticTarget = null; //determine if the entity is a valid hypnotic target
-
+    private float focus = 0f;              // Focus value for entity
+    private boolean focusLocked = false;   // Is the entity in focus lock state
+    private int ticksSinceLastFocusDecay = 0;
 
 
 
 
     // Return the entity
-    public TranceData(LivingEntity owner) {
-        this.owner = owner;
+    public TranceData(LivingEntity subject) {
+        this.subject = subject;
     }
 
 
@@ -55,12 +49,17 @@ public class TranceData {
 
     // Sync the server data with the player
     private void syncToPlayer() {
-        if (owner instanceof ServerPlayerEntity serverPlayer) {
-            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusSessionActive, hypnoticTarget);
+        if (subject instanceof ServerPlayerEntity serverPlayer) {
+            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusLocked);
         }
     }
 
 
+    // Method for just calling a tick if something happens to trance and focus
+    public void tick() {
+        tickTranceDecay();
+        tickFocusDecay();
+    }
 
 
 
@@ -70,6 +69,7 @@ public class TranceData {
     // Set the trance value between 0 and 100
     public void setTrance(float value) {
         this.trance = clamp(value,0f,100f);
+        PTLog.info(subject.getName().getString() + " Trance: " + trance);
         syncToPlayer();
     }
 
@@ -85,107 +85,70 @@ public class TranceData {
 
     // Decrease trance by <amount>
     // May decay over time, from damage, player input, etc.
-    public void decay(float amount) {
+    public void tranceDecay(float amount) {
         setTrance(trance - amount);
     }
 
-    // == Trance Decay and Build Methods ==
-
-    // Called once per tick to handle trance decay over time
-    //  Must be hooked externally
-    public void tick() {
-        // If trance is 0, do nothing
-        if (trance <= 0) return;
-        ticksSinceLastDecay++;
-
-        if (ticksSinceLastDecay >= TRANCE_DECAY_INTERVAL_TICKS) {
-            ticksSinceLastDecay = 0;
-            if (trance > 0f) {
-                trance = clamp(trance - TRANCE_DECAY_AMOUNT, 0f, 100f);
-                syncToPlayer();
-            }
+    // Trance Passive Decay:
+    // Called every tick to apply passive trance decay
+    public void tickTranceDecay() {
+        ticksSinceLastTranceDecay++;
+        if (ticksSinceLastTranceDecay >= TRANCE_DECAY_INTERVAL_TICKS) {
+            tranceDecay(TRANCE_DECAY_AMOUNT);
+            ticksSinceLastTranceDecay = 0;
         }
     }
 
 
 
 
-    // === Focus Lock Methods ===
-    public void tickFocus(boolean shouldBuild, LivingEntity target, float focusRate) {
-        float previousFocus = focus;
+    // === Focus Methods ===
 
-        if (shouldBuild)
-        {
+    // Set focus value between 0 and 100 on the entity X
+    public void setFocus(float value) {
+        this.focus = clamp(value,0f,100f);
+        PTLog.info(subject.getName().getString() + " Focus: " + focus);
 
-            PTLog.info(owner.getName().getString() + " is building focus. Target: " +
-                    (target != null ? target.getName().getString() : "null") +
-                    ", Focus: " + focus);
+        // Check for focus lock exit
+        boolean lockStatus = focusLocked;
+        focusLocked = focus >= FOCUS_LOCK_THRESHOLD;
 
-
-            focus = clamp(focus + focusRate, 0f, 100f);
-
-            // Store the hypnotic target if it's valid and not already set
-            if (hypnoticTarget == null && target != null)
-            {
-                this.hypnoticTarget = target;
-            }
-        } else
-        {
-            focus = clamp(focus - FOCUS_DECAY_RATE, 0f, 100f);
-        }
-
-        if (!shouldBuild || focus < FOCUS_BUILD_THRESHOLD || hypnoticTarget == null) {
-            hypnoticTarget = null;
-        }
-
-        // Handle focus lock transitions
-        if (!focusLocked && focus >= FOCUS_LOCK_THRESHOLD)
-        {
-            focusLocked = true;
-            PTLog.info(owner.getName().getString() + " has entered Focus Lock!");
-        }
-
-        if (focusLocked && focus <= 0f)
-        {
-            focusLocked = false;
-            PTLog.info(owner.getName().getString() + " has broken out of Focus Lock.");
-        }
-
-        if (focus != previousFocus)
-        {
-            syncToPlayer();
-        }
-    }
-
-
-    public void setFocusSessionActive(boolean active) {
-        this.focusSessionActive = active;
         syncToPlayer();
     }
 
-    public boolean isFocusLocked() {
-        return focusLocked;
-    }
-
-    public boolean isFocusSessionActive() {
-        return focusSessionActive;
-    }
-
+    // Return current focus value
     public float getFocus() {
         return focus;
     }
 
-
-
-
-    // === Hypnotic Target Methods ===
-    public void setHypnoticTarget(LivingEntity entity) {
-        this.hypnoticTarget = entity;
+    // Increase focus by <amount>
+    public void addFocus(float amount) {
+        setFocus(focus + amount);
     }
 
-    public LivingEntity getHypnoticTarget() {
-        return this.hypnoticTarget;
+    // Decrease focus by <amount>
+    // May decay over time, from damage, player input, etc.
+    public void focusDecay(float amount) {
+        setFocus(focus - amount);
     }
+
+    public boolean getFocusLocked() {
+        return focusLocked;
+    }
+
+    // Focus Passive Decay:
+    // Called every tick to apply passive focus decay and update lock state
+    public void tickFocusDecay() {
+        ticksSinceLastFocusDecay++;
+        if (ticksSinceLastFocusDecay >= FOCUS_DECAY_INTERVAL_TICKS) {
+            focusDecay(FOCUS_DECAY_RATE);
+
+            ticksSinceLastFocusDecay = 0;
+        }
+    }
+
+
+
 
 
 

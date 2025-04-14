@@ -19,15 +19,11 @@ public class TranceSyncS2CPacket {
             ServerPlayerEntity player,
             float trance,
             float focus,
-            boolean focusSessionActive,
-            LivingEntity hypnoticTarget) {
+            boolean focusLocked) {
         PacketByteBuf buf = new PacketByteBuf(io.netty.buffer.Unpooled.buffer());
         buf.writeFloat(trance);
         buf.writeFloat(focus);
-        buf.writeBoolean(focusSessionActive);
-
-        int targetID = (hypnoticTarget != null) ? hypnoticTarget.getId() : -1;
-        buf.writeInt(targetID);
+        buf.writeBoolean(focusLocked);
 
         ServerPlayNetworking.send(player,ID, buf);
     }
