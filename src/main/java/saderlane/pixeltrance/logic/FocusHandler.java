@@ -3,6 +3,7 @@ package saderlane.pixeltrance.logic;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.server.world.ServerWorld;
+import saderlane.pixeltrance.api.ActivatableInducer;
 import saderlane.pixeltrance.api.Inducer;
 import saderlane.pixeltrance.api.MobInducerWrapper;
 import saderlane.pixeltrance.api.TranceDataAccess;
@@ -24,9 +25,12 @@ public class FocusHandler {
             LivingEntity holder = active.holder(); // May be null (for mobs)
 
             if (holder != null) {
-
-                if (subject == holder) continue; // can't self hypnotize
+                if (subject == holder) continue;
                 if (holder.getWorld() != world) continue;
+
+                var stack = holder.getMainHandStack(); // You can expand to offhand later
+                if (stack.getItem() instanceof ActivatableInducer ai && !ai.isActivated(stack)) continue;
+
 
                 // If this inducer requires line of sight, subject must be looking at the holder
                 if (inducer.requiresLineOfSight() &&

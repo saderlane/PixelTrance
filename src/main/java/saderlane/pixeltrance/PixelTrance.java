@@ -4,7 +4,6 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.world.ServerWorld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +18,6 @@ import saderlane.pixeltrance.logic.TranceDecayHandler;
 import saderlane.pixeltrance.logic.TranceHandler;
 import saderlane.pixeltrance.registry.InducerRegistry;
 import saderlane.pixeltrance.registry.MobInducerRegistry;
-import saderlane.pixeltrance.server.item.PocketWatchServerEffects;
 import saderlane.pixeltrance.sound.TranceSounds;
 
 
@@ -65,7 +63,6 @@ public class PixelTrance implements ModInitializer {
 				}
 			}
 
-			PocketWatchServerEffects.tick(server);
 		});
 
 

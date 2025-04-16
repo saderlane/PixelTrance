@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
+import net.minecraft.util.Hand;
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.client.data.ClientTranceState;
 import saderlane.pixeltrance.client.visual.ClientScreenPullHandler;
@@ -39,6 +40,28 @@ public class PixelTranceClient implements ClientModInitializer {
 					});
 				}
 		);
+
+		// Register for handling packets from item sync
+		ClientPlayNetworking.registerGlobalReceiver(
+				saderlane.pixeltrance.network.ItemActivationS2CPacket.ID,
+				(client, handler, buf, responseSender) -> {
+					Hand hand = buf.readEnumConstant(Hand.class);
+					boolean isActive = buf.readBoolean();
+
+					client.execute(() -> {
+						var player = client.player;
+						if (player == null) return;
+
+						var stack = player.getStackInHand(hand);
+						String itemName = stack.getName().getString();
+						player.sendMessage(
+								net.minecraft.text.Text.literal(itemName + (isActive ? " Activated" : " Deactivated")),
+								true
+						);
+					});
+				}
+		);
+
 
 
 		// Register client tick event
