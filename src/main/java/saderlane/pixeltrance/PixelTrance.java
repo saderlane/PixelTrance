@@ -18,6 +18,7 @@ import saderlane.pixeltrance.logic.MobInducerHandler;
 import saderlane.pixeltrance.logic.TranceDecayHandler;
 import saderlane.pixeltrance.logic.TranceHandler;
 import saderlane.pixeltrance.registry.InducerRegistry;
+import saderlane.pixeltrance.registry.MobInducerRegistry;
 import saderlane.pixeltrance.server.item.PocketWatchServerEffects;
 import saderlane.pixeltrance.sound.TranceSounds;
 
@@ -38,6 +39,7 @@ public class PixelTrance implements ModInitializer {
 
 		ModItems.init(); // Register items
 		TranceSounds.register(); // Register sounds
+		MobInducerRegistry.register(); // Register inducer mobs
 
 		// === Server Tick Logic ===
 		// Tick hook for trance/focus sources and item effects
