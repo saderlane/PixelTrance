@@ -25,8 +25,8 @@
 - [X] Trance syncing in multiplayer
 - [X] Create base hypnosis item (Pocket Watch)
 - [X] Implement basic **Passive Focus Lock**
-  - [ ] Add some conditional logic (gaze, etc)
-  - [ ] Add screen pull to players
+  - [X] Add some conditional logic (gaze, etc)
+  - [X] Add screen pull to players
 - [X] Trance decay logic
 - [X] Focus decay logic
 - [X] Visual/audio feedback
@@ -158,6 +158,7 @@ This also includes a purple vignette that grows in intensity (until pulsing) as 
 ### 🎨 Phase X: Passive Development
 - [ ] Create 3D Model for Pocket Watch item
   - [ ] Create swinging animation when item is in use
+- [ ] Make the resistance to screen pull smoother
 
 ---
 

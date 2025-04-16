@@ -4,11 +4,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
-import net.minecraft.entity.LivingEntity;
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.client.data.ClientTranceState;
-import saderlane.pixeltrance.client.item.PocketWatchClientHandler;
-import saderlane.pixeltrance.client.visual.ScreenPullHandler;
+import saderlane.pixeltrance.client.visual.ClientScreenPullHandler;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 
 
@@ -24,13 +22,20 @@ public class PixelTranceClient implements ClientModInitializer {
 					float focus = buf.readFloat();
 					boolean focusLocked = buf.readBoolean();
 
-
+					boolean hasInducer = buf.readBoolean();
+					Integer inducerId = hasInducer ? buf.readInt() : null;
 
 					// Update client-side trance cache on the render thread
 					client.execute(() -> {
 						ClientTranceState.setTrance(trance);
 						ClientTranceState.setFocus(focus);
 						ClientTranceState.setFocusLocked(focusLocked);
+
+						if (inducerId != null) {
+							ClientTranceState.setInducerEntityId(inducerId);
+						} else {
+							ClientTranceState.clearInducerEntityID();
+						}
 					});
 				}
 		);
@@ -47,10 +52,10 @@ public class PixelTranceClient implements ClientModInitializer {
 			// Update audio based on current trance
 			TranceAudioHandler.updateTranceSound(trance, 0);
 
-			// === Screen Pull for Focus Lock ===
-			//ScreenPullHandler.tick();
 		});
 
+		// Initialize screen pull effect
+		ClientScreenPullHandler.init();
 
 	}
 }

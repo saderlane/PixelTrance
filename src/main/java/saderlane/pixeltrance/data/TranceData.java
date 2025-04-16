@@ -2,6 +2,7 @@ package saderlane.pixeltrance.data;
 
 import java.lang.Math;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.NbtCompound;
 
@@ -16,16 +17,17 @@ import saderlane.pixeltrance.util.PTLog;
 public class TranceData {
 
     // Set trance final variables
-    private static float TRANCE_DECAY_AMOUNT = 0.05f; // Amount trance decays
+    private static float TRANCE_DECAY_AMOUNT = 0.5f; // Amount trance decays
     private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
 
     // Set focus final variables
-    private static final float FOCUS_DECAY_RATE = 0.15f; // Amount focus decays
+    private static final float FOCUS_DECAY_RATE = 0.5f; // Amount focus decays
     private static final float FOCUS_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
     private static final float FOCUS_LOCK_THRESHOLD = 80f; // Threshold for when entity becomes focus locked
 
 
     private final LivingEntity subject; // Tracks the entity being tranced/focus locked
+    private Entity currentInducer; // Tracks the current inducer for the subject
 
 
     // Variables:
@@ -50,7 +52,7 @@ public class TranceData {
     // Sync the server data with the player
     private void syncToPlayer() {
         if (subject instanceof ServerPlayerEntity serverPlayer) {
-            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusLocked);
+            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusLocked, currentInducer);
         }
     }
 
@@ -69,7 +71,7 @@ public class TranceData {
     // Set the trance value between 0 and 100
     public void setTrance(float value) {
         this.trance = clamp(value,0f,100f);
-        PTLog.info(subject.getName().getString() + " Trance: " + trance);
+        //PTLog.info(subject.getName().getString() + " Trance: " + trance);
         syncToPlayer();
     }
 
@@ -107,11 +109,16 @@ public class TranceData {
     // Set focus value between 0 and 100 on the entity X
     public void setFocus(float value) {
         this.focus = clamp(value,0f,100f);
-        PTLog.info(subject.getName().getString() + " Focus: " + focus);
+        //PTLog.info(subject.getName().getString() + " Focus: " + focus);
 
         // Check for focus lock exit
         boolean lockStatus = focusLocked;
         focusLocked = focus >= FOCUS_LOCK_THRESHOLD;
+
+        // Clear inducer if focus drops too low
+        if (focus < 30f) {
+            currentInducer = null;
+        }
 
         syncToPlayer();
     }
@@ -147,6 +154,16 @@ public class TranceData {
         }
     }
 
+
+    // === Inducer Methods ===
+    public Entity getCurrentInducer() {
+        return currentInducer;
+    }
+
+    public void setCurrentInducer(Entity inducer) {
+        this.currentInducer = inducer;
+        syncToPlayer(); // ensure the client knows about it
+    }
 
 
 

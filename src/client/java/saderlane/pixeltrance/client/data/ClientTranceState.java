@@ -4,6 +4,8 @@ package saderlane.pixeltrance.client.data;
 // Stores the most recent trance value synced from the server
 // The HUD will read from here when rendering
 
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
 public class ClientTranceState {
@@ -13,8 +15,10 @@ public class ClientTranceState {
     private static float focus = 0.0f;
     private static boolean focusLocked = false;
 
+    private static Integer inducerEntityId = null; // ID of the current inducer from server
 
 
+    // === Trance Methods ===
     // Get caches trance value
     public static float getTrance() {
         return trance;
@@ -25,6 +29,7 @@ public class ClientTranceState {
         trance = value;
     }
 
+    // === Focus Methods ===
     // Get focus for client
     public static float getFocus() {
         return focus;
@@ -43,6 +48,34 @@ public class ClientTranceState {
     // Set focus session status
     public static void setFocusLocked(boolean value) {
         focusLocked = value;
+    }
+
+    // === Inducer Tracking Methods ===
+    // Set Inducer Entity ID
+    public static void setInducerEntityId(int id) {
+        inducerEntityId = id;
+    }
+
+    // Remove inducer entity ID
+    public static void clearInducerEntityID() {
+        inducerEntityId = null;
+    }
+
+    //Get inducer entity ID
+    public static Integer getInducerEntityId() {
+        return inducerEntityId;
+    }
+
+    // Resolve inducer entity from current world
+    public static LivingEntity resolveInducer(MinecraftClient client) {
+        if (inducerEntityId == null || client.world == null) return null;
+
+        Entity entity = client.world.getEntityById(inducerEntityId);
+        if (entity instanceof LivingEntity living)
+        {
+            return living;
+        }
+        return null;
     }
 
 }

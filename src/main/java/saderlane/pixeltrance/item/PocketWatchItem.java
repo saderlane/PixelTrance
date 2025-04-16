@@ -14,18 +14,18 @@ public class PocketWatchItem extends Item implements Inducer {
     // === Inducer: Focus Properties ===
     @Override
     public float getFocusRate() {
-        return 0.5f; // Builds 0.5 focus per interval
+        return 1f; // Builds  focus per interval
     }
 
     @Override
     public int getFocusInterval() {
-        return 10; // Every 10 ticks (~0.5 seconds)
+        return 20; // Every X ticks
     }
 
     // === Inducer: Trance Properties ===
     @Override
     public float getTranceRate() {
-        return 0.5f; // Not active yet
+        return 1f;
     }
 
     @Override
