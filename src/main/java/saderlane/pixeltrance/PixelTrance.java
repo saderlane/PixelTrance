@@ -16,6 +16,7 @@ import saderlane.pixeltrance.item.ModItems;
 import saderlane.pixeltrance.logic.FocusHandler;
 import saderlane.pixeltrance.logic.MobInducerHandler;
 import saderlane.pixeltrance.logic.TranceDecayHandler;
+import saderlane.pixeltrance.logic.TranceHandler;
 import saderlane.pixeltrance.registry.InducerRegistry;
 import saderlane.pixeltrance.server.item.PocketWatchServerEffects;
 import saderlane.pixeltrance.sound.TranceSounds;
@@ -57,6 +58,7 @@ public class PixelTrance implements ModInitializer {
 					if (subject instanceof LivingEntity living && subject instanceof TranceDataAccess) {
 						TranceDecayHandler.tickForSubject(living);
 						FocusHandler.tickForSubject(world, living);
+						TranceHandler.tickForSubject(world, living);
 					}
 				}
 			}

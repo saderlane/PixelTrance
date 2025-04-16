@@ -33,7 +33,7 @@ public class MobInducerWrapper implements Inducer{
     // === Inducer: Trance Properties ===
     @Override
     public float getTranceRate() {
-        return 0f;
+        return 0.5f;
     }
 
     @Override

@@ -39,7 +39,8 @@ public class FocusHandler {
                             " received +" + inducer.getFocusRate() + " focus from inducer held by " +
                             holder.getName().getString());
                 }
-            } else if (inducer instanceof MobInducerWrapper wrapper) {
+            }
+            else if (inducer instanceof MobInducerWrapper wrapper) {
                 var mob = wrapper.getMob();
 
                 if (subject == mob) continue; // can't self hypnotize

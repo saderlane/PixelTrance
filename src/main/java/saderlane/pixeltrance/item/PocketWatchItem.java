@@ -25,7 +25,7 @@ public class PocketWatchItem extends Item implements Inducer {
     // === Inducer: Trance Properties ===
     @Override
     public float getTranceRate() {
-        return 0.0f; // Not active yet
+        return 0.5f; // Not active yet
     }
 
     @Override
