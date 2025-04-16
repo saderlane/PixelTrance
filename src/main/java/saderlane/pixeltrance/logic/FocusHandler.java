@@ -7,6 +7,7 @@ import saderlane.pixeltrance.api.Inducer;
 import saderlane.pixeltrance.api.MobInducerWrapper;
 import saderlane.pixeltrance.api.TranceDataAccess;
 import saderlane.pixeltrance.registry.InducerRegistry;
+import saderlane.pixeltrance.util.GazeUtils;
 import saderlane.pixeltrance.util.PTLog;
 
 // Applies passive focus gain to subjects based on proximity to active inducers.
@@ -27,11 +28,14 @@ public class FocusHandler {
                 if (subject == holder) continue; // can't self hypnotize
                 if (holder.getWorld() != world) continue;
 
-                double distanceSq = subject.squaredDistanceTo(holder);
-                if (distanceSq <= 6.0 * 6.0 && world.getTime() % inducer.getFocusInterval() == 0) {
+                // If this inducer requires line of sight, subject must be looking at the holder
+                if (inducer.requiresLineOfSight() &&
+                        !GazeUtils.subjectLookingAtInducer(subject, holder, 0.95, 6.0)) continue;
+
+                if (world.getTime() % inducer.getFocusInterval() == 0) {
                     tranceData.addFocus(inducer.getFocusRate());
 
-                    PTLog.info("Subject: " + subject.getName().getString() +
+                    PTLog.info("Subject " + subject.getName().getString() +
                             " received +" + inducer.getFocusRate() + " focus from inducer held by " +
                             holder.getName().getString());
                 }
@@ -41,11 +45,13 @@ public class FocusHandler {
                 if (subject == mob) continue; // can't self hypnotize
                 if (mob.getWorld() != world) continue;
 
-                double distanceSq = subject.squaredDistanceTo(mob);
-                if (distanceSq <= 6.0 * 6.0 && world.getTime() % inducer.getFocusInterval() == 0) {
-                    tranceData.addFocus(inducer.getFocusRate());
+                // Gaze check: subject must be actively looking at the inducer
+                if (!GazeUtils.subjectLookingAtInducer(subject, mob, 0.95, 6.0)) continue;
 
-                    PTLog.info("Subject: " + subject.getName().getString() +
+                // Only apply focus on valid tick interval
+                if (world.getTime() % inducer.getFocusInterval() == 0) {
+                    tranceData.addFocus(inducer.getFocusRate());
+                    PTLog.info("Subject " + subject.getName().getString() +
                             " received +" + inducer.getFocusRate() + " focus from inducer mob: " +
                             mob.getName().getString());
                 }

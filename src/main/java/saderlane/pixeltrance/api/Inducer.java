@@ -12,4 +12,7 @@ public interface Inducer {
     float getTranceRate();
     int getTranceInterval();
 
+    // Custom parameters
+    boolean requiresLineOfSight();
+
 }

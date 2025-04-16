@@ -34,5 +34,12 @@ public class PocketWatchItem extends Item implements Inducer {
     }
 
 
+    // === Inducer: Custom Properties ===
+    @Override
+    public boolean requiresLineOfSight() {
+        return true;
+    }
+
+
 
 }
