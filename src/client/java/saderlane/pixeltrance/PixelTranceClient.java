@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.util.Hand;
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.client.data.ClientTranceState;
+import saderlane.pixeltrance.client.item.PocketWatchClientHandler;
 import saderlane.pixeltrance.client.visual.ClientScreenPullHandler;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 
@@ -41,29 +42,6 @@ public class PixelTranceClient implements ClientModInitializer {
 				}
 		);
 
-		// Register for handling packets from item sync
-		ClientPlayNetworking.registerGlobalReceiver(
-				saderlane.pixeltrance.network.ItemActivationS2CPacket.ID,
-				(client, handler, buf, responseSender) -> {
-					Hand hand = buf.readEnumConstant(Hand.class);
-					boolean isActive = buf.readBoolean();
-
-					client.execute(() -> {
-						var player = client.player;
-						if (player == null) return;
-
-						var stack = player.getStackInHand(hand);
-						String itemName = stack.getName().getString();
-						player.sendMessage(
-								net.minecraft.text.Text.literal(itemName + (isActive ? " Activated" : " Deactivated")),
-								true
-						);
-					});
-				}
-		);
-
-
-
 		// Register client tick event
 		ClientTickEvents.END_CLIENT_TICK.register(minecraftClient -> {
 			if (minecraftClient.player == null) return;
@@ -79,6 +57,9 @@ public class PixelTranceClient implements ClientModInitializer {
 
 		// Initialize screen pull effect
 		ClientScreenPullHandler.init();
+
+		// Register item-specific logic
+		PocketWatchClientHandler.register(); // Registers pocket watch
 
 	}
 }

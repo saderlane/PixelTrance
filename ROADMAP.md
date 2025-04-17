@@ -43,13 +43,14 @@
 
 ### 🕰️ Pocket Watch Toggle Mode
 - [X] Right-click toggles “focus session” on/off
-- [ ] ~~Visual particles~~, ~~subtle glow~~, looping ticking sound
+- [X] ~~Visual particles~~, ~~subtle glow~~, looping ticking sound
   - Couldn't get visual particles to work and I don't think glow is a good effect
 - [X] Increases Passive Focus Lock buildup for viewers
 - [X] Screen pulls attention to source of Focus Lock
   - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
 - [X] Only functions when targeting another entity (player or mob)
 - [X] Re-implement trance gain from pocket watch
+- [ ] Supports off-hand usage
 
 ### 🌀 Hypnotic Visual Feedback & Player Effects
 Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.
