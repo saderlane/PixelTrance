@@ -54,7 +54,7 @@
 ### 🌀 Hypnotic Visual Feedback & Player Effects
 Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.
 
-This also includes a purple vignette that grows in intensity (until pulsing) as the trance progresses.
+These are mostly visual effects I will implement later as I want to move onto actual gameplay stuff
 
 #### ✨ Low Trance (30–50%)
 - [X] Fade/blur edges of the screen
@@ -75,9 +75,9 @@ This also includes a purple vignette that grows in intensity (until pulsing) as 
 - [ ] Slight auto-walk forward when trance surges
 
 #### 💤 Full Trance (100%)
-- [ ] Brightness fades in from the screen edges (vignette intensifies further)
+- [X] Brightness fades in from the screen edges (vignette intensifies further)
 - [ ] Player can’t jump or sprint
-- [ ] Display centered trance prompt: “You feel completely relaxed…”
+- [X] Display centered trance prompt
 - [ ] Slowed visual feedback (fake motion blur or tick-rate-like delay)
 
 ### 🔁 Escape Mechanic (Struggle System)

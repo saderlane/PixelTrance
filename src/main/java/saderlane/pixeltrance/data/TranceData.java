@@ -33,10 +33,13 @@ public class TranceData {
     // Variables:
     private float trance = 0.0f; // Trance value for entity
     private int ticksSinceLastTranceDecay = 0;
+    private int tranceDecayPauseTicks = 0; // How long to pause trance decay for
+
 
     private float focus = 0f;              // Focus value for entity
     private boolean focusLocked = false;   // Is the entity in focus lock state
     private int ticksSinceLastFocusDecay = 0;
+
 
 
 
@@ -70,7 +73,14 @@ public class TranceData {
 
     // Set the trance value between 0 and 100
     public void setTrance(float value) {
-        this.trance = clamp(value,0f,100f);
+        float clamped = clamp(value, 0f, 100f);
+
+        // If we are newly reaching 100 trance
+        if (this.trance < 100f && clamped >= 100f) {
+            tranceDecayPauseTicks = 100; // e.g., 5 seconds pause at 20 ticks/sec
+        }
+
+        this.trance = clamped;
         //PTLog.info(subject.getName().getString() + " Trance: " + trance);
         syncToPlayer();
     }
@@ -94,6 +104,11 @@ public class TranceData {
     // Trance Passive Decay:
     // Called every tick to apply passive trance decay
     public void tickTranceDecay() {
+        if (tranceDecayPauseTicks > 0) {
+            tranceDecayPauseTicks--;
+            return; // Skip decay while paused
+        }
+
         ticksSinceLastTranceDecay++;
         if (ticksSinceLastTranceDecay >= TRANCE_DECAY_INTERVAL_TICKS) {
             tranceDecay(TRANCE_DECAY_AMOUNT);
