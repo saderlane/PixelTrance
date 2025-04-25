@@ -10,7 +10,7 @@ public class MobInducerRegistry {
     public static void register() {
         //Pink Sheep
         MobHypnosisProfiles.register(EntityType.SHEEP, new MobHypnosisProfile(
-                .8f, 20,0.5f, 20, true
+                2f, 20,0.5f, 20, true
         ));
     }
 

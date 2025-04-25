@@ -50,7 +50,6 @@
   - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
 - [X] Only functions when targeting another entity (player or mob)
 - [X] Re-implement trance gain from pocket watch
-- [ ] Supports off-hand usage
 
 ### 🌀 Hypnotic Visual Feedback & Player Effects
 Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.

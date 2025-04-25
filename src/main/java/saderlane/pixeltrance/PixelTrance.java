@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 import saderlane.pixeltrance.api.TranceDataAccess;
+import saderlane.pixeltrance.command.FocusCommand;
 import saderlane.pixeltrance.command.TranceCommand;
 import saderlane.pixeltrance.item.ModItems;
 import saderlane.pixeltrance.logic.FocusHandler;
@@ -66,9 +67,16 @@ public class PixelTrance implements ModInitializer {
 		});
 
 
-		// Register /trance debug command
+		// =========== Register commands ===========
+
+		// /trance debug command
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
 			dispatcher.register(TranceCommand.create());
+		});
+
+		// /focus debug command
+		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+			dispatcher.register(FocusCommand.create());
 		});
 
 	}
