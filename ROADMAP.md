@@ -57,7 +57,7 @@ Introduce progressively intense effects as the player’s trance level increases
 This also includes a purple vignette that grows in intensity (until pulsing) as the trance progresses.
 
 #### ✨ Low Trance (30–50%)
-- [ ] Fade/blur edges of the screen
+- [X] Fade/blur edges of the screen
 - [ ] Gentle motion trails on hand swing or GUI
 - [ ] Slight input smoothing or camera easing
 - [ ] Tooltip delay to simulate sluggish thought

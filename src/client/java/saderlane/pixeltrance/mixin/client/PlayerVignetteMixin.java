@@ -18,12 +18,17 @@ public class PlayerVignetteMixin {
     // Use vanilla texture vignette
     private static final Identifier VIGNETTE_TEXTURE = new Identifier("textures/misc/vignette.png");
 
+
     @Inject(method = "render", at = @At("TAIL"))
     private void renderTranceOverlay(DrawContext context, float tickDelta, CallbackInfo ci) {
-        float trance = ClientTranceState.getTrance();
-        if (trance <= 30) return;
 
-        float opacity = Math.min((trance - 30f) / 70f, 1.0f) * 0.6f;
+        float trance = ClientTranceState.getTrance();
+        if (trance <= 30) return; //Only begin if trance is >= 30
+
+
+        // === VIGNETTE ===
+
+        float opacity = Math.min((trance - 30f) / 70f, 1.0f) * 0.6f; //Set scaling vignette opacity
 
         // Add pulsing effect if trance is 70 or higher
         if (trance >= 70f) {
