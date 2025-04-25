@@ -76,7 +76,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 #### 💤 Full Trance (100%)
 - [X] Brightness fades in from the screen edges (vignette intensifies further)
-- [ ] Player can’t jump or sprint
+- [X] Player can’t jump or sprint
 - [X] Display centered trance prompt
 - [ ] Slowed visual feedback (fake motion blur or tick-rate-like delay)
 
