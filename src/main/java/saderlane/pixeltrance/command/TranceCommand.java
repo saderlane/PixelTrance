@@ -31,6 +31,24 @@ public class TranceCommand {
                     return 1;
                 })
 
+
+                // /trance clear
+                // Directly set the trance value
+                .then(CommandManager.literal("clear")
+                    .executes(ctx -> {
+                        PlayerEntity player = ctx.getSource().getPlayer();
+
+                        // Set trance to 0
+                        TranceData trance = ((TranceDataAccess)player).getTranceData();
+                        trance.setTrance(0);
+
+                        // Confirm to the user
+                        player.sendMessage(Text.literal("Trance cleared"), true);
+                        return 1;
+                    })
+                )
+
+
                 // /trance set <value>
                 // Directly set the trance value
                 .then(CommandManager.literal("set")

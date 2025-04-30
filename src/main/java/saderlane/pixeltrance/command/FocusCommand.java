@@ -24,9 +24,27 @@ public class FocusCommand {
                     TranceData focus = ((TranceDataAccess)player).getTranceData();
 
                     // Send the value to the user in chat
-                    ctx.getSource().sendFeedback(() -> Text.literal("Focus: " + focus.getFocus()), false);
+                    player.sendMessage(Text.literal("Focus: " + focus.getFocus()), true);
                     return 1;
-                });
+                })
+
+                // /focus clear
+                // Directly set the trance value
+                .then(CommandManager.literal("clear")
+                        .executes(ctx -> {
+                            PlayerEntity player = ctx.getSource().getPlayer();
+
+                            // Set focus to 0
+                            TranceData focus = ((TranceDataAccess)player).getTranceData();
+                            focus.setFocus(0);
+
+                            // Confirm to the user
+                            player.sendMessage(Text.literal("Focus cleared"), true);
+                            return 1;
+                        })
+                )
+
+                ;
     }
 
 }
