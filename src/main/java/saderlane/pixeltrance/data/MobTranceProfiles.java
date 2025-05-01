@@ -20,11 +20,14 @@ public class MobTranceProfiles {
         return PROFILE_MAP.getOrDefault(type, DEFAULT);
     }
 
-    // Default profile: mob does nothing special when tranced
+    // Default profile:
+        // Mobs do NOT have their attention grabbed (movement locked)
+        // Mobs DO have movement slowed/follow the inducer
+        // Mob can be tranced
     private static final MobTranceProfile DEFAULT = new MobTranceProfile(
-            false, // attentionGrabbed
-            false, // slowsMovement
-            type -> false // Not supported by default
+            false, // not attentionGrabbed
+            true, // not slowsMovement
+            type -> true // supported by default
     );
 
 }
