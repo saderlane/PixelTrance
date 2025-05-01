@@ -40,9 +40,9 @@ public class FocusHandler {
                     tranceData.setCurrentInducer(holder);
                     tranceData.addFocus(inducer.getFocusRate());
 
-                    PTLog.info("Subject " + subject.getName().getString() +
-                            " received +" + inducer.getFocusRate() + " focus from inducer held by " +
-                            holder.getName().getString());
+//                    PTLog.info("Subject " + subject.getName().getString() +
+//                            " received +" + inducer.getFocusRate() + " focus from inducer held by " +
+//                            holder.getName().getString());
                 }
             }
             else if (inducer instanceof MobInducerWrapper wrapper) {

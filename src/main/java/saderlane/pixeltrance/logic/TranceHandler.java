@@ -53,8 +53,8 @@ public class TranceHandler {
             if (world.getTime() % inducer.getTranceInterval() == 0) {
                 tranceData.addTrance(inducer.getTranceRate());
 
-                PTLog.info("Subject " + subject.getName().getString() +
-                        " gained trance from mutual gaze with " + inducerEntity.getName().getString());
+//                PTLog.info("Subject " + subject.getName().getString() +
+//                        " gained trance from mutual gaze with " + inducerEntity.getName().getString());
             }
 
         }
