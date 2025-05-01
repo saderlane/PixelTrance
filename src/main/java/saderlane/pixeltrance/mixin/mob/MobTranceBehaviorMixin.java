@@ -63,6 +63,25 @@ public class MobTranceBehaviorMixin {
 
         }
 
+        // If the mob has slowsMovement == true
+        var speedAttr = mob.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+
+        if (profile.shouldSlowMovement()) {
+            if (speedAttr != null && speedAttr.getModifier(PixelTranceUUID.TRANCE_SLOW_MODIFIER) == null) {
+                EntityAttributeModifier slowMod = new EntityAttributeModifier(
+                        PixelTranceUUID.TRANCE_SLOW_MODIFIER,
+                        "Tranced Movement Slowdown",
+                        -0.3,
+                        EntityAttributeModifier.Operation.MULTIPLY_TOTAL
+                );
+                speedAttr.addPersistentModifier(slowMod);
+            }
+        } else {
+            if (speedAttr != null) {
+                speedAttr.removeModifier(PixelTranceUUID.TRANCE_SLOW_MODIFIER);
+            }
+        }
+
 
     }
 
