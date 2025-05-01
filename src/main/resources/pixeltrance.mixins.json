@@ -5,7 +5,8 @@
 	"mixins": [
 		"PlayerEntityMixin",
 		"MobEntityMixin",
-		"mob.MobTranceBehaviorMixin"
+		"mob.MobTranceBehaviorMixin",
+		"accessor.MobEntityAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -15,7 +15,8 @@ public class ClientTranceState {
     private static float focus = 0.0f;
     private static boolean focusLocked = false;
 
-    private static Integer inducerEntityId = null; // ID of the current inducer from server
+    private static Integer tranceInducerEntityId = null; // ID of the current trance inducer from server
+    private static Integer focusInducerEntityId = null; // ID of the current focus inducer from server
 
 
     // === Trance Methods ===
@@ -51,26 +52,53 @@ public class ClientTranceState {
     }
 
     // === Inducer Tracking Methods ===
-    // Set Inducer Entity ID
-    public static void setInducerEntityId(int id) {
-        inducerEntityId = id;
+    // Set Trance Inducer Entity ID
+    public static void setTranceInducerEntityId(int id) {
+        tranceInducerEntityId = id;
     }
 
-    // Remove inducer entity ID
-    public static void clearInducerEntityID() {
-        inducerEntityId = null;
+    // Remove Trance inducer entity ID
+    public static void clearTranceInducerEntityID() {
+        tranceInducerEntityId = null;
     }
 
-    //Get inducer entity ID
-    public static Integer getInducerEntityId() {
-        return inducerEntityId;
+    //Get Trance inducer entity ID
+    public static Integer getTranceInducerEntityId() {
+        return tranceInducerEntityId;
     }
 
-    // Resolve inducer entity from current world
-    public static LivingEntity resolveInducer(MinecraftClient client) {
-        if (inducerEntityId == null || client.world == null) return null;
+    // Resolve Trance inducer entity from current world
+    public static LivingEntity resolveTranceInducer(MinecraftClient client) {
+        if (tranceInducerEntityId == null || client.world == null) return null;
 
-        Entity entity = client.world.getEntityById(inducerEntityId);
+        Entity entity = client.world.getEntityById(tranceInducerEntityId);
+        if (entity instanceof LivingEntity living)
+        {
+            return living;
+        }
+        return null;
+    }
+
+    // Set Focus Inducer Entity ID
+    public static void setFocusInducerEntityId(int id) {
+        focusInducerEntityId = id;
+    }
+
+    // Remove Focus inducer entity ID
+    public static void clearFocusInducerEntityID() {
+        focusInducerEntityId = null;
+    }
+
+    //Get Focus inducer entity ID
+    public static Integer getFocusInducerEntityId() {
+        return focusInducerEntityId;
+    }
+
+    // Resolve Focus inducer entity from current world
+    public static LivingEntity resolveFocusInducer(MinecraftClient client) {
+        if (focusInducerEntityId == null || client.world == null) return null;
+
+        Entity entity = client.world.getEntityById(focusInducerEntityId);
         if (entity instanceof LivingEntity living)
         {
             return living;

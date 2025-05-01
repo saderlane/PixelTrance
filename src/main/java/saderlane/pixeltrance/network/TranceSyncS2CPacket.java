@@ -22,15 +22,24 @@ public class TranceSyncS2CPacket {
             float trance,
             float focus,
             boolean focusLocked,
-            @Nullable Entity inducer) {
+            @Nullable Entity tranceInducer,
+            @Nullable Entity focusInducer) {
         PacketByteBuf buf = new PacketByteBuf(io.netty.buffer.Unpooled.buffer());
         buf.writeFloat(trance);
         buf.writeFloat(focus);
         buf.writeBoolean(focusLocked);
 
-        if (inducer != null){
+        if (tranceInducer != null){
             buf.writeBoolean(true);
-            buf.writeInt(inducer.getId());
+            buf.writeInt(tranceInducer.getId());
+        }
+        else {
+            buf.writeBoolean(false);
+        }
+
+        if (focusInducer != null){
+            buf.writeBoolean(true);
+            buf.writeInt(focusInducer.getId());
         }
         else {
             buf.writeBoolean(false);

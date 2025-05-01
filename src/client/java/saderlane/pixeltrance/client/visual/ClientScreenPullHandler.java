@@ -36,7 +36,7 @@ public class ClientScreenPullHandler {
             if (focus < FOCUS_PULL_START) return;
 
             // Get the inducer entity (the source of focus) from the synced entity ID
-            LivingEntity inducer = ClientTranceState.resolveInducer(minecraftClient);
+            LivingEntity inducer = ClientTranceState.resolveFocusInducer(minecraftClient);
             if (inducer == null) return;
 
             // === Direction vector to inducer ===

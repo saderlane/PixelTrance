@@ -24,8 +24,11 @@ public class PixelTranceClient implements ClientModInitializer {
 					float focus = buf.readFloat();
 					boolean focusLocked = buf.readBoolean();
 
-					boolean hasInducer = buf.readBoolean();
-					Integer inducerId = hasInducer ? buf.readInt() : null;
+					boolean hasTranceInducer = buf.readBoolean();
+					Integer tranceId = hasTranceInducer ? buf.readInt() : null;
+
+					boolean hasFocusInducer = buf.readBoolean();
+					Integer focusId = hasFocusInducer ? buf.readInt() : null;
 
 					// Update client-side trance cache on the render thread
 					client.execute(() -> {
@@ -33,10 +36,16 @@ public class PixelTranceClient implements ClientModInitializer {
 						ClientTranceState.setFocus(focus);
 						ClientTranceState.setFocusLocked(focusLocked);
 
-						if (inducerId != null) {
-							ClientTranceState.setInducerEntityId(inducerId);
+						if (tranceId != null) {
+							ClientTranceState.setTranceInducerEntityId(tranceId);
 						} else {
-							ClientTranceState.clearInducerEntityID();
+							ClientTranceState.clearTranceInducerEntityID();
+						}
+
+						if (focusId != null) {
+							ClientTranceState.setFocusInducerEntityId(focusId); // rename if needed
+						} else {
+							ClientTranceState.clearFocusInducerEntityID();
 						}
 					});
 				}

@@ -27,18 +27,19 @@ public class TranceData {
 
 
     private final LivingEntity subject; // Tracks the entity being tranced/focus locked
-    private Entity currentInducer; // Tracks the current inducer for the subject
 
 
     // Variables:
     private float trance = 0.0f; // Trance value for entity
     private int ticksSinceLastTranceDecay = 0;
     private int tranceDecayPauseTicks = 0; // How long to pause trance decay for
+    private Entity tranceInducer; // Tracks the current trance inducer for the subject
 
 
     private float focus = 0f;              // Focus value for entity
     private boolean focusLocked = false;   // Is the entity in focus lock state
     private int ticksSinceLastFocusDecay = 0;
+    private Entity focusInducer; // Tracks the current focus inducer for the subject
 
 
 
@@ -55,7 +56,7 @@ public class TranceData {
     // Sync the server data with the player
     private void syncToPlayer() {
         if (subject instanceof ServerPlayerEntity serverPlayer) {
-            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusLocked, currentInducer);
+            TranceSyncS2CPacket.send(serverPlayer, trance, focus, focusLocked, tranceInducer, focusInducer);
         }
     }
 
@@ -80,8 +81,13 @@ public class TranceData {
             tranceDecayPauseTicks = 100; // e.g., 5 seconds pause at 20 ticks/sec
         }
 
+        // Safety to clear trance inducer
+        if (this.trance <= 0f) {
+            this.tranceInducer = null;
+        }
+
         this.trance = clamped;
-        //PTLog.info(subject.getName().getString() + " Trance: " + trance);
+        PTLog.info("Subject:" + subject.getName().getString() + " Trance: " + trance + " Inducer: " + tranceInducer);
         syncToPlayer();
     }
 
@@ -132,7 +138,7 @@ public class TranceData {
 
         // Clear inducer if focus drops too low
         if (focus < 30f) {
-            currentInducer = null;
+            focusInducer = null;
         }
 
         syncToPlayer();
@@ -171,14 +177,25 @@ public class TranceData {
 
 
     // === Inducer Methods ===
-    public Entity getCurrentInducer() {
-        return currentInducer;
+    public Entity getFocusInducer() {
+        return focusInducer;
     }
 
-    public void setCurrentInducer(Entity inducer) {
-        this.currentInducer = inducer;
+    public Entity getTranceInducer() {
+        return tranceInducer;
+    }
+
+    public void setFocusInducer(Entity inducer) {
+        this.focusInducer = inducer;
         syncToPlayer(); // ensure the client knows about it
     }
+
+    public void setTranceInducer(Entity inducer) {
+        this.tranceInducer = inducer;
+        syncToPlayer(); // ensure the client knows about it
+    }
+
+
 
 
 

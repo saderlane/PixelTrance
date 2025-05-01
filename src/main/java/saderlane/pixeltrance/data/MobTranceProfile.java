@@ -12,6 +12,7 @@ public class MobTranceProfile {
     private final boolean slowsMovement; // Should mob slow down
     private final Predicate<EntityType<?>> supportCheck; // Predicate to determine if mob can be tranced
 
+
     // Constructor
     public MobTranceProfile(boolean attentionGrabbed, boolean slowsMovement, Predicate<EntityType<?>> supportCheck) {
         this.attentionGrabbed = attentionGrabbed;

@@ -37,7 +37,7 @@ public class FocusHandler {
                         !GazeUtils.subjectLookingAtInducer(subject, holder, 0.95, 6.0)) continue;
 
                 if (world.getTime() % inducer.getFocusInterval() == 0) {
-                    tranceData.setCurrentInducer(holder);
+                    tranceData.setFocusInducer(holder);
                     tranceData.addFocus(inducer.getFocusRate());
 
 //                    PTLog.info("Subject " + subject.getName().getString() +
@@ -56,7 +56,7 @@ public class FocusHandler {
 
                 // Only apply focus on valid tick interval
                 if (world.getTime() % inducer.getFocusInterval() == 0) {
-                    tranceData.setCurrentInducer(mob);
+                    tranceData.setFocusInducer(mob);
                     tranceData.addFocus(inducer.getFocusRate());
 //                    PTLog.info("Subject " + subject.getName().getString() +
 //                            " received +" + inducer.getFocusRate() + " focus from inducer mob: " +
