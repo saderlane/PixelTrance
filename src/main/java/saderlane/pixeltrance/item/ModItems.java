@@ -20,5 +20,6 @@ public class ModItems {
     // Called once from mod initializer
     public static void init() {
         PTLog.info("Registering mod items");
+        ModItemGroups.register();
     }
 }
