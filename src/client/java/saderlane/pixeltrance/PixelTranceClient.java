@@ -4,11 +4,10 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
-import net.minecraft.util.Hand;
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.client.data.ClientTranceState;
 import saderlane.pixeltrance.client.item.PocketWatchClientHandler;
-import saderlane.pixeltrance.client.visual.ClientScreenPullHandler;
+import saderlane.pixeltrance.client.effects.visual.ClientScreenPullHandler;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 
 
