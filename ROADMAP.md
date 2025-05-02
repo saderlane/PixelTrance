@@ -58,27 +58,17 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 #### ✨ Low Trance (30–50%)
 - [X] Fade/blur edges of the screen
-- [ ] Gentle motion trails on hand swing or GUI
-- [ ] Slight input smoothing or camera easing
-- [ ] Tooltip delay to simulate sluggish thought
-
-#### 🌀 Mid Trance (50–70%)
-- [ ] Screen sway or subtle camera tilt
-- [ ] Crosshair distortion or flicker
-- [ ] Chat text starts to blur or fade
-- [ ] Inventory screen desaturates or dims
+- [ ] Tooltip delay for "sluggish thought"
 
 #### 🧠 High Trance (70–90%)
-- [ ] Mouse latency increases slightly
-- [ ] Directional “drift” or delayed stopping after movement
-- [ ] UI shimmer or low-opacity filter
-- [ ] Slight auto-walk forward when trance surges
+- [ ] Player can’t jump or sprint
+  - Function exists but is for full trance, will need to adjust
 
 #### 💤 Full Trance (100%)
 - [X] Brightness fades in from the screen edges (vignette intensifies further)
-- [X] Player can’t jump or sprint
 - [X] Display centered trance prompt
-- [ ] Slowed visual feedback (fake motion blur or tick-rate-like delay)
+- [ ] Follow inducer
+- Add `/suggest` or `/trigger` command and make centered text appear
 
 ### 🔁 Escape Mechanic (Struggle System)
 - [ ] Shake mouse or press keys to resist hypnosis
@@ -97,25 +87,25 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 ---
 
-## 🌳 Phase 3: Skill Tree & Resistance
+## 🌌 Planned Features
 
 **Introduce light RPG elements to expand gameplay depth and replayability.**
 
-### 🧠 Skill Tree Framework
+### Skill Tree Framework
 - [ ] Two main branches: Hypnotist / Subject
 - [ ] Perks for focus gain, resistance, trance decay
 
-### 🛡️ Resistance Stat System
+### Resistance Stat System
 - [ ] Passive resistance via traits or gear
 - [ ] Slows trance gain or breaks locks faster
 
-### 📜 Progression Framework
+### Progression Framework
 - [ ] XP through hypnosis/resistance
 - [ ] Unlock perks from trance activity
 
 ---
 
-## 🌌 Phase 4: Immersion & Depth Effects
+### Immersion & Depth Effects
 
 **Deepen the hypnotic experience with immersive visuals and behaviors.**
 
@@ -126,7 +116,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 ---
 
-## 🐍 Phase 5: Mobs and More
+### Mobs and More
 
 **Begin to develop mobs that fit the hypnotic theme.**
 
@@ -137,7 +127,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Pose-based idle animations for trance
 
 
-## 🎭 Phase 6: RP & Customization Tools
+### RP & Customization Tools
 
 **Optional, immersive features for RP players and content creators.**
 
@@ -149,13 +139,12 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 ---
 
-## 🧩 Phase 7: Advanced Multiplayer & Mod Support
+### Mod Configuration and Support
 
-- [ ] Server-side syncing of trance and focus
 - [ ] Optional API for mod/plugin support
 - [ ] Server config for trance/resistance rules
 
-### 🎨 Phase X: Passive Development
+### Passive Development
 - [ ] Create 3D Model for Pocket Watch item
   - [ ] Create swinging animation when item is in use
 - [ ] Make the resistance to screen pull smoother
