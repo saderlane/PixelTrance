@@ -17,7 +17,7 @@ public abstract class TranceMovementBlockMixin {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
 
-        if (ClientTranceState.getTrance() >= 100f) {
+        if (ClientTranceState.getTrance() >= 70f) {
             ClientPlayerEntity player = client.player;
 
             // Block jump input

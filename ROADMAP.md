@@ -60,15 +60,14 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [X] Fade/blur edges of the screen
 - [ ] Tooltip delay for "sluggish thought"
 
-#### 🧠 High Trance (70–90%)
-- [ ] Player can’t jump or sprint
-  - Function exists but is for full trance, will need to adjust
+#### 🧠 High Trance (70%+)
+- [X] Player can’t jump or sprint
 
 #### 💤 Full Trance (100%)
 - [X] Brightness fades in from the screen edges (vignette intensifies further)
 - [X] Display centered trance prompt
 - [ ] Follow inducer
-- Add `/suggest` or `/trigger` command and make centered text appear
+- [ ] Add `/suggest` or `/trigger` command and make centered text appear
 
 ### 🔁 Escape Mechanic (Struggle System)
 - [ ] Shake mouse or press keys to resist hypnosis
@@ -126,6 +125,10 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Session tools for private/co-op RP
 - [ ] Pose-based idle animations for trance
 
+### Items and Blocks
+
+- [ ] Clicker
+- [ ] Bells
 
 ### RP & Customization Tools
 
@@ -167,16 +170,3 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - Instant trance pulses (pendulum, etc.)
 - Quick-use, lower trance gain
 - Great for action/combat scenarios
-
-### Item Types Overview
-
-| Item        | Mechanic                     | Notes                            |
-|-------------|------------------------------|----------------------------------|
-| Pocket Watch | Focused gaze + build-up     | Strong, requires steady aim      |
-| Pendulum     | AoE pulses on right-click   | Easy to use, lower effect        |
-| Candle       | Passive aura                | Trance over time in radius       |
-| Trigger Token| Delayed suggestion effect   | Anchors for advanced control     |
-
----
-
-*This file is part of the PixelTrance mod planning. For live progress, see the GitHub Project Board.*
