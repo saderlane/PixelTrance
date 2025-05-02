@@ -17,11 +17,11 @@ import saderlane.pixeltrance.util.PTLog;
 public class TranceData {
 
     // Set trance final variables
-    private static float TRANCE_DECAY_AMOUNT = 0.5f; // Amount trance decays
+    private static float TRANCE_DECAY_AMOUNT = 1f; // Amount trance decays
     private static final int TRANCE_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
 
     // Set focus final variables
-    private static final float FOCUS_DECAY_RATE = 0.5f; // Amount focus decays
+    private static final float FOCUS_DECAY_RATE = 1f; // Amount focus decays
     private static final float FOCUS_DECAY_INTERVAL_TICKS = 40; // Every 2 seconds
     private static final float FOCUS_LOCK_THRESHOLD = 80f; // Threshold for when entity becomes focus locked
 
@@ -32,6 +32,7 @@ public class TranceData {
     // Variables:
     private float trance = 0.0f; // Trance value for entity
     private int ticksSinceLastTranceDecay = 0;
+    private int ticksSinceTranceAdded = 1000;
     private int tranceDecayPauseTicks = 0; // How long to pause trance decay for
     private Entity tranceInducer; // Tracks the current trance inducer for the subject
 
@@ -39,6 +40,7 @@ public class TranceData {
     private float focus = 0f;              // Focus value for entity
     private boolean focusLocked = false;   // Is the entity in focus lock state
     private int ticksSinceLastFocusDecay = 0;
+    private int ticksSinceFocusAdded = 1000;
     private Entity focusInducer; // Tracks the current focus inducer for the subject
 
 
@@ -98,6 +100,7 @@ public class TranceData {
 
     // Increase trance by <amount>
     public void addTrance(float amount) {
+        this.ticksSinceTranceAdded = 0;
         setTrance(trance + amount);
     }
 
@@ -110,10 +113,15 @@ public class TranceData {
     // Trance Passive Decay:
     // Called every tick to apply passive trance decay
     public void tickTranceDecay() {
+        ticksSinceTranceAdded++;
+
         if (tranceDecayPauseTicks > 0) {
             tranceDecayPauseTicks--;
             return; // Skip decay while paused
         }
+
+        // Don’t decay if trance was added recently
+        if (ticksSinceTranceAdded <= 20) return;
 
         ticksSinceLastTranceDecay++;
         if (ticksSinceLastTranceDecay >= TRANCE_DECAY_INTERVAL_TICKS) {
@@ -151,6 +159,7 @@ public class TranceData {
 
     // Increase focus by <amount>
     public void addFocus(float amount) {
+        this.ticksSinceFocusAdded = 0;
         setFocus(focus + amount);
     }
 
@@ -167,6 +176,10 @@ public class TranceData {
     // Focus Passive Decay:
     // Called every tick to apply passive focus decay and update lock state
     public void tickFocusDecay() {
+        ticksSinceFocusAdded++;
+
+        if (ticksSinceFocusAdded <= 20) return;
+
         ticksSinceLastFocusDecay++;
         if (ticksSinceLastFocusDecay >= FOCUS_DECAY_INTERVAL_TICKS) {
             focusDecay(FOCUS_DECAY_RATE);
