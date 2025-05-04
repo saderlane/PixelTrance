@@ -17,6 +17,7 @@ import saderlane.pixeltrance.logic.FocusHandler;
 import saderlane.pixeltrance.logic.MobInducerHandler;
 import saderlane.pixeltrance.logic.TranceDecayHandler;
 import saderlane.pixeltrance.logic.TranceHandler;
+import saderlane.pixeltrance.network.ClientTranceSyncC2S;
 import saderlane.pixeltrance.registry.InducerRegistry;
 import saderlane.pixeltrance.registry.MobInducerRegistry;
 import saderlane.pixeltrance.registry.MobSubjectRegistry;
@@ -41,6 +42,9 @@ public class PixelTrance implements ModInitializer {
 		TranceSounds.register(); // Register sounds
 		MobInducerRegistry.register(); // Register inducer mobs
 		MobSubjectRegistry.register(); // Register subject mobs
+
+		// === Network ===
+		ClientTranceSyncC2S.register(); // Register syncing with client for resistance
 
 		// === Server Tick Logic ===
 		// Tick hook for trance/focus sources and item effects

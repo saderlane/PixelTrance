@@ -1,4 +1,4 @@
-package saderlane.pixeltrance.client.effects.visual;
+package saderlane.pixeltrance.client.gameplay.effects.visual;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;

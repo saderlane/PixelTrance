@@ -1,4 +1,4 @@
-package saderlane.pixeltrance.client.effects.visual;
+package saderlane.pixeltrance.client.gameplay.effects.visual;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.entity.LivingEntity;

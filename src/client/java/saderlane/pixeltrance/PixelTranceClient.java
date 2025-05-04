@@ -6,8 +6,9 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.client.data.ClientTranceState;
+import saderlane.pixeltrance.client.gameplay.resistance.MouseShakeTracker;
 import saderlane.pixeltrance.client.item.PocketWatchClientHandler;
-import saderlane.pixeltrance.client.effects.visual.ClientScreenPullHandler;
+import saderlane.pixeltrance.client.gameplay.effects.visual.ClientScreenPullHandler;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 
 
@@ -65,6 +66,12 @@ public class PixelTranceClient implements ClientModInitializer {
 
 		// Initialize screen pull effect
 		ClientScreenPullHandler.init();
+
+		// === Resistance Registers ===
+
+		// Register tracking mouse shake to lower trance/focus
+		new MouseShakeTracker().onInitializeClient();
+
 
 		// Register item-specific logic
 		PocketWatchClientHandler.register(); // Registers pocket watch

@@ -70,7 +70,11 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Add `/suggest` or `/trigger` command and make centered text appear
 
 ### 🔁 Escape Mechanic (Struggle System)
-- [ ] Shake mouse or press keys to resist hypnosis
+- [X] Trance < 90
+  - Shake mouse to lower focus and trance
+- [ ] Trance = 90
+  - Begin Pattern Mini-Game
+  - Failing puts trance at 100
 - [ ] Resistance stat applied on successful struggle
 - [ ] Visual/audio feedback for escape attempts
 

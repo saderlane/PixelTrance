@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import saderlane.pixeltrance.client.effects.visual.TrancePromptRenderer;
+import saderlane.pixeltrance.client.gameplay.effects.visual.TrancePromptRenderer;
 
 @Mixin(InGameHud.class)
 public class TranceEffectsMixin {
