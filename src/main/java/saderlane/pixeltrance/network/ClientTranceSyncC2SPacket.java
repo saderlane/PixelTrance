@@ -6,7 +6,7 @@ import saderlane.pixeltrance.PixelTrance;
 import saderlane.pixeltrance.api.TranceDataAccess;
 import saderlane.pixeltrance.data.TranceData;
 
-public class ClientTranceSyncC2S {
+public class ClientTranceSyncC2SPacket {
 
     // Unique identifier for the packet
     public static final Identifier ID = new Identifier(PixelTrance.MOD_ID,"client_trance_sync");

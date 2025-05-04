@@ -11,13 +11,14 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
 import saderlane.pixeltrance.api.TranceDataAccess;
 import saderlane.pixeltrance.command.FocusCommand;
+import saderlane.pixeltrance.command.SuggestCommand;
 import saderlane.pixeltrance.command.TranceCommand;
 import saderlane.pixeltrance.item.ModItems;
 import saderlane.pixeltrance.logic.FocusHandler;
 import saderlane.pixeltrance.logic.MobInducerHandler;
 import saderlane.pixeltrance.logic.TranceDecayHandler;
 import saderlane.pixeltrance.logic.TranceHandler;
-import saderlane.pixeltrance.network.ClientTranceSyncC2S;
+import saderlane.pixeltrance.network.ClientTranceSyncC2SPacket;
 import saderlane.pixeltrance.registry.InducerRegistry;
 import saderlane.pixeltrance.registry.MobInducerRegistry;
 import saderlane.pixeltrance.registry.MobSubjectRegistry;
@@ -44,7 +45,7 @@ public class PixelTrance implements ModInitializer {
 		MobSubjectRegistry.register(); // Register subject mobs
 
 		// === Network ===
-		ClientTranceSyncC2S.register(); // Register syncing with client for resistance
+		ClientTranceSyncC2SPacket.register(); // Register syncing with client for resistance
 
 		// === Server Tick Logic ===
 		// Tick hook for trance/focus sources and item effects
@@ -75,15 +76,12 @@ public class PixelTrance implements ModInitializer {
 
 		// =========== Register commands ===========
 
-		// /trance debug command
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-			dispatcher.register(TranceCommand.create());
+			dispatcher.register(TranceCommand.create()); //Register trance command
+			dispatcher.register(FocusCommand.create()); // Register focus command
+			SuggestCommand.register(dispatcher); // ← Register suggest command
 		});
 
-		// /focus debug command
-		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-			dispatcher.register(FocusCommand.create());
-		});
 
 	}
 }

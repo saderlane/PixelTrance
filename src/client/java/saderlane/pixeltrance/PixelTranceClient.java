@@ -6,9 +6,11 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 import saderlane.pixeltrance.client.audio.TranceAudioHandler;
 import saderlane.pixeltrance.client.data.ClientTranceState;
+import saderlane.pixeltrance.client.gameplay.effects.visual.TrancePromptRenderer;
 import saderlane.pixeltrance.client.gameplay.resistance.MouseShakeTracker;
 import saderlane.pixeltrance.client.item.PocketWatchClientHandler;
 import saderlane.pixeltrance.client.gameplay.effects.visual.ClientScreenPullHandler;
+import saderlane.pixeltrance.network.SuggestPromptS2CPacket;
 import saderlane.pixeltrance.network.TranceSyncS2CPacket;
 
 
@@ -63,6 +65,17 @@ public class PixelTranceClient implements ClientModInitializer {
 			TranceAudioHandler.updateTranceSound(trance, 0);
 
 		});
+
+		// Register prompt suggestion handler
+		ClientPlayNetworking.registerGlobalReceiver(
+				SuggestPromptS2CPacket.ID,
+				(client, handler, buf, responseSender) -> {
+					SuggestPromptS2CPacket packet = new SuggestPromptS2CPacket(buf);
+					client.execute(() -> {
+						TrancePromptRenderer.showSuggestion(packet.getMessage());
+					});
+				}
+		);
 
 		// Initialize screen pull effect
 		ClientScreenPullHandler.init();

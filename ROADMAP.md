@@ -67,7 +67,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [X] Brightness fades in from the screen edges (vignette intensifies further)
 - [X] Display centered trance prompt
 - [ ] Follow inducer
-- [ ] Add `/suggest` or `/trigger` command and make centered text appear
+- [X] Add `/suggest` command and make centered text appear
 
 ### 🔁 Escape Mechanic (Struggle System)
 - [X] Trance < 90
