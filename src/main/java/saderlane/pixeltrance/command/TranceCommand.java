@@ -27,7 +27,7 @@ public class TranceCommand {
                     TranceData trance = ((TranceDataAccess)player).getTranceData();
 
                     // Send the value to the user in chat
-                    ctx.getSource().sendFeedback(() -> Text.literal("Trance: " + trance.getTrance()), false);
+                    player.sendMessage(Text.literal("Trance: " + trance.getTrance()), true);
                     return 1;
                 })
 
