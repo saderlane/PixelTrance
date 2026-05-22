@@ -1,10 +1,10 @@
-# 🌀 PixelTrance Mod Roadmap
+# PixelTrance Mod Roadmap
 
 *A Minecraft mod that pays homage to the art of hypnosis, blending RPG progression with immersive trance mechanics for both singleplayer and multiplayer.*
 
 ---
 
-## 🎯 Core Goals
+## Core Goals
 
 - Hypnosis as a central mechanic, not a gimmick
 - Support for both **singleplayer** and **multiplayer**
@@ -15,9 +15,9 @@
 
 ---
 
-# 📅 Roadmap Phases
+# Roadmap Phases
 
-## Phase 1: Foundation (✅ Complete)
+## Phase 1: Foundation
 **Core Systems and Visuals**
 - [ ] Mod loads and logs successfully
 - [ ] Implement trance meter (player data + HUD)
@@ -37,11 +37,11 @@
 
 ---
 
-## 🔓 Phase 2: Interactive Gameplay Loop *(Current Phase)*
+## Phase 2: Interactive Gameplay Loop
 
 **The goal of this phase is to establish a **functional gameplay loop**—players can hypnotize others, experience visible effects, and use tools meaningfully.**
 
-### 🕰️ Pocket Watch Toggle Mode
+### Pocket Watch Toggle Mode
 - [ ] Right-click toggles “focus session” on/off
 - [ ] Visual particles, subtle glow, looping ticking sound
   - Couldn't get visual particles to work and I don't think glow is a good effect
@@ -51,25 +51,25 @@
 - [ ] Only functions when targeting another entity (player or mob)
 - [ ] Re-implement trance gain from pocket watch
 
-### 🌀 Hypnotic Visual Feedback & Player Effects
+### Hypnotic Visual Feedback & Player Effects
 Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.
 
 These are mostly visual effects I will implement later as I want to move onto actual gameplay stuff
 
-#### ✨ Low Trance (30–50%)
+#### Low Trance (30–50%)
 - [ ] Fade/blur edges of the screen
 - [ ] Tooltip delay for "sluggish thought"
 
-#### 🧠 High Trance (70%+)
+#### High Trance (70%+)
 - [ ] Player can’t jump or sprint
 
-#### 💤 Full Trance (100%)
+#### Full Trance (100%)
 - [ ] Brightness fades in from the screen edges (vignette intensifies further)
 - [ ] Display centered trance prompt
 - [ ] Follow inducer
 - [ ] Add `/suggest` command and make centered text appear
 
-### 🔁 Escape Mechanic (Struggle System)
+### Escape Mechanic (Struggle System)
 - [ ] Trance < 90
   - Shake mouse to lower focus and trance
 - [ ] Trance = 90
@@ -78,19 +78,19 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Resistance stat applied on successful struggle
 - [ ] Visual/audio feedback for escape attempts
 
-### 🕯️ Candle & Pendulum Items (Passive Hypnosis Tools)
+### 🕯Candle & Pendulum Items (Passive Hypnosis Tools)
 - [ ] Candle: Placeable aura item to build focus in radius
 - [ ] Pendulum: Held item with pulsing AoE focus gain
 - [ ] Effects apply to mobs and players in line of sight
 
-### 🤝 Simple Mob Interaction
+### Simple Mob Interaction
 - [ ] Villagers pause and focus on hypnotist
 - [ ] Animals slow down and follow player
 - [ ] Whitelist/blacklist toggle for mob support
 
 ---
 
-## 🌌 Planned Features
+## Planned Features
 
 **Introduce light RPG elements to expand gameplay depth and replayability.**
 
