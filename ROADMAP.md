@@ -17,22 +17,22 @@
 
 # 📅 Roadmap Phases
 
-## 🌱 Phase 1: Foundation (✅ Complete)
+## Phase 1: Foundation (✅ Complete)
 **Core Systems and Visuals**
-- [x] Mod loads and logs successfully
-- [X] Implement trance meter (player data + HUD)
-  - [X] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
-- [X] Trance syncing in multiplayer
-- [X] Create base hypnosis item (Pocket Watch)
-- [X] Implement basic **Passive Focus Lock**
-  - [X] Add some conditional logic (gaze, etc)
-  - [X] Add screen pull to players
-- [X] Trance decay logic
-- [X] Focus decay logic
-- [X] Visual/audio feedback
-  - [X] Binaural plays when trance is at a certain percent
+- [ ] Mod loads and logs successfully
+- [ ] Implement trance meter (player data + HUD)
+  - [ ] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
+- [ ] Trance syncing in multiplayer
+- [ ] Create base hypnosis item (Pocket Watch)
+- [ ] Implement basic **Passive Focus Lock**
+  - [ ] Add some conditional logic (gaze, etc)
+  - [ ] Add screen pull to players
+- [ ] Trance decay logic
+- [ ] Focus decay logic
+- [ ] Visual/audio feedback
+  - [ ] Binaural plays when trance is at a certain percent
     - Scales with volume
-  - [X] Purple vignette when trance is at a certain percent
+  - [ ] Purple vignette when trance is at a certain percent
     - Pulses gently at even higher trance
 
 ---
@@ -42,14 +42,14 @@
 **The goal of this phase is to establish a **functional gameplay loop**—players can hypnotize others, experience visible effects, and use tools meaningfully.**
 
 ### 🕰️ Pocket Watch Toggle Mode
-- [X] Right-click toggles “focus session” on/off
-- [X] ~~Visual particles~~, ~~subtle glow~~, looping ticking sound
+- [ ] Right-click toggles “focus session” on/off
+- [ ] Visual particles, subtle glow, looping ticking sound
   - Couldn't get visual particles to work and I don't think glow is a good effect
-- [X] Increases Passive Focus Lock buildup for viewers
-- [X] Screen pulls attention to source of Focus Lock
+- [ ] Increases Passive Focus Lock buildup for viewers
+- [ ] Screen pulls attention to source of Focus Lock
   - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
-- [X] Only functions when targeting another entity (player or mob)
-- [X] Re-implement trance gain from pocket watch
+- [ ] Only functions when targeting another entity (player or mob)
+- [ ] Re-implement trance gain from pocket watch
 
 ### 🌀 Hypnotic Visual Feedback & Player Effects
 Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.
@@ -57,20 +57,20 @@ Introduce progressively intense effects as the player’s trance level increases
 These are mostly visual effects I will implement later as I want to move onto actual gameplay stuff
 
 #### ✨ Low Trance (30–50%)
-- [X] Fade/blur edges of the screen
+- [ ] Fade/blur edges of the screen
 - [ ] Tooltip delay for "sluggish thought"
 
 #### 🧠 High Trance (70%+)
-- [X] Player can’t jump or sprint
+- [ ] Player can’t jump or sprint
 
 #### 💤 Full Trance (100%)
-- [X] Brightness fades in from the screen edges (vignette intensifies further)
-- [X] Display centered trance prompt
+- [ ] Brightness fades in from the screen edges (vignette intensifies further)
+- [ ] Display centered trance prompt
 - [ ] Follow inducer
-- [X] Add `/suggest` command and make centered text appear
+- [ ] Add `/suggest` command and make centered text appear
 
 ### 🔁 Escape Mechanic (Struggle System)
-- [X] Trance < 90
+- [ ] Trance < 90
   - Shake mouse to lower focus and trance
 - [ ] Trance = 90
   - Begin Pattern Mini-Game
@@ -84,9 +84,9 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Effects apply to mobs and players in line of sight
 
 ### 🤝 Simple Mob Interaction
-- [X] Villagers pause and focus on hypnotist
-- [X] Animals slow down and follow player
-- [X] Whitelist/blacklist toggle for mob support
+- [ ] Villagers pause and focus on hypnotist
+- [ ] Animals slow down and follow player
+- [ ] Whitelist/blacklist toggle for mob support
 
 ---
 
