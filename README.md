@@ -4,6 +4,14 @@
 
 ---
 
+## Asset Disclaimer
+Some of the existing models and textures do not belong to this project, they are borrowed from tutorials to serve as placeholders.
+
+Authors:
+- Kaupenjoe
+
+---
+
 ## Features
 
 - **Trance Meter**: Tracks a player or mob's susceptibility to hypnosis.

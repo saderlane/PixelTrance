@@ -1,9 +1,13 @@
 {
   "itemGroup.pixeltrance": "Pixel Trance Tab",
-  "block.pixeltrance.example_block": "Example Block",
+
+
+  "block.pixeltrance.spiralite_block": "Block of Spiralite",
+  "block.pixeltrance.spiralite_ore": "Spiralite Ore",
 
 
   "item.pixeltrance.spiralite": "Spiralite",
+  "item.pixeltrance.raw_spiralite": "Raw Spiralite",
 
   "item.pixeltrance.pocket_watch": "Pocket Watch",
 

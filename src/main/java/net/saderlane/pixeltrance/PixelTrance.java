@@ -1,6 +1,7 @@
 package net.saderlane.pixeltrance;
 
 import net.minecraft.world.item.CreativeModeTabs;
+import net.saderlane.pixeltrance.block.ModBlocks;
 import net.saderlane.pixeltrance.item.ModItems;
 import org.slf4j.Logger;
 
@@ -38,6 +39,9 @@ public class PixelTrance {
         // Register Items
         ModItems.register(modEventBus);
 
+        // Register Blocks
+        ModBlocks.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -61,6 +65,19 @@ public class PixelTrance {
         // Add items to Ingredients tab
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.SPIRALITE);
+        }
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.RAW_SPIRALITE);
+        }
+
+        // Add blocks to Functional Blocks
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModBlocks.SPIRALITE_BLOCK);
+        }
+
+        // Add blocks to Natural Blocks
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.SPIRALITE_ORE);
         }
 
     }
