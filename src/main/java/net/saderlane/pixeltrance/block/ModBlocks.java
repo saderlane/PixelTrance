@@ -24,6 +24,7 @@ public class ModBlocks {
         BLOCKS.register(eventBus);
     }
 
+    // TODO: REMOVE BORROWED BLOCK TEXTURES
     // Spiralite Block
     public static final DeferredBlock<Block> SPIRALITE_BLOCK = registerBlock("spiralite_block",
             () -> new Block(BlockBehaviour.Properties.of()

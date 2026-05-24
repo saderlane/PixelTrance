@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added spiralite item - model is Kaupenjoe's - will replace">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/blockstates/spiralite_block.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/blockstates/spiralite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/block/spiralite_block.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/block/spiralite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/raw_spiralite.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/spiralite_block.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/spiralite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/block/spiralite_block.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/block/spiralite_ore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/item/raw_spiralite.png" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added custom creative mode tab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +214,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779657738803</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added spiralite block and ore - mainly proof of concept/learning but may keep it">
+      <option name="closed" value="true" />
+      <created>1779661076049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1779661076049</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added custom creative mode tab">
+      <option name="closed" value="true" />
+      <created>1779662301754</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1779662301754</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +243,8 @@
     <MESSAGE value="set up neoforge - this is completely empty (still having some issues with the toml generating)" />
     <MESSAGE value="added pocket watch item - no functionality" />
     <MESSAGE value="added spiralite item - model is Kaupenjoe's - will replace" />
-    <option name="LAST_COMMIT_MESSAGE" value="added spiralite item - model is Kaupenjoe's - will replace" />
+    <MESSAGE value="added spiralite block and ore - mainly proof of concept/learning but may keep it" />
+    <MESSAGE value="added custom creative mode tab" />
+    <option name="LAST_COMMIT_MESSAGE" value="added custom creative mode tab" />
   </component>
 </project>

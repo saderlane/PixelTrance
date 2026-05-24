@@ -2,6 +2,7 @@ package net.saderlane.pixeltrance;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.saderlane.pixeltrance.block.ModBlocks;
+import net.saderlane.pixeltrance.item.ModCreativeModeTabs;
 import net.saderlane.pixeltrance.item.ModItems;
 import org.slf4j.Logger;
 
@@ -36,10 +37,16 @@ public class PixelTrance {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        // Register Creative Mode Tab
+        LOGGER.info("[PixelTrance] Registering Creative Mode Tab");
+        ModCreativeModeTabs.register(modEventBus);
+
         // Register Items
+        LOGGER.info("[PixelTrance] Registering Mod Items");
         ModItems.register(modEventBus);
 
         // Register Blocks
+        LOGGER.info("[PixelTrance] Registering Mod Blocks");
         ModBlocks.register(modEventBus);
 
 
@@ -57,6 +64,8 @@ public class PixelTrance {
     // Add items to the Creative tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
 
+        // This is no longer needed as there is a custom creative mode tab
+        /* Vanilla Creative Mode Tabs
         // Add items to Tools and Utilities tab
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.POCKET_WATCH);
@@ -79,6 +88,7 @@ public class PixelTrance {
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.SPIRALITE_ORE);
         }
+         */
 
     }
 

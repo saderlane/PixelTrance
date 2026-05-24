@@ -21,7 +21,8 @@ public class ModItems {
                     .durability(250)));
 
 
-    // Adds Spiralite material (DEV NOTE: TEMP TEXTURE FROM Kaupenjoe's tutorial - will replace)
+    // TODO: REMOVE BORROWED ITEM TEXTURES
+    // Adds Spiralite material
     public static final DeferredItem<Item> SPIRALITE = ITEMS.register("spiralite",
             () -> new Item(new Item.Properties()));
     // Adds Raw Spiralite material (DEV NOTE: TEMP TEXTURE FROM Kaupenjoe's tutorial - will replace)
