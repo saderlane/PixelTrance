@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added custom creative mode tab">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="add todos for tracking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/templates/META-INF/neoforge.mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/templates/META-INF/neoforge.mods.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +97,13 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.lookFeel"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -106,6 +113,11 @@
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\models\block" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\block" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\item" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src" />
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main" />
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
@@ -230,11 +242,30 @@
       <option name="project" value="LOCAL" />
       <updated>1779662301754</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add todos for tracking">
+      <option name="closed" value="true" />
+      <created>1779662408211</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1779662408211</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Clearing the project to build up in neoforge" />
@@ -245,6 +276,7 @@
     <MESSAGE value="added spiralite item - model is Kaupenjoe's - will replace" />
     <MESSAGE value="added spiralite block and ore - mainly proof of concept/learning but may keep it" />
     <MESSAGE value="added custom creative mode tab" />
-    <option name="LAST_COMMIT_MESSAGE" value="added custom creative mode tab" />
+    <MESSAGE value="add todos for tracking" />
+    <option name="LAST_COMMIT_MESSAGE" value="add todos for tracking" />
   </component>
 </project>
