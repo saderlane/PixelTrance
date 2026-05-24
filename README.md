@@ -1,10 +1,10 @@
 # 🌀 PixelTrance
 
-**PixelTrance** is a Minecraft mod that pays homage to the art of hypnosis, blending immersive trance mechanics, item-based induction, and RPG-style progression. Designed for both singleplayer and multiplayer environments, the mod allows players and mobs to interact with each other through hypnotic influence.
+**PixelTrance** is a mod that brings to the art of hypnosis to Minecraft, blending immersive trance mechanics, item-based induction, and RPG-style progression. Designed for both singleplayer and multiplayer, the mod aims to give players and mobs ways to interact with each other through hypnotic influence.
 
 ---
 
-## ✨ Features
+## Features
 
 - **Trance Meter**: Tracks a player or mob's susceptibility to hypnosis.
 - **Hypnosis Items**: Tools like pocket watches, pendulums, and candles each induce trance differently.
@@ -16,7 +16,7 @@
 
 ---
 
-## 📦 Installation
+## Installation
 
 1. Download `PixelTrance-<MC_VERSION>-fabric-<VERSION>.jar` and add to your `mods` folder
    - Typically found in `C:\Users\<USER>\AppData\Roaming\.minecraft`
@@ -25,7 +25,7 @@
 
 ---
 
-## 🛠 Development Status
+## Development Status
 
 PixelTrance is currently in active development. Major systems and core gameplay are being built.
 
@@ -33,7 +33,7 @@ See the [ROADMAP.md](./ROADMAP.md) for a full breakdown of features and progress
 
 ---
 
-## 🔮 Support the Project and Stay Up to Date!
+## Support the Project and Stay Up to Date!
 
 Updates, community polls and more will be posted on the project [Patreon](https://www.patreon.com/c/PixelTranceMod)!
 
@@ -43,13 +43,13 @@ Until we get a more substantial project, we're going to keep updates and all ver
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Suggestions, feedback, and pull requests are welcome!
 
 ---
 
-## 📜 License
+## License
 
 PixelTrance is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
 

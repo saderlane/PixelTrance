@@ -1,44 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Clearing the project to build up in neoforge">
-      <change beforePath="$PROJECT_DIR$/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/ROADMAP.md" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="ROADMAP.md cleanup">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTranceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/templates/META-INF/neoforge.mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SrcTree.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="PixelTrance" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "assignee": "saderlane"
+      &quot;assignee&quot;: &quot;saderlane&quot;
     }
   ],
-  "lastFilter": {
-    "assignee": "saderlane"
+  &quot;lastFilter&quot;: {
+    &quot;assignee&quot;: &quot;saderlane&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/saderlane/PixelTrance.git",
-    "accountId": "abb2d288-42a3-4c88-9f47-faeefd352b7d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/saderlane/PixelTrance.git&quot;,
+    &quot;accountId&quot;: &quot;abb2d288-42a3-4c88-9f47-faeefd352b7d&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="3E6L2PgnMxayTj6hxjAedTGFUPc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -46,9 +96,61 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm"
+    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="PixelTrance.main" />
+      <option name="PROGRAM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\clientRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\clientRunVmArgs.txt -Dfml.modFolders=pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\classes\\java\\main;pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Data" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="PixelTrance.main" />
+      <option name="PROGRAM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\dataRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\dataRunVmArgs.txt -Dfml.modFolders=pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\classes\\java\\main;pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTestServer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="PixelTrance.main" />
+      <option name="PROGRAM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\gameTestServerRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\gameTestServerRunVmArgs.txt -Dfml.modFolders=pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\classes\\java\\main;pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
+      <module name="PixelTrance.main" />
+      <option name="PROGRAM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\serverRunProgramArgs.txt" />
+      <option name="VM_PARAMETERS" value="@C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\moddev\\serverRunVmArgs.txt -Dfml.modFolders=pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\classes\\java\\main;pixeltrance%%C:\\Users\\NONAM\\Documents\\Pixel\\PixelTrance\\build\\resources\\main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -73,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779494093581</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated roadmap to show clean slate">
+      <option name="closed" value="true" />
+      <created>1779494282525</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1779494282525</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ROADMAP.md cleanup">
+      <option name="closed" value="true" />
+      <created>1779494345922</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1779494345922</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,6 +199,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Clearing the project to build up in neoforge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clearing the project to build up in neoforge" />
+    <MESSAGE value="Updated roadmap to show clean slate" />
+    <MESSAGE value="ROADMAP.md cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="ROADMAP.md cleanup" />
   </component>
 </project>
