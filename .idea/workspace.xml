@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="updated build.gradle and neoforge.mods.toml to show mod authors and description - this was a dumb fix">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_block.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_blasting_raw_spiralite.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_blasting_spiralite_ore.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_smelting_raw_spiralite.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_smelting_spiralite_ore.json" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added smelting for raw spiralite and spiralite ore">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/blockstates/deepslate_spiralite_ore.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/block/deepslate_spiralite_ore.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/deepslate_spiralite_ore.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/block/deepslate_spiralite_ore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_blasting_deepslate_spiralite_ore.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_smelting_deepslate_spiralite_ore.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModCreativeModeTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModCreativeModeTabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,10 +116,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\data\pixeltrance\recipe" />
-      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\blockstates" />
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\block" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\models\item" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\models\block" />
-      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\block" />
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\blockstates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src" />
@@ -262,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779663850195</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added smelting for raw spiralite and spiralite ore">
+      <option name="closed" value="true" />
+      <created>1779664904418</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1779664904418</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +301,7 @@
     <MESSAGE value="added custom creative mode tab" />
     <MESSAGE value="add todos for tracking" />
     <MESSAGE value="updated build.gradle and neoforge.mods.toml to show mod authors and description - this was a dumb fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated build.gradle and neoforge.mods.toml to show mod authors and description - this was a dumb fix" />
+    <MESSAGE value="added smelting for raw spiralite and spiralite ore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added smelting for raw spiralite and spiralite ore" />
   </component>
 </project>

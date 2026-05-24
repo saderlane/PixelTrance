@@ -24,6 +24,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SPIRALITE);
                         output.accept(ModItems.POCKET_WATCH);
                         output.accept(ModBlocks.SPIRALITE_ORE);
+                        output.accept(ModBlocks.DEEPSLATE_SPIRALITE_ORE);
                         output.accept(ModBlocks.SPIRALITE_BLOCK);
 
 

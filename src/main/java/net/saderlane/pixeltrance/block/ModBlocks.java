@@ -38,11 +38,22 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SPIRALITE_ORE = registerBlock("spiralite_ore",
             () -> new DropExperienceBlock(UniformInt.of(0,1),
                     BlockBehaviour.Properties.of()
-                            .strength(5.0F, 6.0F) // How hard it is to break
+                            .strength(3.0F, 3.0F) // How hard it is to break
                             .requiresCorrectToolForDrops() // Requires the correct tool
                             .sound(SoundType.STONE) // Sound it makes breaking
                             .mapColor(MapColor.COLOR_MAGENTA) // Map Color
             ));
+    // Deepslate spiralite ore
+    public static final DeferredBlock<Block> DEEPSLATE_SPIRALITE_ORE = registerBlock("deepslate_spiralite_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2,4),
+                    BlockBehaviour.Properties.of()
+                            .strength(4.5F, 3.0F) // How hard it is to break
+                            .requiresCorrectToolForDrops() // Requires the correct tool
+                            .sound(SoundType.DEEPSLATE) // Sound it makes breaking
+                            .mapColor(MapColor.COLOR_MAGENTA) // Map Color
+            ));
+
+
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
