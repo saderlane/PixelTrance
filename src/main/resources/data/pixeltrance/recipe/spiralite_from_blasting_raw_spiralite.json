@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "spiralite",
+  "ingredient": {
+    "item": "pixeltrance:raw_spiralite"
+  },
+  "result": {
+    "count": 1,
+    "id": "pixeltrance:spiralite"
+  }
+}
