@@ -1,7 +1,14 @@
 {
   "itemGroup.pixeltrance": "Pixel Trance Tab",
   "block.pixeltrance.example_block": "Example Block",
+
+
+  "item.pixeltrance.spiralite": "Spiralite",
+
   "item.pixeltrance.pocket_watch": "Pocket Watch",
+
+
+
 
   "pixeltrance.configuration.title": "Example Mod Configs",
   "pixeltrance.configuration.section.pixeltrance.common.toml": "Example Mod Configs",

@@ -50,10 +50,17 @@ public class PixelTrance {
 
     }
 
-    // Add the example block item to the building blocks tab
+    // Add items to the Creative tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+
+        // Add items to Tools and Utilities tab
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.POCKET_WATCH);
+        }
+
+        // Add items to Ingredients tab
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.SPIRALITE);
         }
 
     }
