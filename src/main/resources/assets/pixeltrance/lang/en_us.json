@@ -1,13 +1,13 @@
 {
-  "itemGroup.examplemod": "Example Mod Tab",
-  "block.examplemod.example_block": "Example Block",
-  "item.examplemod.example_item": "Example Item",
+  "itemGroup.pixeltrance": "Pixel Trance Tab",
+  "block.pixeltrance.example_block": "Example Block",
+  "item.pixeltrance.pocket_watch": "Pocket Watch",
 
-  "examplemod.configuration.title": "Example Mod Configs",
-  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
-  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
-  "examplemod.configuration.items": "Item List",
-  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
-  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
-  "examplemod.configuration.magicNumber": "Magic Number"
+  "pixeltrance.configuration.title": "Example Mod Configs",
+  "pixeltrance.configuration.section.pixeltrance.common.toml": "Example Mod Configs",
+  "pixeltrance.configuration.section.pixeltrance.common.toml.title": "Example Mod Configs",
+  "pixeltrance.configuration.items": "Item List",
+  "pixeltrance.configuration.logDirtBlock": "Log Dirt Block",
+  "pixeltrance.configuration.magicNumberIntroduction": "Magic Number Text",
+  "pixeltrance.configuration.magicNumber": "Magic Number"
 }
