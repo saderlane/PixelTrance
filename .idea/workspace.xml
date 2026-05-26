@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="updated pocket watch to be custom sound item - added console debug for when it is used">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/pocket_watch.json" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="pocket watch recipe was outputting a spiralite block">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/data/HypnoData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dev/PTLog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +294,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779763192478</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added crafting recipe for pocket watch">
+      <option name="closed" value="true" />
+      <created>1779765199164</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1779765199164</updated>
+    </task>
+    <task id="LOCAL-00016" summary="pocket watch recipe was outputting a spiralite block">
+      <option name="closed" value="true" />
+      <created>1779765313958</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779765313958</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +342,8 @@
     <MESSAGE value="added deeplate spiralite ore&#10;- block&#10;- smelting" />
     <MESSAGE value="added loot tables for the spiralite blocks - that sucks doing by hand and even loot table generators online aren't fun to use" />
     <MESSAGE value="updated pocket watch to be custom sound item - added console debug for when it is used" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated pocket watch to be custom sound item - added console debug for when it is used" />
+    <MESSAGE value="added crafting recipe for pocket watch" />
+    <MESSAGE value="pocket watch recipe was outputting a spiralite block" />
+    <option name="LAST_COMMIT_MESSAGE" value="pocket watch recipe was outputting a spiralite block" />
   </component>
 </project>

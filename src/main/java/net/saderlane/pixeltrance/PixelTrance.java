@@ -2,6 +2,7 @@ package net.saderlane.pixeltrance;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.saderlane.pixeltrance.block.ModBlocks;
+import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.item.ModCreativeModeTabs;
 import net.saderlane.pixeltrance.item.ModItems;
 import org.slf4j.Logger;
@@ -23,8 +24,6 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 public class PixelTrance {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "pixeltrance";
-    // Directly reference a slf4j logger
-    public static final Logger LOGGER = LogUtils.getLogger();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -38,15 +37,15 @@ public class PixelTrance {
         NeoForge.EVENT_BUS.register(this);
 
         // Register Creative Mode Tab
-        LOGGER.info("[PixelTrance] Registering Creative Mode Tab");
+        PTLog.info("[PixelTrance] Registering Creative Mode Tab");
         ModCreativeModeTabs.register(modEventBus);
 
         // Register Items
-        LOGGER.info("[PixelTrance] Registering Mod Items");
+        PTLog.info("[PixelTrance] Registering Mod Items");
         ModItems.register(modEventBus);
 
         // Register Blocks
-        LOGGER.info("[PixelTrance] Registering Mod Blocks");
+        PTLog.info("[PixelTrance] Registering Mod Blocks");
         ModBlocks.register(modEventBus);
 
 
