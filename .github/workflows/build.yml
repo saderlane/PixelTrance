@@ -50,7 +50,7 @@ jobs:
           mod_name="${{ steps.gradle_props.outputs.mod_name }}"
           minecraft_version="${{ steps.gradle_props.outputs.minecraft_version }}"
           mod_version="${{ steps.gradle_props.outputs.mod_version }}"
-          new_name="${mod_name}-${minecraft_version}-${mod_version}.jar"
+          new_name="${mod_name}-${minecraft_version}-neoforge-${mod_version}.jar"
           src=$(ls build/libs/*.jar | grep -v 'sources\|javadoc' | head -n 1)
           cp "$src" "build/libs/$new_name"
           echo "jar_name=$new_name" >> $GITHUB_OUTPUT
@@ -68,7 +68,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="${{ steps.gradle_props.outputs.mod_name }}-${{ steps.gradle_props.outputs.minecraft_version }}-${{ steps.gradle_props.outputs.mod_version }}"
+          tag="${{ steps.gradle_props.outputs.mod_name }}-${{ steps.gradle_props.outputs.minecraft_version }}-neoforge-${{ steps.gradle_props.outputs.mod_version }}"
           gh release create "$tag" \
             "build/libs/${{ steps.rename_jar.outputs.jar_name }}" \
             --repo="$GITHUB_REPOSITORY" \
