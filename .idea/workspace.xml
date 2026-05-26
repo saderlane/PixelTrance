@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added hypnodata and custom logging tool" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="trying to fix github build job">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -312,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779767338843</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="trying to fix github build job">
+      <option name="closed" value="true" />
+      <created>1779768773210</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779768773210</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,6 +357,7 @@
     <MESSAGE value="added crafting recipe for pocket watch" />
     <MESSAGE value="pocket watch recipe was outputting a spiralite block" />
     <MESSAGE value="added hypnodata and custom logging tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="added hypnodata and custom logging tool" />
+    <MESSAGE value="trying to fix github build job" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to fix github build job" />
   </component>
 </project>
