@@ -46,6 +46,7 @@ See the [ROADMAP.md](./ROADMAP.md) for a full breakdown of features and progress
 Updates, community polls and more will be posted on the project [Patreon](https://www.patreon.com/c/PixelTranceMod)!
 
 You can also join the [Discord](https://discord.gg/hHrzPjWjU2) where updates will also be posted!
+**Discord is 18+ only, if a user is reported as a minor, ID verification will be required**
 
 Until we get a more substantial project, we're going to keep updates and all versions free, but if you want to throw a buck or two our way 👀
 
