@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="trying to fix github build job again">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="getting github to auto push a release">
       <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -330,7 +330,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779768967682</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="getting github to auto push a release">
+      <option name="closed" value="true" />
+      <created>1779769281301</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1779769281301</updated>
+    </task>
+    <task id="LOCAL-00021" summary="getting github to auto push a release">
+      <option name="closed" value="true" />
+      <created>1779769355693</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1779769355693</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +383,7 @@
     <MESSAGE value="added hypnodata and custom logging tool" />
     <MESSAGE value="trying to fix github build job" />
     <MESSAGE value="trying to fix github build job again" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to fix github build job again" />
+    <MESSAGE value="getting github to auto push a release" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting github to auto push a release" />
   </component>
 </project>
