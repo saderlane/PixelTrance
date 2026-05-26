@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added loot tables for the spiralite blocks - that sucks doing by hand and even loot table generators online aren't fun to use">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="updated pocket watch to be custom sound item - added console debug for when it is used">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/pocket_watch.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,32 +79,34 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/data/pixeltrance/loot_table/blocks&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-vcs.commit.finished": "3 files committed",
+    "Notification.DoNotAsk-vcs.commit.finished": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/data/pixeltrance/loot_table/blocks",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\data\pixeltrance\loot_table\blocks" />
@@ -282,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779666508798</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated pocket watch to be custom sound item - added console debug for when it is used">
+      <option name="closed" value="true" />
+      <created>1779763192478</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779763192478</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +322,7 @@
     <MESSAGE value="added smelting for raw spiralite and spiralite ore" />
     <MESSAGE value="added deeplate spiralite ore&#10;- block&#10;- smelting" />
     <MESSAGE value="added loot tables for the spiralite blocks - that sucks doing by hand and even loot table generators online aren't fun to use" />
-    <option name="LAST_COMMIT_MESSAGE" value="added loot tables for the spiralite blocks - that sucks doing by hand and even loot table generators online aren't fun to use" />
+    <MESSAGE value="updated pocket watch to be custom sound item - added console debug for when it is used" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated pocket watch to be custom sound item - added console debug for when it is used" />
   </component>
 </project>
