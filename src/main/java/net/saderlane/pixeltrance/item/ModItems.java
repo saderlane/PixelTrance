@@ -5,6 +5,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.saderlane.pixeltrance.PixelTrance;
+import net.saderlane.pixeltrance.item.custom.PocketWatchItem;
 
 public class ModItems {
     // Registers all our items to MC, tied to our MOD_ID
@@ -16,7 +17,7 @@ public class ModItems {
 
     // Adds pocket watch item
     public static final DeferredItem<Item> POCKET_WATCH = ITEMS.register("pocket_watch",
-            () -> new Item(new Item.Properties()
+            () -> new PocketWatchItem(new Item.Properties()
                     .stacksTo(1)
                     .durability(250)));
 
