@@ -4,13 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="readme update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/tags/item/hypnotic_items.json" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added hover text for spiralite and pocket watch - added tags i guess?">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/DataGenerators.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockLootTableProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockStateProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockTagProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModItemModelProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModItemTagProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModRecipeProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/blockstates/deepslate_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/blockstates/spiralite_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/blockstates/spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/block/deepslate_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/block/spiralite_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/block/spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/deepslate_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/pocket_watch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/raw_spiralite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/spiralite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/spiralite_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/models/item/spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/block/mineable/axe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/block/mineable/hoe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/block/mineable/pickaxe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/block/mineable/shovel.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/block/needs_diamond_tool.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/block/needs_iron_tool.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/loot_table/blocks/deepslate_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/loot_table/blocks/spiralite_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/loot_table/blocks/spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/pocket_watch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_blasting_deepslate_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_blasting_raw_spiralite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_blasting_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_smelting_deepslate_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_smelting_raw_spiralite.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/recipe/spiralite_from_smelting_spiralite_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/tags/item/hypnotic_items.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -383,7 +416,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779772227630</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added hover text for spiralite and pocket watch - added tags i guess?">
+      <option name="closed" value="true" />
+      <created>1779851212253</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1779851212254</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,6 +465,7 @@
     <MESSAGE value="auto release update" />
     <MESSAGE value="New NeoForge version of PixelTrance - version 0.0.1 - No functionality" />
     <MESSAGE value="readme update" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme update" />
+    <MESSAGE value="added hover text for spiralite and pocket watch - added tags i guess?" />
+    <option name="LAST_COMMIT_MESSAGE" value="added hover text for spiralite and pocket watch - added tags i guess?" />
   </component>
 </project>

@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "s": {
+    "S": {
       "item": "pixeltrance:spiralite"
     }
   },
   "pattern": [
-    "sss",
-    "sss",
-    "sss"
+    "SSS",
+    "SSS",
+    "SSS"
   ],
   "result": {
     "count": 1,

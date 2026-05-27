@@ -2,19 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "s": {
+    "C": {
+      "item": "minecraft:clock"
+    },
+    "S": {
       "item": "pixeltrance:spiralite"
     },
     "g": {
       "item": "minecraft:gold_ingot"
-    },
-    "c": {
-      "item": "minecraft:clock"
     }
   },
   "pattern": [
-    "gcg",
-    "gsg",
+    "gCg",
+    "gSg",
     "ggg"
   ],
   "result": {
