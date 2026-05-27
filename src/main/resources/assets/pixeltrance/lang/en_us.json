@@ -9,10 +9,13 @@
 
 
   "item.pixeltrance.spiralite": "Spiralite",
+  "tooltip.pixeltrance.spiralite.tooltip": "§dIt's hard to stop staring at it§r",
+
   "item.pixeltrance.raw_spiralite": "Raw Spiralite",
 
   "item.pixeltrance.pocket_watch": "Pocket Watch",
-
+  "tooltip.pixeltrance.pocket_watch.shift_down": "Right-Click to begin hypnosis.",
+  "tooltip.pixeltrance.pocket_watch": "[Hold §dShift§r for more information]",
 
 
 

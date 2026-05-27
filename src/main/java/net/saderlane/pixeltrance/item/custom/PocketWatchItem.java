@@ -1,5 +1,6 @@
 package net.saderlane.pixeltrance.item.custom;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -9,8 +10,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.saderlane.pixeltrance.dev.PTLog;
+import net.saderlane.pixeltrance.util.ModTags;
+
+import java.util.List;
 
 public class PocketWatchItem extends Item {
     public PocketWatchItem(Properties properties) {
@@ -19,6 +24,7 @@ public class PocketWatchItem extends Item {
 
     private static boolean ticking = false;
 
+    // When item is used on livingEntity
     @Override
     public InteractionResult interactLivingEntity(
             ItemStack stack,
@@ -29,6 +35,7 @@ public class PocketWatchItem extends Item {
         if (!(interactionTarget instanceof Player)) { // If target is not a player
             if (!player.level().isClientSide && interactionTarget.isAlive()) { // If is not client level and target is alive
 
+                stack.is(ModTags.Items.HYPNOTIC_ITEMS);
                 ticking = !ticking;
 
                 PTLog.debug("[PixelTrance] Stack: " + stack.getDisplayName().getString());
@@ -45,6 +52,7 @@ public class PocketWatchItem extends Item {
         }
     }
 
+    // When item is used
     @Override
     public InteractionResultHolder<ItemStack> use(
             Level level,
@@ -60,5 +68,16 @@ public class PocketWatchItem extends Item {
         }
 
         return super.use(level, player, usedHand);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if(Screen.hasShiftDown()) {
+            tooltipComponents.add(Component.translatable("tooltip.pixeltrance.pocket_watch.shift_down"));
+        } else {
+            tooltipComponents.add(Component.translatable("tooltip.pixeltrance.pocket_watch"));
+        }
+
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

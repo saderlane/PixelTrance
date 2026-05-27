@@ -1,11 +1,16 @@
 package net.saderlane.pixeltrance.item;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.saderlane.pixeltrance.PixelTrance;
 import net.saderlane.pixeltrance.item.custom.PocketWatchItem;
+
+import java.util.List;
 
 public class ModItems {
     // Registers all our items to MC, tied to our MOD_ID
@@ -25,7 +30,14 @@ public class ModItems {
     // TODO: REMOVE BORROWED ITEM TEXTURES
     // Adds Spiralite material
     public static final DeferredItem<Item> SPIRALITE = ITEMS.register("spiralite",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("tooltip.pixeltrance.spiralite.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+
     // Adds Raw Spiralite material (DEV NOTE: TEMP TEXTURE FROM Kaupenjoe's tutorial - will replace)
     public static final DeferredItem<Item> RAW_SPIRALITE = ITEMS.register("raw_spiralite",
             () -> new Item(new Item.Properties()));
