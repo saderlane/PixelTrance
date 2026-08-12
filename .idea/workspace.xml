@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Sets pocket watch ticking = false if it is taken out of the player's main or offhand">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/SpiraliteLampBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/block/spiralite_lamp_off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/block/spiralite_lamp_on.png" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Added spiralite lamp block">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/ModBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockLootTableProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockLootTableProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockStateProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockStateProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModCreativeModeTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModCreativeModeTabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -422,7 +414,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779854970122</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="added some debug clarity">
+      <option name="closed" value="true" />
+      <created>1786508322545</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1786508322545</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Added spiralite lamp block">
+      <option name="closed" value="true" />
+      <created>1786508348322</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1786508348322</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,8 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated roadmap to show clean slate" />
-    <MESSAGE value="ROADMAP.md cleanup" />
     <MESSAGE value="set up neoforge - this is completely empty (still having some issues with the toml generating)" />
     <MESSAGE value="added pocket watch item - no functionality" />
     <MESSAGE value="added spiralite item - model is Kaupenjoe's - will replace" />
@@ -465,7 +471,9 @@
     <MESSAGE value="added hover text for spiralite and pocket watch - added tags i guess?" />
     <MESSAGE value="Added datagen" />
     <MESSAGE value="Sets pocket watch ticking = false if it is taken out of the player's main or offhand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sets pocket watch ticking = false if it is taken out of the player's main or offhand" />
+    <MESSAGE value="added some debug clarity" />
+    <MESSAGE value="Added spiralite lamp block" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added spiralite lamp block" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
