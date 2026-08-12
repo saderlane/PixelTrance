@@ -1,9 +1,7 @@
 package net.saderlane.pixeltrance.item;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -25,6 +23,22 @@ public class ModItems {
             () -> new PocketWatchItem(new Item.Properties()
                     .stacksTo(1)
                     .durability(250)));
+
+    public static final DeferredItem<Item> SPIRALITE_SWORD = ITEMS.register("spiralite_sword",
+            () -> new SwordItem(ModToolTiers.SPIRALITE,
+                    new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.SPIRALITE, 2.5f, -2.4f))));
+    public static final DeferredItem<Item> SPIRALITE_PICKAXE = ITEMS.register("spiralite_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.SPIRALITE,
+                    new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.SPIRALITE, 1f, -2.8f))));
+    public static final DeferredItem<Item> SPIRALITE_SHOVEL = ITEMS.register("spiralite_shovel",
+            () -> new ShovelItem(ModToolTiers.SPIRALITE,
+                    new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.SPIRALITE, 1.5f, -3f))));
+    public static final DeferredItem<Item> SPIRALITE_AXE = ITEMS.register("spiralite_axe",
+            () -> new AxeItem(ModToolTiers.SPIRALITE,
+                    new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.SPIRALITE, 6f, -3.1f))));
+    public static final DeferredItem<Item> SPIRALITE_HOE = ITEMS.register("spiralite_hoe",
+            () -> new HoeItem(ModToolTiers.SPIRALITE,
+                    new Item.Properties().attributes(HoeItem.createAttributes(ModToolTiers.SPIRALITE, -2f, -1f))));
 
 
     // TODO: REMOVE BORROWED ITEM TEXTURES

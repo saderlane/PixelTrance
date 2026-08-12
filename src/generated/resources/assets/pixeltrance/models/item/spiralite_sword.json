@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "pixeltrance:item/pocket_watch"
+    "layer0": "pixeltrance:item/spiralite_sword"
   }
 }

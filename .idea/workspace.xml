@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Added spiralite lamp block">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="fixed some poor wording on spiralite tooltip">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModToolTiers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/item/spiralite_axe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/item/spiralite_hoe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/item/spiralite_pickaxe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/item/spiralite_shovel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/item/spiralite_sword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/tags/block/incorrect_for_spiralite_tool.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/pixeltrance/tags/block/needs_spiralite_tool.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/pixeltrance/models/item/pocket_watch.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/pixeltrance/models/item/pocket_watch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModItemModelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModItemModelProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModRecipeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModRecipeProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModCreativeModeTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModCreativeModeTabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/ModItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +109,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/textures/block",
+    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/textures/item",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
@@ -112,11 +126,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\item" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\block" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\data\pixeltrance\loot_table\blocks" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\data\pixeltrance\recipe" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\models\item" />
-      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\models\block" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src" />
@@ -430,7 +444,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786508348322</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="fixed some poor wording on spiralite tooltip">
+      <option name="closed" value="true" />
+      <created>1786508720591</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1786508720591</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +470,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set up neoforge - this is completely empty (still having some issues with the toml generating)" />
     <MESSAGE value="added pocket watch item - no functionality" />
     <MESSAGE value="added spiralite item - model is Kaupenjoe's - will replace" />
     <MESSAGE value="added spiralite block and ore - mainly proof of concept/learning but may keep it" />
@@ -473,7 +494,8 @@
     <MESSAGE value="Sets pocket watch ticking = false if it is taken out of the player's main or offhand" />
     <MESSAGE value="added some debug clarity" />
     <MESSAGE value="Added spiralite lamp block" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added spiralite lamp block" />
+    <MESSAGE value="fixed some poor wording on spiralite tooltip" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some poor wording on spiralite tooltip" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

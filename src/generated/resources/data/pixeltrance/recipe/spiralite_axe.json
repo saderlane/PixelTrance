@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "item": "pixeltrance:spiralite"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "MM ",
+    "Mb ",
+    " b "
+  ],
+  "result": {
+    "count": 1,
+    "id": "pixeltrance:spiralite_axe"
+  }
+}

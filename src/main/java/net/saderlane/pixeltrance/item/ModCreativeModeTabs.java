@@ -22,7 +22,15 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.RAW_SPIRALITE);
                         output.accept(ModItems.SPIRALITE);
+
                         output.accept(ModItems.POCKET_WATCH);
+                        output.accept(ModItems.SPIRALITE_SWORD);
+                        output.accept(ModItems.SPIRALITE_PICKAXE);
+                        output.accept(ModItems.SPIRALITE_SHOVEL);
+                        output.accept(ModItems.SPIRALITE_AXE);
+                        output.accept(ModItems.SPIRALITE_HOE);
+
+
                         output.accept(ModBlocks.SPIRALITE_ORE);
                         output.accept(ModBlocks.DEEPSLATE_SPIRALITE_ORE);
                         output.accept(ModBlocks.SPIRALITE_BLOCK);

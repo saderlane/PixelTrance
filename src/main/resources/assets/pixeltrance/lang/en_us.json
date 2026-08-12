@@ -21,6 +21,16 @@
 
 
 
+  "item.pixeltrance.spiralite_sword": "Spiralite Sword",
+  "item.pixeltrance.spiralite_pickaxe": "Spiralite Pickaxe",
+  "item.pixeltrance.spiralite_shovel": "Spiralite Shovel",
+  "item.pixeltrance.spiralite_axe": "Spiralite Axe",
+  "item.pixeltrance.spiralite_hoe": "Spiralite Hoe",
+
+
+
+
+
   "pixeltrance.configuration.title": "Example Mod Configs",
   "pixeltrance.configuration.section.pixeltrance.common.toml": "Example Mod Configs",
   "pixeltrance.configuration.section.pixeltrance.common.toml.title": "Example Mod Configs",

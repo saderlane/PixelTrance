@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spiralite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pixeltrance:spiralite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pixeltrance:spiralite_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_spiralite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pixeltrance:spiralite_sword"
+    ]
+  }
+}
