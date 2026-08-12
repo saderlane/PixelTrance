@@ -9,7 +9,7 @@ import net.saderlane.pixeltrance.PixelTrance;
 import net.saderlane.pixeltrance.item.custom.PocketWatchItem;
 
 import java.util.List;
-
+// TODO: REMOVE BORROWED ITEM TEXTURES
 public class ModItems {
     // Registers all our items to MC, tied to our MOD_ID
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PixelTrance.MOD_ID);
@@ -41,7 +41,7 @@ public class ModItems {
                     new Item.Properties().attributes(HoeItem.createAttributes(ModToolTiers.SPIRALITE, -2f, -1f))));
 
 
-    // TODO: REMOVE BORROWED ITEM TEXTURES
+
     // Adds Spiralite material
     public static final DeferredItem<Item> SPIRALITE = ITEMS.register("spiralite",
             () -> new Item(new Item.Properties()) {
