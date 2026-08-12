@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "clicked=false": {
+      "model": "pixeltrance:block/spiralite_lamp_off"
+    },
+    "clicked=true": {
+      "model": "pixeltrance:block/spiralite_lamp_on"
+    }
+  }
+}

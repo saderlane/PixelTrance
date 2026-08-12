@@ -27,6 +27,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.DEEPSLATE_SPIRALITE_ORE);
                         output.accept(ModBlocks.SPIRALITE_BLOCK);
 
+                        output.accept(ModBlocks.SPIRALITE_LAMP);
+
+
 
                     }).build());
 

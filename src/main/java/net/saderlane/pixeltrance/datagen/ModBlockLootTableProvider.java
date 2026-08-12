@@ -35,6 +35,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         add(ModBlocks.DEEPSLATE_SPIRALITE_ORE.get(),
                 block -> createMultipleOreDrops(ModBlocks.SPIRALITE_ORE.get(), ModItems.RAW_SPIRALITE.get(),2,4));
+
+
+        dropSelf(ModBlocks.SPIRALITE_LAMP.get());
+
     }
 
     // Helper to allow multiple drops of an item

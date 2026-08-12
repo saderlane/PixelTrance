@@ -54,6 +54,11 @@ public class ModBlocks {
             ));
 
 
+    // SpiraliteLampBlock
+    public static final DeferredBlock<Block> SPIRALITE_LAMP = registerBlock("spiralite_lamp",
+            () -> new SpiraliteLampBlock(BlockBehaviour.Properties.of().strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state -> state.getValue(SpiraliteLampBlock.CLICKED) ? 15 : 0)));
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
