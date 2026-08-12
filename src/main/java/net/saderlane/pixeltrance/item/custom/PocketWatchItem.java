@@ -40,6 +40,7 @@ public class PocketWatchItem extends Item {
                 stack.is(ModTags.Items.HYPNOTIC_ITEMS);
                 ticking = !ticking;
 
+                PTLog.debug("[PixelTrance] **Pocket Watch Used**");
                 PTLog.debug("[PixelTrance] Stack: " + stack.getDisplayName().getString());
                 PTLog.debug("[PixelTrance] Player: " + player.getName().getString());
                 PTLog.debug("[PixelTrance] UsedHand: " + usedHand.name());
@@ -63,6 +64,7 @@ public class PocketWatchItem extends Item {
 
         if (!player.level().isClientSide) { // If is not client level and target is alive
             ticking = !ticking;
+            PTLog.debug("[PixelTrance] **Pocket Watch Used**");
             PTLog.debug("[PixelTrance] Ticking: " + ticking);
             PTLog.debug("[PixelTrance] Stack: " + itemStack.getDisplayName().getString());
             PTLog.debug("[PixelTrance] Player: " + player.getName().getString());
