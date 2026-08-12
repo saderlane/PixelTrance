@@ -2,7 +2,6 @@ package net.saderlane.pixeltrance.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -10,7 +9,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.saderlane.pixeltrance.PixelTrance;
 import net.saderlane.pixeltrance.block.ModBlocks;
-import net.saderlane.pixeltrance.block.SpiraliteLampBlock;
+import net.saderlane.pixeltrance.block.custom.SpiraliteLampBlock;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {

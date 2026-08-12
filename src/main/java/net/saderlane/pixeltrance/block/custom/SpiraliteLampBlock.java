@@ -1,4 +1,4 @@
-package net.saderlane.pixeltrance.block;
+package net.saderlane.pixeltrance.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;

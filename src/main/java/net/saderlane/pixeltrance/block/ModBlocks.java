@@ -12,6 +12,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.saderlane.pixeltrance.PixelTrance;
+import net.saderlane.pixeltrance.block.custom.SpiraliteLampBlock;
 import net.saderlane.pixeltrance.item.ModItems;
 
 import java.util.function.Supplier;
