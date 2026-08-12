@@ -5,6 +5,7 @@ import net.saderlane.pixeltrance.block.ModBlocks;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.item.ModCreativeModeTabs;
 import net.saderlane.pixeltrance.item.ModItems;
+import net.saderlane.pixeltrance.util.ModKeyMappings;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -47,6 +48,10 @@ public class PixelTrance {
         // Register Blocks
         PTLog.info("[PixelTrance] Registering Mod Blocks");
         ModBlocks.register(modEventBus);
+
+        // Register custom keymappings
+        PTLog.info("[PixelTrance] Registering Custom Keymappings");
+        ModKeyMappings.register();
 
 
         // Register the item to a creative tab
