@@ -2,6 +2,7 @@ package net.saderlane.pixeltrance;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.saderlane.pixeltrance.block.ModBlocks;
+import net.saderlane.pixeltrance.dataattachment.ModData;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.item.ModCreativeModeTabs;
 import net.saderlane.pixeltrance.item.ModItems;
@@ -53,6 +54,9 @@ public class PixelTrance {
         PTLog.info("[PixelTrance] Registering Custom Keymappings");
         ModKeyMappings.register();
 
+        // Register custom data type (will be Trance/Hypno data)
+        PTLog.info("[PixelTrance] Registering custom data type");
+        ModData.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
