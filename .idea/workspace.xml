@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="fixing layout of lamp block">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModKeyMappings.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added test keybinds">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ModEvents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/networking/ClientPayloadHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/networking/packet/KeyData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +167,31 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="PixelTrance [:net.neoforged.devlaunch.Main.main()]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--warning-mode all" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":net.neoforged.devlaunch.Main.main()" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SharedIndexes">
@@ -465,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786574576311</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="added test keybinds">
+      <option name="closed" value="true" />
+      <created>1786577928815</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1786577928815</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +516,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added custom creative mode tab" />
     <MESSAGE value="add todos for tracking" />
     <MESSAGE value="updated build.gradle and neoforge.mods.toml to show mod authors and description - this was a dumb fix" />
     <MESSAGE value="added smelting for raw spiralite and spiralite ore" />
@@ -508,7 +540,8 @@
     <MESSAGE value="Added spiralite tools - likely to be removed, mainly for testing and PoC" />
     <MESSAGE value="moving todo for my own sanity" />
     <MESSAGE value="fixing layout of lamp block" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing layout of lamp block" />
+    <MESSAGE value="added test keybinds" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test keybinds" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
