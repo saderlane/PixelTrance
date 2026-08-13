@@ -4,7 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.saderlane.pixeltrance.dataattachment.ModData;
-import net.saderlane.pixeltrance.networking.packet.SyncHypnoPacket;
+import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
 
 public final class HypnoData {
 
@@ -64,6 +64,6 @@ public final class HypnoData {
      * dimension change).
      */
     public static void sync(ServerPlayer player) {
-        PacketDistributor.sendToPlayer(player, new SyncHypnoPacket(getTrance(player), getFocus(player)));
+        PacketDistributor.sendToPlayer(player, new HypnoDataS2C(getTrance(player), getFocus(player)));
     }
 }
