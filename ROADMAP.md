@@ -19,11 +19,11 @@
 
 ## Phase 1: Foundation
 **Core Systems and Visuals**
-- [ ] Mod loads and logs successfully
+- [X] Mod loads and logs successfully
 - [ ] Implement trance meter (player data + HUD)
   - [ ] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
-- [ ] Trance syncing in multiplayer
-- [ ] Create base hypnosis item (Pocket Watch)
+- [X] Trance syncing in multiplayer (I think this works?)
+- [X] Create base hypnosis item (Pocket Watch)
 - [ ] Implement basic **Passive Focus Lock**
   - [ ] Add some conditional logic (gaze, etc)
   - [ ] Add screen pull to players
@@ -78,7 +78,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Resistance stat applied on successful struggle
 - [ ] Visual/audio feedback for escape attempts
 
-### 🕯Candle & Pendulum Items (Passive Hypnosis Tools)
+### Candle & Pendulum Items (Passive Hypnosis Tools)
 - [ ] Candle: Placeable aura item to build focus in radius
 - [ ] Pendulum: Held item with pulsing AoE focus gain
 - [ ] Effects apply to mobs and players in line of sight
