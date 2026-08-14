@@ -5,6 +5,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.saderlane.pixeltrance.dataattachment.ModData;
+import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
 
 public final class HypnoData {
@@ -18,8 +19,8 @@ public final class HypnoData {
     public static final int DECAY_INTERVAL = 10; // Ticks per decay
 
     // Temporarily here, will be specific to each source's decay
-    private static final int FOCUS_DECAY = 5;
-    private static final int TRANCE_DECAY = 2;
+    private static final int FOCUS_DECAY = 10;
+    private static final int TRANCE_DECAY = 5;
 
     private HypnoData() {}
 
@@ -79,9 +80,13 @@ public final class HypnoData {
         // Remove trance if focus is broken
         if (focus > MIN) {
             subFocus(subject, FOCUS_DECAY);
+            PTLog.debug("[PixelTrance] " + subject.getName().getString()
+                    + "'s (focus " + getFocus(subject) + ") [Decaying]");
         }
         else {
             subTrance(subject, TRANCE_DECAY);
+            PTLog.debug("[PixelTrance] " + subject.getName().getString()
+                    + "'s (trance " + getTrance(subject) + ") [Decaying]");
         }
     }
 
@@ -101,8 +106,8 @@ public final class HypnoData {
         subject.setData(ModData.LAST_INFLUENCED, subject.level().getGameTime());
     }
 
-    // If the subject was recently influenced (game time - lastInfluenced > grace period)
+    // If the subject was recently influenced (game time - lastInfluenced < grace period)
     public static boolean recentlyInfluenced(LivingEntity subject) {
-        return subject.level().getGameTime() - subject.getData(ModData.LAST_INFLUENCED) > INFLUENCE_GRACE_TICKS;
+        return subject.level().getGameTime() - subject.getData(ModData.LAST_INFLUENCED) < INFLUENCE_GRACE_TICKS;
     }
 }

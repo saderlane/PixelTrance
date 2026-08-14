@@ -24,11 +24,9 @@
   - [ ] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
 - [X] Trance syncing in multiplayer (I think this works?)
 - [X] Create base hypnosis item (Pocket Watch)
-- [ ] Implement basic **Passive Focus Lock**
-  - [ ] Add some conditional logic (gaze, etc)
-  - [ ] Add screen pull to players
-- [ ] Trance decay logic
-- [ ] Focus decay logic
+
+- [X] Trance decay logic
+- [X] Focus decay logic
 - [ ] Visual/audio feedback
   - [ ] Binaural plays when trance is at a certain percent
     - Scales with volume
@@ -42,12 +40,14 @@
 **The goal of this phase is to establish a **functional gameplay loop**—players can hypnotize others, experience visible effects, and use tools meaningfully.**
 
 ### Pocket Watch Toggle Mode
-- [ ] Right-click toggles “focus session” on/off
+- [X] Right-click toggles “focus session” on/off
 - [ ] Visual particles, subtle glow, looping ticking sound
   - Couldn't get visual particles to work and I don't think glow is a good effect
-- [ ] Increases Passive Focus Lock buildup for viewers
-- [ ] Screen pulls attention to source of Focus Lock
-  - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
+- [ ] Implement basic **Passive Focus Lock**
+  - [ ] Add some conditional logic (gaze, etc)
+  - [ ] Add screen pull to players
+  - [ ] Screen pulls attention to source of Focus Lock
+    - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
 - [ ] Only functions when targeting another entity (player or mob)
 - [ ] Re-implement trance gain from pocket watch
 

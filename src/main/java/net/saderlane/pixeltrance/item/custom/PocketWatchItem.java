@@ -16,7 +16,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
-import net.saderlane.pixeltrance.dataattachment.ModData;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +32,8 @@ public class PocketWatchItem extends Item {
     private static final float RADIUS = 8.0f; // How far watch reaches
     private static final int PULSE_IN_TICK = 5; // Ticks between pulses
                                                     // 5 = 4 times a second
-    private static final int FOCUS_GAIN = 2;
+    private static final int FOCUS_GAIN = 7;
+    private static final int TRANCE_GAIN = 3;
 
     // Get TICKING data component for the stack
     public static boolean isTicking(ItemStack stack) {
@@ -140,13 +140,23 @@ public class PocketWatchItem extends Item {
 
         List<LivingEntity> chosen = selectTargets(candidates, origin, slots);
         for (LivingEntity subject : candidates) {
+
+            int subjectFocus = HypnoData.getFocus(subject);
+            int subjectTrance = HypnoData.getTrance(subject);
+
             if (chosen.contains(subject)) {
-                HypnoData.addFocus(subject, FOCUS_GAIN);
-                PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
-                        + " (focus " + currentFocus(subject) + ")");
-            }
-            else {
-                HypnoData.tickDecay(subject);
+                if (subjectFocus <= HypnoData.MAX)
+                {
+                    HypnoData.addFocus(subject, FOCUS_GAIN);
+                    PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
+                            + " (focus " + HypnoData.getFocus(subject) + ")");
+                }
+                if (subjectFocus >= HypnoData.MAX && subjectTrance <= HypnoData.MAX) {
+                    HypnoData.addTrance(subject, TRANCE_GAIN);
+                    PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
+                            + " (trance " + HypnoData.getTrance(subject) + ")");
+                }
+
             }
         }
     }
@@ -168,14 +178,6 @@ public class PocketWatchItem extends Item {
         );
 
         return candidates.size() > slots ? candidates.subList(0, slots) : candidates;
-    }
-
-    private static void applyInfluence(LivingEntity subject) {
-
-    }
-
-    private static int currentFocus(LivingEntity entity) {
-        return entity.getData(ModData.FOCUS);
     }
 
     @Override
