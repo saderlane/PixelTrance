@@ -57,14 +57,14 @@ public class SpiraliteLampBlock extends Block {
                         RandomSource random) {
 
 
-        level.scheduleTick(pos, this, 0);
+
         boolean currentState = state.getValue(CLICKED);
         if (!currentState) return;
 
-        if (level.getGameTime() % PULSE_IN_TICK == 0) {
-            //PTLog.debug("[PixelTrance] Block ticking _PULSING");
-            pulse(level, pos);
-        }
+        level.scheduleTick(pos, this, PULSE_IN_TICK);
+        //PTLog.debug("[PixelTrance] Block ticking _PULSING");
+        pulse(level, pos);
+
 
         super.tick(state, level, pos, random);
     }
@@ -90,13 +90,13 @@ public class SpiraliteLampBlock extends Block {
             int subjectTrance = HypnoData.getTrance(subject);
 
             if (chosen.contains(subject)) {
-                if (subjectFocus <= HypnoData.MAX)
+                if (subjectFocus != HypnoData.MAX)
                 {
                     HypnoData.addFocus(subject, FOCUS_GAIN);
                     PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
                             + " (focus " + HypnoData.getFocus(subject) + ")");
                 }
-                if (subjectFocus >= HypnoData.MAX && subjectTrance <= HypnoData.MAX) {
+                if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
                     HypnoData.addTrance(subject, TRANCE_GAIN);
                     PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
                             + " (trance " + HypnoData.getTrance(subject) + ")");

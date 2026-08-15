@@ -65,7 +65,7 @@ public class ClientEvents {
 
                 // Icon for partial trance icon
                 if(!Minecraft.getInstance().player.isCreative() && Minecraft.getInstance().player.hasData(ModData.TRANCE)) {
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 0; i++) {
                         guiGraphics.blitSprite(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_partial"),
                                 21, 21, 0, 0, x -95 + i * 18, y - 55, 16, 16);
                     }
@@ -73,7 +73,7 @@ public class ClientEvents {
 
                 // Icon for full trance icon
                 if(!Minecraft.getInstance().player.isCreative() && Minecraft.getInstance().player.hasData(ModData.TRANCE)) {
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 0; i++) {
                         guiGraphics.blitSprite(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_full"),
                                 21, 21, 0, 0, x -95 + i * 18, y - 55, 16, 16);
                     }

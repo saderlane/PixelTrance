@@ -145,13 +145,13 @@ public class PocketWatchItem extends Item {
             int subjectTrance = HypnoData.getTrance(subject);
 
             if (chosen.contains(subject)) {
-                if (subjectFocus <= HypnoData.MAX)
+                if (subjectFocus != HypnoData.MAX)
                 {
                     HypnoData.addFocus(subject, FOCUS_GAIN);
                     PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
                             + " (focus " + HypnoData.getFocus(subject) + ")");
                 }
-                if (subjectFocus >= HypnoData.MAX && subjectTrance <= HypnoData.MAX) {
+                if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
                     HypnoData.addTrance(subject, TRANCE_GAIN);
                     PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
                             + " (trance " + HypnoData.getTrance(subject) + ")");
