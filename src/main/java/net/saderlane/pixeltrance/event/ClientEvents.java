@@ -1,6 +1,8 @@
 package net.saderlane.pixeltrance.event;
 
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,6 +23,16 @@ import net.saderlane.pixeltrance.util.ModKeyMappings;
 
 @EventBusSubscriber(modid = PixelTrance.MOD_ID, value = Dist.CLIENT)
 public class ClientEvents {
+
+    // Locations of trance bar images
+    private static final ResourceLocation ICON_BG = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_bg");
+    private static final ResourceLocation ICON_PARTIAL = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_partial");
+    private static final ResourceLocation ICON_FULL = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_full");
+    // Icon final variables
+    private static final int ICON_COUNT = 9;
+    private static final int ICON_SIZE = 8;
+    private static final int ICON_SPACING = 9;
+    private static final int PER_ICON = 100 / ICON_COUNT;
 
     @SubscribeEvent
     public static void registerKeyBind(RegisterKeyMappingsEvent event) {
@@ -51,35 +63,34 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerHUD(RegisterGuiLayersEvent event) {
         event.registerAbove(VanillaGuiLayers.HOTBAR, ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_bar"),
-            (guiGraphics, deltaTracker) -> {
-                int x = guiGraphics.guiWidth() / 2; // Midpoint of X
-                int y = guiGraphics.guiHeight();
+            ClientEvents::renderTranceBar);
+    }
 
-                // Icon for empty trance icon
-                if(!Minecraft.getInstance().player.isCreative() && Minecraft.getInstance().player.hasData(ModData.TRANCE)) {
-                    for (int i = 0; i < 10; i++) { //Draw 10 empty icons
-                        guiGraphics.blitSprite(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_bg"),
-                                21, 21, 0, 0, x -95 + i * 18, y - 55, 16, 16);
-                    }
-                }
+    private static void renderTranceBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
+        Minecraft mcInstance = Minecraft.getInstance();
 
-                // Icon for partial trance icon
-                if(!Minecraft.getInstance().player.isCreative() && Minecraft.getInstance().player.hasData(ModData.TRANCE)) {
-                    for (int i = 0; i < 0; i++) {
-                        guiGraphics.blitSprite(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_partial"),
-                                21, 21, 0, 0, x -95 + i * 18, y - 55, 16, 16);
-                    }
-                }
+        if (mcInstance.options.hideGui || mcInstance.player.isCreative()) return;
 
-                // Icon for full trance icon
-                if(!Minecraft.getInstance().player.isCreative() && Minecraft.getInstance().player.hasData(ModData.TRANCE)) {
-                    for (int i = 0; i < 0; i++) {
-                        guiGraphics.blitSprite(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_full"),
-                                21, 21, 0, 0, x -95 + i * 18, y - 55, 16, 16);
-                    }
-                }
+        int trance = ClientHypnoCache.getTrance();
+        int full_icons = trance / PER_ICON;
+        boolean partial_icon = trance % PER_ICON > 0;
 
-            });
+        int left = guiGraphics.guiWidth() / 2 + 10;
+        int top = guiGraphics.guiHeight() - 49;
+
+
+        for (int i = 0; i < ICON_COUNT; i++) {
+            int x = left + i * ICON_SPACING;
+
+            guiGraphics.blitSprite(ICON_BG, x, top, ICON_SIZE, ICON_SIZE);
+
+            if (i < full_icons) {
+                guiGraphics.blitSprite(ICON_FULL, x, top, ICON_SIZE, ICON_SIZE);
+            } else if (i == full_icons && partial_icon) {
+                guiGraphics.blitSprite(ICON_PARTIAL, x, top, ICON_SIZE, ICON_SIZE);
+            }
+        }
+
     }
 
     // When logging out, clear the cache

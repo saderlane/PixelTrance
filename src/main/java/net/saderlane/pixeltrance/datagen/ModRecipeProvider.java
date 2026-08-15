@@ -41,6 +41,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);
                         //, "pixeltrance:spiralite"); // This is only needed if 2 recipes return the same thing, make sure the ID is different
 
+
+        // Recipe for Spiralite Lamp
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SPIRALITE_LAMP.get())
+                .pattern("SSS")
+                .pattern("SRS")
+                .pattern("SSS")
+                .define('S', ModItems.SPIRALITE.get())
+                .define('R', Items.REDSTONE_LAMP)
+                .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
+
+
+
         // Recipe for Pocket Watch
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POCKET_WATCH.get())
                 .pattern("gCg")
@@ -51,44 +63,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', Items.CLOCK)
                 .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
 
-        // Recipes for Spiralite Tools
-//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SPIRALITE_SWORD.get())
-//                .pattern(" S ")
-//                .pattern(" S ")
-//                .pattern(" s ")
-//                .define('S', ModItems.SPIRALITE.get())
-//                .define('s', Items.STICK)
-//                .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
-//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SPIRALITE_PICKAXE.get())
-//                .pattern("SSS")
-//                .pattern(" s ")
-//                .pattern(" s ")
-//                .define('S', ModItems.SPIRALITE.get())
-//                .define('s', Items.STICK)
-//                .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
-//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SPIRALITE_SHOVEL.get())
-//                .pattern(" S ")
-//                .pattern(" s ")
-//                .pattern(" s ")
-//                .define('S', ModItems.SPIRALITE.get())
-//                .define('s', Items.STICK)
-//                .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
-//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SPIRALITE_AXE.get())
-//                .pattern("SS ")
-//                .pattern("Ss ")
-//                .pattern(" s ")
-//                .define('S', ModItems.SPIRALITE.get())
-//                .define('s', Items.STICK)
-//                .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
-//
-//
-//        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SPIRALITE_HOE.get())
-//                .pattern("SS ")
-//                .pattern(" s ")
-//                .pattern(" s ")
-//                .define('S', ModItems.SPIRALITE.get())
-//                .define('s', Items.STICK)
-//                .unlockedBy("has_spiralite", has(ModItems.SPIRALITE)).save(recipeOutput);
+
         toolBuilder("sword",
                 RecipeCategory.TOOLS, ModItems.SPIRALITE_SWORD.get(), Items.STICK, ModItems.SPIRALITE.get(), recipeOutput);
         toolBuilder("pickaxe",

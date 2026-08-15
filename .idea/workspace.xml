@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="made spiralite lamp a hypnosis source">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="tidied some source logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/ROADMAP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModRecipeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModRecipeProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/gui/sprites/trance_icon_full.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/gui/sprites/trance_icon_full.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/gui/sprites/trance_icon_partial.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/gui/sprites/trance_icon_partial.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +129,7 @@
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Data">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="net.neoforged.devlaunch.Main" />
       <module name="PixelTrance.main" />
@@ -561,7 +564,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786754986889</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="tidied some source logic">
+      <option name="closed" value="true" />
+      <created>1786755656312</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1786755656312</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,7 +590,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pocket watch recipe was outputting a spiralite block" />
     <MESSAGE value="added hypnodata and custom logging tool" />
     <MESSAGE value="trying to fix github build job" />
     <MESSAGE value="trying to fix github build job again" />
@@ -604,7 +614,8 @@
     <MESSAGE value="added basic trance and focus gain to watch - picks within range of watch (highest focus -&gt; closest)" />
     <MESSAGE value="added core of trance bar - no visuals yet" />
     <MESSAGE value="made spiralite lamp a hypnosis source" />
-    <option name="LAST_COMMIT_MESSAGE" value="made spiralite lamp a hypnosis source" />
+    <MESSAGE value="tidied some source logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="tidied some source logic" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
