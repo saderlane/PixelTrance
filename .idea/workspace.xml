@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added basic trance and focus gain to watch - picks within range of watch (highest focus -&gt; closest)">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added core of trance bar - no visuals yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -543,7 +544,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786686065436</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="added core of trance bar - no visuals yet">
+      <option name="closed" value="true" />
+      <created>1786752270149</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1786752270149</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +570,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated pocket watch to be custom sound item - added console debug for when it is used" />
     <MESSAGE value="added crafting recipe for pocket watch" />
     <MESSAGE value="pocket watch recipe was outputting a spiralite block" />
     <MESSAGE value="added hypnodata and custom logging tool" />
@@ -586,7 +594,8 @@
     <MESSAGE value="fixed class names" />
     <MESSAGE value="added trance and focus decay, pocket watch is mostly working - needs tuning" />
     <MESSAGE value="added basic trance and focus gain to watch - picks within range of watch (highest focus -&gt; closest)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added basic trance and focus gain to watch - picks within range of watch (highest focus -&gt; closest)" />
+    <MESSAGE value="added core of trance bar - no visuals yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="added core of trance bar - no visuals yet" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

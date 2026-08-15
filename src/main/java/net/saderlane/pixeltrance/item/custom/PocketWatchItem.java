@@ -106,13 +106,13 @@ public class PocketWatchItem extends Item {
         // If not client or entity holding the watch isn't living, return
         if (!level.isClientSide() && entity instanceof LivingEntity holder) {
             boolean held = isSelected || holder.getOffhandItem() == stack;// If not held in main or offhand
-            if (!held) {
+            if (!held) { // If it is not held
                 // AND it is ticking
                 if (ticking) {
                     setTicking(stack, false); // Set ticking to false
                     PTLog.debug("[PixelTrance] " + stack.getDisplayName().getString() + " stopped ticking.");
                 }
-            } else if(ticking) {
+            } else if(ticking) { // If it is ticking and in the hand
                 if (level.getGameTime() % PULSE_IN_TICK == 0) {
                     pulse((ServerLevel) level, holder, stack);
                 }
