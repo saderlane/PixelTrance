@@ -35,25 +35,19 @@ public class ClientEvents {
     private static final int PER_ICON = 100 / ICON_COUNT;
 
     @SubscribeEvent
-    public static void registerKeyBind(RegisterKeyMappingsEvent event) {
-        event.register(ModKeyMappings.PRESS_K.get());
-        event.register(ModKeyMappings.PRESS_L.get());
-    }
-
-    @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return;   // clicks can drain on a tick with no world loaded
 
         // When K key is pressed
-        while (ModKeyMappings.PRESS_K.get().consumeClick()) {
+        while (ModKeyMappings.PRESS_K.consumeClick()) {
             //Do things --> On client
             player.sendSystemMessage(Component.literal(
                     "Trance: " + ClientHypnoCache.getTrance() + " / 100"));
         }
 
         // When L key is pressed
-        while (ModKeyMappings.PRESS_L.get().consumeClick()) {
+        while (ModKeyMappings.PRESS_L.consumeClick()) {
             //Do things --> On client
             player.sendSystemMessage(Component.literal(
                     "Focus: " + ClientHypnoCache.getFocus() + " / 100"));

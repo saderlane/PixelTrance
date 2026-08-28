@@ -14,14 +14,14 @@ import org.lwjgl.glfw.GLFW;
 public class ModKeyMappings {
 
     // Custom Keybind to check hypnosis status
-    private static final KeyMapping PRESS_K =
+    public static final KeyMapping PRESS_K =
             new KeyMapping("key.pixeltrance.k",
                     InputConstants.Type.KEYSYM,
                     GLFW.GLFW_KEY_K,
                     "key.categories.misc");
 
     // Custom keybind to check focus status
-    private static final KeyMapping PRESS_L =
+    public static final KeyMapping PRESS_L =
             new KeyMapping("key.pixeltrance.l",
                     InputConstants.Type.KEYSYM,
                     GLFW.GLFW_KEY_L,
