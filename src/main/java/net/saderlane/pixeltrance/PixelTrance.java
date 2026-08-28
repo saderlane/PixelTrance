@@ -1,16 +1,11 @@
 package net.saderlane.pixeltrance;
 
-import net.minecraft.world.item.CreativeModeTabs;
 import net.saderlane.pixeltrance.block.ModBlocks;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dataattachment.ModData;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.item.ModCreativeModeTabs;
 import net.saderlane.pixeltrance.item.ModItems;
-import net.saderlane.pixeltrance.util.ModKeyMappings;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -58,10 +53,6 @@ public class PixelTrance {
         // Register Blocks
         PTLog.info("[PixelTrance] Registering Mod Blocks");
         ModBlocks.register(modEventBus);
-
-        // Register custom keymappings
-        PTLog.info("[PixelTrance] Registering Custom Keymappings");
-        ModKeyMappings.register();
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
