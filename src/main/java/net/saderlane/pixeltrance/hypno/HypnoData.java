@@ -6,6 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.saderlane.pixeltrance.dataattachment.ModData;
 import net.saderlane.pixeltrance.dev.PTLog;
+import net.saderlane.pixeltrance.effect.ModEffects;
 import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
 
 public final class HypnoData {
@@ -75,6 +76,8 @@ public final class HypnoData {
 
         if (focus <= 0 && trance <= MIN) return;
         if (recentlyInfluenced(subject)) return;
+        if (subject.hasEffect(ModEffects.HYPNOTIZED_EFFECT)) return;
+
 
 
         // Remove trance if focus is broken
