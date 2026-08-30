@@ -63,24 +63,25 @@ public class ClientEvents {
     private static void renderTranceBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         Minecraft mcInstance = Minecraft.getInstance();
 
+        // If gui isn't hidden and player isn't in creative
         if (mcInstance.options.hideGui || mcInstance.player.isCreative()) return;
 
-        int trance = ClientHypnoCache.getTrance();
-        int full_icons = trance / PER_ICON;
-        boolean partial_icon = trance % PER_ICON > 0;
+        int trance = ClientHypnoCache.getTrance(); // Get their current trance
+        int full_icons = trance / PER_ICON; // Find how many full trance icons there are
+        boolean partial_icon = trance % PER_ICON > 0; // Is there a partially filled icon?
 
-        int left = guiGraphics.guiWidth() / 2 + 10;
-        int top = guiGraphics.guiHeight() - 49;
+        int left = guiGraphics.guiWidth() / 2 + 10; // Left spacing for trance bar
+        int top = guiGraphics.guiHeight() - 49; // Top spacing for trance bar
 
-
+        // Draw the icons
         for (int i = 0; i < ICON_COUNT; i++) {
             int x = left + i * ICON_SPACING;
 
             guiGraphics.blitSprite(ICON_BG, x, top, ICON_SIZE, ICON_SIZE);
 
-            if (i < full_icons) {
+            if (i < full_icons) { // If there needs to be more trance icons
                 guiGraphics.blitSprite(ICON_FULL, x, top, ICON_SIZE, ICON_SIZE);
-            } else if (i == full_icons && partial_icon) {
+            } else if (i == full_icons && partial_icon) { // If there needs to be a partial icon
                 guiGraphics.blitSprite(ICON_PARTIAL, x, top, ICON_SIZE, ICON_SIZE);
             }
         }

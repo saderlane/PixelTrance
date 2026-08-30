@@ -27,8 +27,8 @@ public class SpiraliteLampBlock extends Block {
     private static final float RADIUS = 8.0f; // How far watch reaches
     private static final int PULSE_IN_TICK = 7; // Ticks between pulses
     // 5 = 4 times a second
-    private static final int FOCUS_GAIN = 2;
-    private static final int TRANCE_GAIN = 1;
+    private static final int FOCUS_GAIN = 4;
+    private static final int TRANCE_GAIN = 2;
 
     public static final BooleanProperty CLICKED = BooleanProperty.create("clicked");
 
