@@ -4,18 +4,33 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.HandlerThread;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.server.command.ConfigCommand;
 import net.saderlane.pixeltrance.PixelTrance;
+import net.saderlane.pixeltrance.command.FocusCommand;
+import net.saderlane.pixeltrance.command.TranceCommand;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.networking.ClientPayloadHandler;
 import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
 
 @EventBusSubscriber(modid = PixelTrance.MOD_ID)
 public class ModEvents {
+
+    // Register custom commands
+    @SubscribeEvent
+    public static void onCommandsRegister(RegisterCommandsEvent event) {
+        new TranceCommand(event.getDispatcher());
+        new FocusCommand(event.getDispatcher());
+
+        ConfigCommand.register(event.getDispatcher());
+    }
+
+
 
 
     @SubscribeEvent
