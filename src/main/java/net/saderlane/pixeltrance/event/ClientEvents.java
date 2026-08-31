@@ -76,7 +76,7 @@ public class ClientEvents {
 
 
     private static void updateTranceSound(int trance) {
-        boolean isInTrance = trance >= 70;
+        boolean isInTrance = trance >= 50;
         SoundManager soundManager = Minecraft.getInstance().getSoundManager();
 
         if (isInTrance && !wasTrancing) {
@@ -164,16 +164,20 @@ public class ClientEvents {
             super(soundEvent, SoundSource.PLAYERS, RandomSource.create());
             this.looping = true;
             this.relative = true;
-            this.volume = 0f;
+            this.volume = setVolume();
             this.pitch = 1f;
         }
 
         @Override
         public void tick() {
+            this.volume = setVolume();
+        }
+
+        private float setVolume() {
             float minVol = 0.3f;
             float maxVol = 1.0f;
-            float t = Math.clamp((ClientHypnoCache.getTrance() - 70 / 30f), 0f, 1f);
-            this.volume = Mth.lerp(t, minVol, maxVol);
+            float t = Mth.clamp((ClientHypnoCache.getTrance() - 50) / 30f, 0f, 1f);
+            return Mth.lerp(t, minVol, maxVol);
         }
 
         @Override
