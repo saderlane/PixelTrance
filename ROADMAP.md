@@ -41,8 +41,9 @@
 
 ### Pocket Watch Toggle Mode
 - [X] Right-click toggles “focus session” on/off
-- [ ] Visual particles, subtle glow, looping ticking sound
-  - Couldn't get visual particles to work and I don't think glow is a good effect
+- [ ] Watch visual/audio effects
+  - [X] Ticking sound
+  - [ ] Visual particles
 - [ ] Implement basic **Passive Focus Lock**
   - [ ] Add some conditional logic (gaze, etc)
   - [ ] Add screen pull to players

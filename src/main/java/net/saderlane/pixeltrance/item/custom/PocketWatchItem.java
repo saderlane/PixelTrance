@@ -3,6 +3,7 @@ package net.saderlane.pixeltrance.item.custom;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
+import net.saderlane.pixeltrance.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
@@ -34,6 +36,8 @@ public class PocketWatchItem extends Item {
                                                     // 5 = 4 times a second
     private static final int FOCUS_GAIN = 7;
     private static final int TRANCE_GAIN = 3;
+
+    private static final int WATCH_TICK_INTERVAL = 40;
 
     // Get TICKING data component for the stack
     public static boolean isTicking(ItemStack stack) {
@@ -60,6 +64,12 @@ public class PocketWatchItem extends Item {
 
         if (!player.level().isClientSide()) {
             setTicking(stack, true);
+
+            player.level().playSound(
+                    null,
+                    player.blockPosition(),
+                    ModSounds.WATCH_TICKING.get(),
+                    SoundSource.PLAYERS, 1f, 1f);
 
             PTLog.debug("[PixelTrance] Pocket watch shown to " + interactionTarget.getName().getString()
                     + " by " + player.getName().getString()
@@ -115,10 +125,18 @@ public class PocketWatchItem extends Item {
             } else if(ticking) { // If it is ticking and in the hand
                 if (level.getGameTime() % PULSE_IN_TICK == 0) {
                     pulse((ServerLevel) level, holder, stack);
+
+                    if (level.getGameTime() % WATCH_TICK_INTERVAL == 0) {
+                        level.playSound(
+                                null,
+                                holder.blockPosition(),
+                                ModSounds.WATCH_TICKING.get(),
+                                SoundSource.PLAYERS, 1f, 1f);
+                    }
+
                 }
             }
         }
-
 
     }
 

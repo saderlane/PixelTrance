@@ -1,0 +1,14 @@
+{
+  "watch_ticking": {
+    "subtitle": "sounds.pixeltrance.watch_ticking",
+    "sounds": [
+      "pixeltrance:watch_ticking"
+    ]
+  },
+  "trance_binaural": {
+    "subtitle": "sounds.pixeltrance.trance_binaural",
+    "sounds": [
+      "pixeltrance:trance_binaural"
+    ]
+  }
+}

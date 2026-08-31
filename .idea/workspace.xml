@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added custom hypnotized effect - currently just makes the player slower">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added wave to trance bar when trance &gt;= 50">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/sound/ModSounds.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/sounds.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/sounds/trance_binaural.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/sounds/watch_ticking.ogg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/lang/en_us.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,41 +88,41 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-vcs.commit.finished&quot;: &quot;3 files committed&quot;,
-    &quot;Notification.DoNotAsk-vcs.commit.finished&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/textures/item&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-vcs.commit.finished": "3 files committed",
+    "Notification.DoNotAsk-vcs.commit.finished": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/sounds",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\sounds" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\item" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\textures\block" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\data\pixeltrance\loot_table\blocks" />
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\data\pixeltrance\recipe" />
-      <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\models\item" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src" />
@@ -209,14 +215,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00003" summary="ROADMAP.md cleanup">
-      <option name="closed" value="true" />
-      <created>1779494345922</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1779494345922</updated>
     </task>
     <task id="LOCAL-00004" summary="set up neoforge - this is completely empty (still having some issues with the toml generating)">
       <option name="closed" value="true" />
@@ -602,7 +600,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788119049822</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="added wave to trance bar when trance &gt;= 50">
+      <option name="closed" value="true" />
+      <created>1788146496933</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1788146496934</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +626,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="readme update" />
     <MESSAGE value="added hover text for spiralite and pocket watch - added tags i guess?" />
     <MESSAGE value="Added datagen" />
     <MESSAGE value="Sets pocket watch ticking = false if it is taken out of the player's main or offhand" />
@@ -645,7 +650,8 @@
     <MESSAGE value="added trance and focus commands" />
     <MESSAGE value="added comments and tweaked spiralite lamp trance/focus values" />
     <MESSAGE value="added custom hypnotized effect - currently just makes the player slower" />
-    <option name="LAST_COMMIT_MESSAGE" value="added custom hypnotized effect - currently just makes the player slower" />
+    <MESSAGE value="added wave to trance bar when trance &gt;= 50" />
+    <option name="LAST_COMMIT_MESSAGE" value="added wave to trance bar when trance &gt;= 50" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
