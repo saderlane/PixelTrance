@@ -4,21 +4,26 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.client.resources.sounds.SoundInstance;
+import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.saderlane.pixeltrance.PixelTrance;
 import net.saderlane.pixeltrance.client.ClientHypnoCache;
-import net.saderlane.pixeltrance.dataattachment.ModData;
-import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
+import net.saderlane.pixeltrance.sound.ModSounds;
 import net.saderlane.pixeltrance.util.ModKeyMappings;
 
 @EventBusSubscriber(modid = PixelTrance.MOD_ID, value = Dist.CLIENT)
@@ -41,6 +46,10 @@ public class ClientEvents {
     private static final double WAVE_AMP = 2.0;
     private static final int WAVE_TRIGGER = 50;
 
+    // Building non-infinite ear fucking for binaural
+    private static TranceLoopSoundInstance tranceSoundInstance;
+    private static boolean wasTrancing = false;
+
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         LocalPlayer player = Minecraft.getInstance().player;
@@ -59,7 +68,32 @@ public class ClientEvents {
             player.sendSystemMessage(Component.literal(
                     "Focus: " + ClientHypnoCache.getFocus() + " / 100"));
         }
+
+        int trance = ClientHypnoCache.getTrance();
+        updateTranceSound(trance);
+
     }
+
+
+    private static void updateTranceSound(int trance) {
+        boolean isInTrance = trance >= 70;
+        SoundManager soundManager = Minecraft.getInstance().getSoundManager();
+
+        if (isInTrance && !wasTrancing) {
+            tranceSoundInstance = new TranceLoopSoundInstance(ModSounds.TRANCE_BINAURAL.get());
+            soundManager.play(tranceSoundInstance);
+        } else if (!isInTrance && wasTrancing) {
+            if (tranceSoundInstance != null) {
+                tranceSoundInstance.requestStop();
+                soundManager.stop(tranceSoundInstance);
+                tranceSoundInstance = null;
+            }
+        }
+
+        wasTrancing = isInTrance;
+    }
+
+
 
     @SubscribeEvent
     public static void registerHUD(RegisterGuiLayersEvent event) {
@@ -106,10 +140,50 @@ public class ClientEvents {
 
     }
 
-    // When logging out, clear the cache
+    // When the player disconnects
     @SubscribeEvent
     public static void onLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
-        ClientHypnoCache.clear();
+        ClientHypnoCache.clear(); //clear hypno cache
+        updateTranceSound(0); //Kill the sound when logging out
+    }
+
+    // When the player dies and respawns
+    @SubscribeEvent
+    public static void onRespawn(ClientPlayerNetworkEvent.Clone event) {
+        ClientHypnoCache.clear(); //clear hypno cache
+        updateTranceSound(0); // Kill the sound on respawn
+    }
+
+
+
+
+    private static class TranceLoopSoundInstance extends AbstractTickableSoundInstance {
+        private boolean stopped = false;
+
+        TranceLoopSoundInstance(SoundEvent soundEvent) {
+            super(soundEvent, SoundSource.PLAYERS, RandomSource.create());
+            this.looping = true;
+            this.relative = true;
+            this.volume = 0f;
+            this.pitch = 1f;
+        }
+
+        @Override
+        public void tick() {
+            float minVol = 0.3f;
+            float maxVol = 1.0f;
+            float t = Math.clamp((ClientHypnoCache.getTrance() - 70 / 30f), 0f, 1f);
+            this.volume = Mth.lerp(t, minVol, maxVol);
+        }
+
+        @Override
+        public boolean isStopped() {
+            return stopped;
+        }
+
+        void requestStop() {
+            stopped = true;
+        }
     }
 
 }
