@@ -28,11 +28,18 @@ public class ClientEvents {
     private static final ResourceLocation ICON_BG = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_bg");
     private static final ResourceLocation ICON_PARTIAL = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_partial");
     private static final ResourceLocation ICON_FULL = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_full");
+
     // Icon final variables
     private static final int ICON_COUNT = 9;
     private static final int ICON_SIZE = 8;
     private static final int ICON_SPACING = 9;
     private static final int PER_ICON = 100 / ICON_COUNT;
+
+    // Wave variables so I don't kms
+    private static final double WAVE_SPEED = 4.0;
+    private static final double WAVE_STEP = 0.6;
+    private static final double WAVE_AMP = 2.0;
+    private static final int WAVE_TRIGGER = 50;
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
@@ -73,16 +80,27 @@ public class ClientEvents {
         int left = guiGraphics.guiWidth() / 2 + 10; // Left spacing for trance bar
         int top = guiGraphics.guiHeight() - 49; // Top spacing for trance bar
 
+        double waveStrength = Math.clamp((trance - WAVE_TRIGGER) / 40.0, 0.0, 1.0); // Determine wave strength
+                                                                                    // Intensity scales 50-70:0-1
+        double time = System.nanoTime() / 1_000_000_000.0; // Seconds
+
+
         // Draw the icons
         for (int i = 0; i < ICON_COUNT; i++) {
             int x = left + i * ICON_SPACING;
+            int y = top;
 
-            guiGraphics.blitSprite(ICON_BG, x, top, ICON_SIZE, ICON_SIZE);
+            if (waveStrength > 0.0) {
+                double phase = time * WAVE_SPEED + i * WAVE_STEP;
+                y += (int) Math.round(Math.sin(phase) * WAVE_AMP * waveStrength);
+            }
+
+            guiGraphics.blitSprite(ICON_BG, x, y, ICON_SIZE, ICON_SIZE);
 
             if (i < full_icons) { // If there needs to be more trance icons
-                guiGraphics.blitSprite(ICON_FULL, x, top, ICON_SIZE, ICON_SIZE);
+                guiGraphics.blitSprite(ICON_FULL, x, y, ICON_SIZE, ICON_SIZE);
             } else if (i == full_icons && partial_icon) { // If there needs to be a partial icon
-                guiGraphics.blitSprite(ICON_PARTIAL, x, top, ICON_SIZE, ICON_SIZE);
+                guiGraphics.blitSprite(ICON_PARTIAL, x, y, ICON_SIZE, ICON_SIZE);
             }
         }
 

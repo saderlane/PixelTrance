@@ -21,7 +21,7 @@
 **Core Systems and Visuals**
 - [X] Mod loads and logs successfully
 - [X] Implement trance meter (player data + HUD)
-  - [ ] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
+  - [X] Make it 🎀  𝓅𝓇𝑒𝓉𝓉𝓎  🎀
 - [X] Trance syncing in multiplayer (I think this works?)
 - [X] Create base hypnosis item (Pocket Watch)
 
