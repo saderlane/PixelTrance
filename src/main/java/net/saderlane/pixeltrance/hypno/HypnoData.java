@@ -117,5 +117,6 @@ public final class HypnoData {
     // Public function to allow thinks to mark influenced (stops random decay)
     public static void markInfluenced(LivingEntity subject) {
         lastInfluenced(subject);
+        sync(subject);
     }
 }
