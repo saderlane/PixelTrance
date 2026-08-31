@@ -113,4 +113,9 @@ public final class HypnoData {
     public static boolean recentlyInfluenced(LivingEntity subject) {
         return subject.level().getGameTime() - subject.getData(ModData.LAST_INFLUENCED) < INFLUENCE_GRACE_TICKS;
     }
+
+    // Public function to allow thinks to mark influenced (stops random decay)
+    public static void markInfluenced(LivingEntity subject) {
+        lastInfluenced(subject);
+    }
 }

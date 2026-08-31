@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added pocket watch ticking">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added binaural sound effect">
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,14 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00005" summary="added pocket watch item - no functionality">
-      <option name="closed" value="true" />
-      <created>1779656670766</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1779656670766</updated>
     </task>
     <task id="LOCAL-00006" summary="added spiralite item - model is Kaupenjoe's - will replace">
       <option name="closed" value="true" />
@@ -602,7 +595,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788147874599</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="added binaural sound effect">
+      <option name="closed" value="true" />
+      <created>1788150417071</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1788150417071</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added datagen" />
     <MESSAGE value="Sets pocket watch ticking = false if it is taken out of the player's main or offhand" />
     <MESSAGE value="added some debug clarity" />
     <MESSAGE value="Added spiralite lamp block" />
@@ -645,7 +645,8 @@
     <MESSAGE value="added custom hypnotized effect - currently just makes the player slower" />
     <MESSAGE value="added wave to trance bar when trance &gt;= 50" />
     <MESSAGE value="added pocket watch ticking" />
-    <option name="LAST_COMMIT_MESSAGE" value="added pocket watch ticking" />
+    <MESSAGE value="added binaural sound effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="added binaural sound effect" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

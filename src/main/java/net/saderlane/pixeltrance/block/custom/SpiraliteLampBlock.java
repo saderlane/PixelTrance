@@ -90,6 +90,9 @@ public class SpiraliteLampBlock extends Block {
             int subjectTrance = HypnoData.getTrance(subject);
 
             if (chosen.contains(subject)) {
+
+                HypnoData.markInfluenced(subject);
+
                 if (subjectFocus != HypnoData.MAX)
                 {
                     HypnoData.addFocus(subject, FOCUS_GAIN);
