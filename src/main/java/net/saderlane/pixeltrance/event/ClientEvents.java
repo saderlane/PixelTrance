@@ -1,5 +1,7 @@
 package net.saderlane.pixeltrance.event;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -45,6 +47,17 @@ public class ClientEvents {
     private static final double WAVE_STEP = 0.6;
     private static final double WAVE_AMP = 2.0;
     private static final int WAVE_TRIGGER = 50;
+
+    // Vignette variables
+    private static final ResourceLocation VIGNETTE = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_vignette");
+    private static final int VIGNETTE_START = 50;
+    private static final int VIGNETTE_FULL = 80;
+    private static final float VIGNETTE_MAX_ALPHA = 0.6f;
+        // Pulse variables
+    private static final int PULSE_START = 50;
+    private static final double PULSE_SPEED = 2.5;
+    private static final float PULSE_AMP = 0.15f;
+
 
     // Building non-infinite ear fucking for binaural
     private static TranceLoopSoundInstance tranceSoundInstance;
@@ -99,7 +112,10 @@ public class ClientEvents {
     public static void registerHUD(RegisterGuiLayersEvent event) {
         event.registerAbove(VanillaGuiLayers.HOTBAR, ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_bar"),
             ClientEvents::renderTranceBar);
+        event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_vignette"),
+                ClientEvents::renderTranceVignette);
     }
+
 
     private static void renderTranceBar(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         Minecraft mcInstance = Minecraft.getInstance();
@@ -140,6 +156,39 @@ public class ClientEvents {
 
     }
 
+    private static void renderTranceVignette(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
+        int trance = ClientHypnoCache.getTrance();
+
+        // If trance isn't high enough for a vignette
+        if (trance < VIGNETTE_START || Minecraft.getInstance().options.hideGui) return;
+
+        // Set vignette density
+        float t = Mth.clamp( (trance - VIGNETTE_START) / (float) (VIGNETTE_FULL - VIGNETTE_START), 0f, 1f);
+        float alpha = t * VIGNETTE_MAX_ALPHA;
+
+        // Set vignette pulse
+        float pulseStrength = Mth.clamp((trance - PULSE_START) / 20f, 0f, 1f);
+        double time = System.nanoTime() / 1_000_000_000.0;
+        alpha += (float) Math.sin(time * PULSE_SPEED) * PULSE_AMP * pulseStrength;
+
+
+        RenderSystem.disableDepthTest();
+        RenderSystem.depthMask(false);
+        RenderSystem.enableBlend();
+
+
+        RenderSystem.setShaderColor(0.6f, 0.2f, 0.9f, alpha);
+        guiGraphics.blitSprite(VIGNETTE, 0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight());
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+
+        RenderSystem.disableBlend();
+        RenderSystem.depthMask(true);
+        RenderSystem.enableDepthTest();
+
+
+
+    }
+
     // When the player disconnects
     @SubscribeEvent
     public static void onLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
@@ -174,8 +223,8 @@ public class ClientEvents {
         }
 
         private float setVolume() {
-            float minVol = 0.3f;
-            float maxVol = 1.0f;
+            float minVol = 0.05f;
+            float maxVol = .9f;
             float t = Mth.clamp((ClientHypnoCache.getTrance() - 50) / 30f, 0f, 1f);
             return Mth.lerp(t, minVol, maxVol);
         }

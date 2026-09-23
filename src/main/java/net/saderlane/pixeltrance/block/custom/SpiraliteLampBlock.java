@@ -29,8 +29,6 @@ public class SpiraliteLampBlock extends Block {
     private static final float RADIUS = 8.0f; // How far watch reaches
     private static final int PULSE_IN_TICK = 7; // Ticks between pulses
     // 5 = 4 times a second
-    private static final int FOCUS_GAIN = 4;
-    private static final int TRANCE_GAIN = 2;
 
     public static final BooleanProperty CLICKED = BooleanProperty.create("clicked");
 
@@ -98,12 +96,12 @@ public class SpiraliteLampBlock extends Block {
 
                 if (subjectFocus != HypnoData.MAX)
                 {
-                    HypnoData.addFocus(subject, FOCUS_GAIN);
+                    HypnoData.addFocus(subject, subjectSource.getFocusGain());
                     PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
                             + " (focus " + HypnoData.getFocus(subject) + ")");
                 }
                 if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
-                    HypnoData.addTrance(subject, TRANCE_GAIN);
+                    HypnoData.addTrance(subject, subjectSource.getTranceGain());
                     PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
                             + " (trance " + HypnoData.getTrance(subject) + ")");
                 }

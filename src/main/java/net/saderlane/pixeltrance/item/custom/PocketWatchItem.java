@@ -19,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
+import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
@@ -35,8 +36,6 @@ public class PocketWatchItem extends Item {
     private static final float RADIUS = 8.0f; // How far watch reaches
     private static final int PULSE_IN_TICK = 5; // Ticks between pulses
                                                     // 5 = 4 times a second
-    private static final int FOCUS_GAIN = 7;
-    private static final int TRANCE_GAIN = 3;
 
     private static final int WATCH_TICK_INTERVAL = 40;
 
@@ -166,16 +165,17 @@ public class PocketWatchItem extends Item {
             if (chosen.contains(subject)) {
 
                 HypnoData.markInfluenced(subject, ModInfluenceSources.POCKET_WATCH.get());
+                InfluenceSource subjectSource = HypnoData.getInfluenceSource(subject);
 
                 if (subjectFocus != HypnoData.MAX)
                 {
-                    HypnoData.addFocus(subject, FOCUS_GAIN);
-                    PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
+                    HypnoData.addFocus(subject, subjectSource.getFocusGain());
+                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
                             + " (focus " + HypnoData.getFocus(subject) + ")");
                 }
                 if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
-                    HypnoData.addTrance(subject, TRANCE_GAIN);
-                    PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
+                    HypnoData.addTrance(subject, subjectSource.getTranceGain());
+                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
                             + " (trance " + HypnoData.getTrance(subject) + ")");
                 }
 

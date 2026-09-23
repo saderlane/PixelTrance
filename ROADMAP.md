@@ -27,10 +27,10 @@
 
 - [X] Trance decay logic
 - [X] Focus decay logic
-- [ ] Visual/audio feedback
+- [X] Visual/audio feedback
   - [X] Binaural plays when trance is at a certain percent
     - Scales with volume
-  - [ ] Purple vignette when trance is at a certain percent
+  - [X] Purple vignette when trance is at a certain percent
     - Pulses gently at even higher trance
 
 ---

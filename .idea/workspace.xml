@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Fully functional audio for pocket watch + trance and animated trance bar">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/InfluenceSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/ModInfluenceSources.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="foundational work creating a influence source class to store future data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dataattachment/ModData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dataattachment/ModData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,14 +212,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add todos for tracking">
-      <option name="closed" value="true" />
-      <created>1779662408211</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1779662408211</updated>
     </task>
     <task id="LOCAL-00010" summary="updated build.gradle and neoforge.mods.toml to show mod authors and description - this was a dumb fix">
       <option name="closed" value="true" />
@@ -609,7 +597,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788151387110</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="foundational work creating a influence source class to store future data">
+      <option name="closed" value="true" />
+      <created>1790137509580</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1790137509580</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +623,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed some poor wording on spiralite tooltip" />
     <MESSAGE value="Added spiralite tools - likely to be removed, mainly for testing and PoC" />
     <MESSAGE value="moving todo for my own sanity" />
     <MESSAGE value="fixing layout of lamp block" />
@@ -652,7 +647,8 @@
     <MESSAGE value="fixed issue with focus decaying while being influenced" />
     <MESSAGE value="fixed audio not playing and tweaked values" />
     <MESSAGE value="Fully functional audio for pocket watch + trance and animated trance bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully functional audio for pocket watch + trance and animated trance bar" />
+    <MESSAGE value="foundational work creating a influence source class to store future data" />
+    <option name="LAST_COMMIT_MESSAGE" value="foundational work creating a influence source class to store future data" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
