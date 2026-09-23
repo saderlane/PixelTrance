@@ -7,8 +7,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RedstoneTorchBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -20,6 +23,7 @@ import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 
+import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,26 +32,48 @@ public class SpiraliteLampBlock extends Block {
     // ========== Private Variables ============
     private static final float RADIUS = 8.0f; // How far watch reaches
     private static final int PULSE_IN_TICK = 7; // Ticks between pulses
-    // 5 = 4 times a second
-
+                                                // 5 = 4 times a second
     public static final BooleanProperty CLICKED = BooleanProperty.create("clicked");
 
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(CLICKED);
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        if (!level.isClientSide && state.getValue(CLICKED))  {
+            level.scheduleTick(pos, this, PULSE_IN_TICK);
+        }
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(CLICKED, Boolean.valueOf(context.getLevel().hasNeighborSignal(context.getClickedPos())));
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if(!level.isClientSide()) {
-            boolean currentState = state.getValue(CLICKED);
-            level.setBlockAndUpdate(pos, state.setValue(CLICKED, !currentState));
-            level.scheduleTick(pos, this, 0);
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        if (!level.isClientSide) {
+            boolean flag = state.getValue(CLICKED);
+            if (flag != level.hasNeighborSignal(pos)) {
+                if (flag) {
+                    level.scheduleTick(pos, this, 4);
+                } else {
+                    level.setBlock(pos, state.cycle(CLICKED), 2);
+                    level.scheduleTick(pos, this, PULSE_IN_TICK); // Start the pulse loop
+                }
+            }
         }
-
-        return InteractionResult.SUCCESS;
     }
+
+//    @Override
+//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+//        if(!level.isClientSide()) {
+//            boolean currentState = state.getValue(CLICKED);
+//            level.setBlockAndUpdate(pos, state.setValue(CLICKED, !currentState));
+//            level.scheduleTick(pos, this, 0);
+//        }
+//
+//        return InteractionResult.SUCCESS;
+//    }
 
 
     @Override
@@ -57,13 +83,23 @@ public class SpiraliteLampBlock extends Block {
                         RandomSource random) {
 
 
+        if (!state.getValue(CLICKED)) return;
 
-        boolean currentState = state.getValue(CLICKED);
-        if (!currentState) return;
+        // Power is gone: turn off and don't reschedule, which ends the loop
+        if (!level.hasNeighborSignal(pos)) {
+            level.setBlock(pos, state.cycle(CLICKED), 2);
+            return;
+        }
 
-        level.scheduleTick(pos, this, PULSE_IN_TICK);
+        // Still powered: pulse and schedule the next tick
         //PTLog.debug("[PixelTrance] Block ticking _PULSING");
         pulse(level, pos);
+        level.scheduleTick(pos, this, PULSE_IN_TICK);
+
+//        boolean currentState = state.getValue(CLICKED);
+//        if (!currentState) return;
+
+
 
 
         super.tick(state, level, pos, random);
@@ -130,11 +166,13 @@ public class SpiraliteLampBlock extends Block {
     }
 
 
-
-
-
-    public SpiraliteLampBlock(Properties properties) {
+    public SpiraliteLampBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(CLICKED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(CLICKED, Boolean.FALSE));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(CLICKED);
     }
 }
