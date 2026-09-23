@@ -17,6 +17,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
+import net.saderlane.pixeltrance.hypno.InfluenceSource;
+import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 
 import java.util.Comparator;
 import java.util.List;
@@ -91,17 +93,18 @@ public class SpiraliteLampBlock extends Block {
 
             if (chosen.contains(subject)) {
 
-                HypnoData.markInfluenced(subject);
+                HypnoData.markInfluenced(subject, ModInfluenceSources.SPIRALITE_LAMP.get());
+                InfluenceSource subjectSource = HypnoData.getInfluenceSource(subject);
 
                 if (subjectFocus != HypnoData.MAX)
                 {
                     HypnoData.addFocus(subject, FOCUS_GAIN);
-                    PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
+                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
                             + " (focus " + HypnoData.getFocus(subject) + ")");
                 }
                 if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
                     HypnoData.addTrance(subject, TRANCE_GAIN);
-                    PTLog.debug("[PixelTrance] Influencing " + subject.getName().getString()
+                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
                             + " (trance " + HypnoData.getTrance(subject) + ")");
                 }
 

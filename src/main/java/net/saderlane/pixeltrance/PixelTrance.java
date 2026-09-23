@@ -5,6 +5,7 @@ import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dataattachment.ModData;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.effect.ModEffects;
+import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.item.ModCreativeModeTabs;
 import net.saderlane.pixeltrance.item.ModItems;
 
@@ -63,6 +64,11 @@ public class PixelTrance {
         // Register Custom Sounds
         PTLog.info("[PixelTrance] Registering Mod Sounds");
         ModSounds.register(modEventBus);
+
+        // Register Influence Sources
+        PTLog.info("[PixelTrance] Registering Influence Sources");
+        ModInfluenceSources.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

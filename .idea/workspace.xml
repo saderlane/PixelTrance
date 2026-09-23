@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="fixed issue with focus decaying while being influenced">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Fully functional audio for pocket watch + trance and animated trance bar">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/InfluenceSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/ModInfluenceSources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dataattachment/ModData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dataattachment/ModData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/item/custom/PocketWatchItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +47,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -82,34 +89,34 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-vcs.commit.finished": "3 files committed",
-    "Notification.DoNotAsk-vcs.commit.finished": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/sounds",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-vcs.commit.finished&quot;: &quot;3 files committed&quot;,
+    &quot;Notification.DoNotAsk-vcs.commit.finished&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/sounds&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\sounds" />
@@ -209,22 +216,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00007" summary="added spiralite block and ore - mainly proof of concept/learning but may keep it">
-      <option name="closed" value="true" />
-      <created>1779661076049</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1779661076049</updated>
-    </task>
-    <task id="LOCAL-00008" summary="added custom creative mode tab">
-      <option name="closed" value="true" />
-      <created>1779662301754</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1779662301754</updated>
     </task>
     <task id="LOCAL-00009" summary="add todos for tracking">
       <option name="closed" value="true" />
@@ -602,7 +593,23 @@
       <option name="project" value="LOCAL" />
       <updated>1788150773004</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="fixed audio not playing and tweaked values">
+      <option name="closed" value="true" />
+      <created>1788151248671</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1788151248671</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Fully functional audio for pocket watch + trance and animated trance bar">
+      <option name="closed" value="true" />
+      <created>1788151387110</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1788151387110</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,8 +627,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added some debug clarity" />
-    <MESSAGE value="Added spiralite lamp block" />
     <MESSAGE value="fixed some poor wording on spiralite tooltip" />
     <MESSAGE value="Added spiralite tools - likely to be removed, mainly for testing and PoC" />
     <MESSAGE value="moving todo for my own sanity" />
@@ -645,7 +650,9 @@
     <MESSAGE value="added pocket watch ticking" />
     <MESSAGE value="added binaural sound effect" />
     <MESSAGE value="fixed issue with focus decaying while being influenced" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed issue with focus decaying while being influenced" />
+    <MESSAGE value="fixed audio not playing and tweaked values" />
+    <MESSAGE value="Fully functional audio for pocket watch + trance and animated trance bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully functional audio for pocket watch + trance and animated trance bar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

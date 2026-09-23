@@ -19,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
+import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
@@ -164,7 +165,7 @@ public class PocketWatchItem extends Item {
 
             if (chosen.contains(subject)) {
 
-                HypnoData.markInfluenced(subject);
+                HypnoData.markInfluenced(subject, ModInfluenceSources.POCKET_WATCH.get());
 
                 if (subjectFocus != HypnoData.MAX)
                 {

@@ -39,6 +39,12 @@
   "sounds.pixeltrance.trance_binaural": "Trance Binaural Sound",
 
 
+
+  "influence_source.pixeltrance.none": "Nothing",
+  "influence_source.pixeltrance.pocket_watch": "Pocket Watch",
+  "influence_source.pixeltrance.spiralite_lamp": "Spiralite Lamp",
+
+
   "pixeltrance.configuration.title": "Example Mod Configs",
   "pixeltrance.configuration.section.pixeltrance.common.toml": "Example Mod Configs",
   "pixeltrance.configuration.section.pixeltrance.common.toml.title": "Example Mod Configs",

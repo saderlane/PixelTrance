@@ -74,7 +74,7 @@ public final class HypnoData {
         int focus = getFocus(subject);
         int trance = getTrance(subject);
 
-        if (focus <= 0 && trance <= MIN) return;
+        if (focus <= MIN && trance <= MIN) return;
         if (recentlyInfluenced(subject)) return;
         if (subject.hasEffect(ModEffects.HYPNOTIZED_EFFECT)) return;
 
@@ -114,9 +114,15 @@ public final class HypnoData {
         return subject.level().getGameTime() - subject.getData(ModData.LAST_INFLUENCED) < INFLUENCE_GRACE_TICKS;
     }
 
+    // Get subject's last influence source
+    public static InfluenceSource getInfluenceSource(LivingEntity subject) {
+        return subject.getData(ModData.LAST_INFLUENCE_SOURCE);
+    }
+
     // Public function to allow thinks to mark influenced (stops random decay)
-    public static void markInfluenced(LivingEntity subject) {
+    public static void markInfluenced(LivingEntity subject, InfluenceSource source) {
         lastInfluenced(subject);
+        subject.setData(ModData.LAST_INFLUENCE_SOURCE, source);
         sync(subject);
     }
 }

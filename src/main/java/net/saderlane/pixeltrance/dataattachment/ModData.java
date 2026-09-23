@@ -6,6 +6,8 @@ import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.saderlane.pixeltrance.PixelTrance;
+import net.saderlane.pixeltrance.hypno.InfluenceSource;
+import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 
 import java.util.function.Supplier;
 
@@ -22,6 +24,10 @@ public class ModData {
 
     public static final Supplier<AttachmentType<Long>> LAST_INFLUENCED = ATTACHMENT_TYPES.register("last_influenced",
             () -> AttachmentType.<Long>builder(() -> 0L).serialize(Codec.LONG).build());
+
+    public static final Supplier<AttachmentType<InfluenceSource>> LAST_INFLUENCE_SOURCE = ATTACHMENT_TYPES.register("last_influence_source",
+            () -> AttachmentType.<InfluenceSource>builder(() -> ModInfluenceSources.NONE.get())
+                    .serialize(ModInfluenceSources.REGISTRY.byNameCodec()).build());
 
 
 
