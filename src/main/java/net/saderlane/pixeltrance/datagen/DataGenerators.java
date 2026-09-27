@@ -45,5 +45,8 @@ public class DataGenerators {
 
         // Add RecipeProvider
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
+
+        // Add world gen
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
     }
 }
