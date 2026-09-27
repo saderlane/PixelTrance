@@ -84,7 +84,7 @@ public class HypnoTargeting {
                 pos.equals(blockHit.getBlockPos()); // Hit position is where the block is
     }
 
-    private static HitResult customPick(LivingEntity candidate, double hitDistance) {
+    public static HitResult customPick(LivingEntity candidate, double hitDistance) {
         Vec3 eyePosition = candidate.getEyePosition();
         Vec3 lookDirection = candidate.getViewVector(1.0f);
         Vec3 lookRange = eyePosition.add(lookDirection.x * hitDistance, lookDirection.y * hitDistance, lookDirection.z * hitDistance);

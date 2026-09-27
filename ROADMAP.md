@@ -50,7 +50,7 @@
   - [ ] Screen pulls attention to source of Focus Lock
     - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
 - [X] Only functions when eye contact is established
-- [ ] Re-implement trance gain from pocket watch
+- [X] Re-implement trance gain from pocket watch
 
 ### Hypnotic Visual Feedback & Player Effects
 Introduce progressively intense effects as the player’s trance level increases to enhance immersion and give players immediate sensory feedback.
@@ -65,7 +65,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 - [ ] Player can’t jump or sprint
 
 #### Full Trance (100%)
-- [ ] Brightness fades in from the screen edges (vignette intensifies further)
+- [X] Vignette intensifies further
 - [ ] Display centered trance prompt
 - [ ] Follow inducer
 - [ ] Add `/suggest` command and make centered text appear
@@ -115,7 +115,6 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 - [ ] Trance depth visuals (blur, fog, screen glow)
 - [ ] Automatic behaviors (nodding, frozen stare)
-- [ ] Emotes/cosmetics during hypnosis
 - [ ] Visual posture changes under Focus Lock
 
 ---
@@ -123,12 +122,6 @@ These are mostly visual effects I will implement later as I want to move onto ac
 ### Mobs and More
 
 **Begin to develop mobs that fit the hypnotic theme.**
-
-- [ ] Manual triggers via commands/UI
-- [ ] Custom emotes or actions during trance
-- [ ] Configurable trance scene scripting
-- [ ] Session tools for private/co-op RP
-- [ ] Pose-based idle animations for trance
 
 ### Items and Blocks
 
@@ -139,7 +132,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 **Optional, immersive features for RP players and content creators.**
 
-- [ ] Manual triggers via commands/UI
+- [X] Manual triggers via commands/UI
 - [ ] Custom emotes or actions during trance
 - [ ] Configurable trance scene scripting
 - [ ] Session tools for private/co-op RP

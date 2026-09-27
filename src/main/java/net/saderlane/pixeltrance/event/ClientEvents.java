@@ -1,21 +1,25 @@
 package net.saderlane.pixeltrance.event;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.sounds.SoundManager;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,9 +28,12 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.saderlane.pixeltrance.PixelTrance;
+import net.saderlane.pixeltrance.block.custom.SpiraliteLampBlock;
 import net.saderlane.pixeltrance.client.ClientHypnoCache;
 import net.saderlane.pixeltrance.sound.ModSounds;
 import net.saderlane.pixeltrance.util.ModKeyMappings;
+
+import static net.saderlane.pixeltrance.hypno.HypnoTargeting.customPick;
 
 @EventBusSubscriber(modid = PixelTrance.MOD_ID, value = Dist.CLIENT)
 public class ClientEvents {
@@ -59,6 +66,19 @@ public class ClientEvents {
     private static final float PULSE_AMP = 0.15f;
 
 
+    // Subliminal variables
+    private static boolean LAMP_SUBLIMINAL = false;
+    private static float TRANSPARENCY = 0;
+    private static final int SUBLIMINAL_START = 50;
+    private static final String[] SUBLIMINALS = {
+            "SLEEP",
+            "DROP",
+            "DEEPER",
+            "FALL"
+    };
+    private static String CURRENT_SUBLIMINAL = SUBLIMINALS[0];
+
+
     // Building non-infinite ear fucking for binaural
     private static TranceLoopSoundInstance tranceSoundInstance;
     private static boolean wasTrancing = false;
@@ -68,22 +88,86 @@ public class ClientEvents {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return;   // clicks can drain on a tick with no world loaded
 
+        // Every tick, update player's hypno values
+        int trance = ClientHypnoCache.getTrance();
+        int focus = ClientHypnoCache.getFocus();
+
         // When K key is pressed
         while (ModKeyMappings.PRESS_K.consumeClick()) {
             //Do things --> On client
             player.sendSystemMessage(Component.literal(
-                    "Trance: " + ClientHypnoCache.getTrance() + " / 100"));
+                    "Trance: " + trance + " / 100"));
         }
 
         // When L key is pressed
         while (ModKeyMappings.PRESS_L.consumeClick()) {
             //Do things --> On client
             player.sendSystemMessage(Component.literal(
-                    "Focus: " + ClientHypnoCache.getFocus() + " / 100"));
+                    "Focus: " + focus + " / 100"));
         }
 
-        int trance = ClientHypnoCache.getTrance();
+        // Update the binaural audio state per tick based on trance value
         updateTranceSound(trance);
+
+
+        Level level = player.level();
+        HitResult hit = customPick(player, 8);
+
+        LAMP_SUBLIMINAL = false;
+
+        if ( hit instanceof BlockHitResult blockHitResult && blockHitResult.getType() == HitResult.Type.BLOCK) {
+            BlockPos blockPos = blockHitResult.getBlockPos(); // Get the hit block's pos
+            BlockState blockState = level.getBlockState(blockPos); // Get the blockstate of that block
+
+
+            // If the block is a Spiralite Lamp and it is clicked
+            if (blockState.getBlock() instanceof SpiraliteLampBlock &&
+                    blockState.getValue(SpiraliteLampBlock.CLICKED) &&
+                    trance >= SUBLIMINAL_START) {
+                LAMP_SUBLIMINAL = true;
+
+            }
+        }
+        // Only re-roll the word while it's invisible, so it stays locked once it starts fading in
+        if (TRANSPARENCY == 0f) {
+            CURRENT_SUBLIMINAL = SUBLIMINALS[player.getRandom().nextInt(SUBLIMINALS.length)];
+        }
+
+        TRANSPARENCY = Mth.approach(TRANSPARENCY, LAMP_SUBLIMINAL ? 1f : 0f, 0.05f);
+    }
+
+    private static void renderSubliminalText(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
+        int trance = ClientHypnoCache.getTrance();
+
+        String subliminal = CURRENT_SUBLIMINAL; // Chosen in the tick, not per frame
+
+        Font font = Minecraft.getInstance().font;
+
+        if (TRANSPARENCY < 0.02f) return;
+
+        int x = guiGraphics.guiWidth() / 2 - font.width(subliminal) / 2; // Start half the text's width left of center
+        int y = guiGraphics.guiHeight() / 2;
+
+        double waveStrength = Math.clamp((trance - WAVE_TRIGGER) / 40.0, 0.0, 1.0);
+
+        int color = FastColor.ARGB32.color((int) (TRANSPARENCY * 255), 170, 0, 255);
+
+        double time = System.nanoTime() / 1_000_000_000.0; // Seconds
+
+
+        for (int i = 0; i < subliminal.length(); i++) {
+            String letter = String.valueOf(subliminal.charAt(i));
+            int letterY = y; // Fresh copy per letter so offsets don't stack
+
+            if (waveStrength > 0.0) {
+                double phase = time * WAVE_SPEED + i * WAVE_STEP;
+                letterY += (int) Math.round(Math.sin(phase) * WAVE_AMP * waveStrength);
+            }
+
+            guiGraphics.drawString(font, letter, x, letterY, color);
+
+            x += font.width(letter);
+        }
 
     }
 
@@ -114,6 +198,8 @@ public class ClientEvents {
             ClientEvents::renderTranceBar);
         event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_vignette"),
                 ClientEvents::renderTranceVignette);
+        event.registerAbove(VanillaGuiLayers.CAMERA_OVERLAYS, ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "subliminal"),
+                ClientEvents::renderSubliminalText);
     }
 
 
