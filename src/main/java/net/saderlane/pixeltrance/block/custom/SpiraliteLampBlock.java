@@ -3,35 +3,22 @@ package net.saderlane.pixeltrance.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RedstoneTorchBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.hypno.HypnoTargeting;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
-import net.saderlane.pixeltrance.util.ModTags;
 
 import javax.annotation.Nullable;
-import java.util.Comparator;
 import java.util.List;
 
 public class SpiraliteLampBlock extends Block {
@@ -102,7 +89,7 @@ public class SpiraliteLampBlock extends Block {
         List<LivingEntity> candidates = level.getEntitiesOfClass(
                 LivingEntity.class, // Get the
                 AABB.ofSize(origin, RADIUS*2, RADIUS*2, RADIUS*2), // Set the range that candidates can be found in
-                candidate -> isValidSubject(candidate, pos, origin) // Set as candidate if it is a valid subject
+                candidate -> HypnoTargeting.isValidSubject(candidate, pos, origin, RADIUS) // Set as candidate if it is a valid subject
         );
 
         if (candidates.isEmpty()) return;
@@ -115,61 +102,12 @@ public class SpiraliteLampBlock extends Block {
             if (chosen.contains(subject)) {
 
                 HypnoData.markInfluenced(subject, ModInfluenceSources.SPIRALITE_LAMP.get());
-                InfluenceSource subjectSource = HypnoData.getInfluenceSource(subject);
 
-                HypnoTargeting.applyInfluence(subject,subjectSource);
+                HypnoTargeting.applyInfluence(subject,ModInfluenceSources.SPIRALITE_LAMP.get());
 
             }
         }
     }
-
-
-    // Can probably move these to a class later for all hypno-inducing valid objects
-    private static boolean isValidSubject(LivingEntity candidate, BlockPos pos, Vec3 origin) {
-        if (!candidate.isAlive()) return false; // If the candidate is dead, return
-
-        if (candidate.distanceToSqr(origin) > RADIUS * RADIUS) return false; // Get sphere(scandelous) instead of box around holder
-
-        return isLookingAt(candidate, pos);
-    }
-
-    // Check if entity is looking at the block
-    private static boolean isLookingAt(LivingEntity candidate, BlockPos pos) {
-        HitResult hit = customPick(candidate, RADIUS+1, 1.0f, false);
-
-        return hit instanceof BlockHitResult blockHit && //If it returns BlockHitResult
-                blockHit.getType() == HitResult.Type.BLOCK && // Was a block and not a miss
-                pos.equals(blockHit.getBlockPos()); // Hit position is where the block is
-    }
-
-    private static HitResult customPick(LivingEntity candidate, double hitDistance, float partialTicks, boolean hitFluids) {
-        Vec3 eyePosition = candidate.getEyePosition(partialTicks);
-        Vec3 lookDirection = candidate.getViewVector(partialTicks);
-        Vec3 lookRange = eyePosition.add(lookDirection.x * hitDistance, lookDirection.y * hitDistance, lookDirection.z * hitDistance);
-
-        ClipContext context = new ClipContext(eyePosition, lookRange, ClipContext.Block.OUTLINE, hitFluids ? ClipContext.Fluid.ANY : ClipContext.Fluid.NONE, candidate){
-            @Override
-            public VoxelShape getBlockShape(BlockState blockState, BlockGetter level, BlockPos pos) {
-                if (blockState.is(ModTags.Blocks.UNOBFUSCATED_GAZE)) {
-                    return Shapes.empty();
-                }
-                return super.getBlockShape(blockState, level, pos);
-
-            }
-        };
-
-        return candidate.level().clip(context);
-    }
-
-
-//    private static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
-//        candidates.sort(
-//                Comparator.comparingInt(HypnoData::getFocus).reversed()
-//                        .thenComparingDouble(candidate -> candidate.distanceToSqr(origin))
-//        );
-//
-//        return candidates.size() > slots ? candidates.subList(0, slots) : candidates;
-//    }
 
 
     public SpiraliteLampBlock(BlockBehaviour.Properties properties) {

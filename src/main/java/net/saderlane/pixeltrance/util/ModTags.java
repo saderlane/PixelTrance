@@ -14,7 +14,7 @@ public class ModTags {
         public  static final TagKey<Block> INCORRECT_FOR_SPIRALITE_TOOL = createTag("incorrect_for_spiralite_tool");
         public  static final TagKey<Block> NEEDS_SPIRALITE_TOOL = createTag("needs_spiralite_tool");
 
-        public static final TagKey<Block> UNOBFUSCATED_GAZE = createTag("unobfuscated_gaze");
+        public static final TagKey<Block> UNOBSTRUCTED_GAZE = createTag("unobstructed_gaze");
 
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, name));

@@ -1,6 +1,7 @@
 package net.saderlane.pixeltrance.item.custom;
 
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -13,9 +14,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
@@ -23,6 +31,7 @@ import net.saderlane.pixeltrance.hypno.HypnoTargeting;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.sound.ModSounds;
+import net.saderlane.pixeltrance.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
@@ -51,36 +60,37 @@ public class PocketWatchItem extends Item {
     }
 
     // When item is used on livingEntity
-    @Override
-    public @NotNull InteractionResult interactLivingEntity(
-            @NotNull ItemStack stack,
-            @NotNull Player player,
-            @NotNull LivingEntity interactionTarget,
-            @NotNull InteractionHand usedHand) {
-
-        // If not a player OR is not alive
-        if (interactionTarget instanceof Player || !interactionTarget.isAlive()) {
-            return InteractionResult.PASS;
-        }
-
-        if (!player.level().isClientSide()) {
-            setTicking(stack, true);
-
-            player.level().playSound(
-                    null,
-                    player.blockPosition(),
-                    ModSounds.WATCH_TICKING.get(),
-                    SoundSource.PLAYERS, 1f, 1f);
-
-            PTLog.debug("[PixelTrance] Pocket watch shown to " + interactionTarget.getName().getString()
-                    + " by " + player.getName().getString()
-                    + " (" + usedHand.name() + ")");
-
-
-            // What to do when target is shown active pocket watch
-        }
-        return InteractionResult.SUCCESS;
-    }
+        // Unused for now as pocket watch just gets toggled then can be looked at
+//    @Override
+//    public @NotNull InteractionResult interactLivingEntity(
+//            @NotNull ItemStack stack,
+//            @NotNull Player player,
+//            @NotNull LivingEntity interactionTarget,
+//            @NotNull InteractionHand usedHand) {
+//
+//        // If not a player OR is not alive
+//        if (interactionTarget instanceof Player || !interactionTarget.isAlive()) {
+//            return InteractionResult.PASS;
+//        }
+//
+//        if (!player.level().isClientSide()) {
+//            setTicking(stack, true);
+//
+//            player.level().playSound(
+//                    null,
+//                    player.blockPosition(),
+//                    ModSounds.WATCH_TICKING.get(),
+//                    SoundSource.PLAYERS, 1f, 1f);
+//
+//            PTLog.debug("[PixelTrance] Pocket watch shown to " + interactionTarget.getName().getString()
+//                    + " by " + player.getName().getString()
+//                    + " (" + usedHand.name() + ")");
+//
+//
+//            // What to do when target is shown active pocket watch
+//        }
+//        return InteractionResult.SUCCESS;
+//    }
 
     // When item is used
     @Override
@@ -150,7 +160,7 @@ public class PocketWatchItem extends Item {
         List<LivingEntity> candidates = level.getEntitiesOfClass(
                 LivingEntity.class, // Get the
                 AABB.ofSize(origin, RADIUS*2, RADIUS*2, RADIUS*2), // Set the range that candidates can be found in
-                candidate -> isValidSubject(candidate, holder, origin) // Set as candidate if it is a valid subject
+                candidate -> HypnoTargeting.isValidSubject(candidate, holder, origin, RADIUS) // Set as candidate if it is a valid subject
         );
 
         if (candidates.isEmpty()) return;
@@ -163,23 +173,13 @@ public class PocketWatchItem extends Item {
             if (chosen.contains(subject)) {
 
                 HypnoData.markInfluenced(subject, ModInfluenceSources.POCKET_WATCH.get());
-                InfluenceSource subjectSource = HypnoData.getInfluenceSource(subject);
 
-                HypnoTargeting.applyInfluence(subject,subjectSource);
+                HypnoTargeting.applyInfluence(subject,ModInfluenceSources.POCKET_WATCH.get());
 
             }
         }
     }
 
-
-    // Can probably move these to a class later for all hypno-inducing valid objects
-    private static boolean isValidSubject(LivingEntity candidate, LivingEntity holder, Vec3 origin) {
-        if (candidate == holder || !candidate.isAlive()) return false; // If the candidate is the holder or dead, return
-
-        if (candidate.distanceToSqr(origin) > RADIUS * RADIUS) return false; // Get sphere(scandelous) instead of box around holder
-
-        return true;
-    }
 
     @Override
     public void appendHoverText(

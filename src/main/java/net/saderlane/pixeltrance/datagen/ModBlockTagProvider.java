@@ -30,7 +30,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SPIRALITE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_SPIRALITE_ORE.get());
 
-        tag(ModTags.Blocks.UNOBFUSCATED_GAZE)
+        tag(ModTags.Blocks.UNOBSTRUCTED_GAZE)
                 .addTag(Tags.Blocks.GLASS_BLOCKS_COLORLESS)
                 .addTag(Tags.Blocks.GLASS_PANES_COLORLESS);
     }

@@ -49,7 +49,7 @@
   - [ ] Add screen pull to players
   - [ ] Screen pulls attention to source of Focus Lock
     - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
-- [ ] Only functions when targeting another entity (player or mob)
+- [X] Only functions when eye contact is established
 - [ ] Re-implement trance gain from pocket watch
 
 ### Hypnotic Visual Feedback & Player Effects

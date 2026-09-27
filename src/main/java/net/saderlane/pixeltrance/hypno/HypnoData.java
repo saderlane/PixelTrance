@@ -83,12 +83,12 @@ public final class HypnoData {
         // Remove trance if focus is broken
         if (focus > MIN) {
             subFocus(subject, FOCUS_DECAY);
-            PTLog.debug("[PixelTrance] " + subject.getName().getString()
+            PTLog.debug(subject.getName().getString()
                     + "'s (focus " + getFocus(subject) + ") [Decaying]");
         }
         else {
             subTrance(subject, TRANCE_DECAY);
-            PTLog.debug("[PixelTrance] " + subject.getName().getString()
+            PTLog.debug(subject.getName().getString()
                     + "'s (trance " + getTrance(subject) + ") [Decaying]");
         }
     }
