@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
@@ -64,17 +65,6 @@ public class SpiraliteLampBlock extends Block {
         }
     }
 
-//    @Override
-//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-//        if(!level.isClientSide()) {
-//            boolean currentState = state.getValue(CLICKED);
-//            level.setBlockAndUpdate(pos, state.setValue(CLICKED, !currentState));
-//            level.scheduleTick(pos, this, 0);
-//        }
-//
-//        return InteractionResult.SUCCESS;
-//    }
-
 
     @Override
     protected void tick(BlockState state,
@@ -95,12 +85,6 @@ public class SpiraliteLampBlock extends Block {
         //PTLog.debug("[PixelTrance] Block ticking _PULSING");
         pulse(level, pos);
         level.scheduleTick(pos, this, PULSE_IN_TICK);
-
-//        boolean currentState = state.getValue(CLICKED);
-//        if (!currentState) return;
-
-
-
 
         super.tick(state, level, pos, random);
     }
@@ -149,11 +133,20 @@ public class SpiraliteLampBlock extends Block {
 
     // Can probably move these to a class later for all hypno-inducing valid objects
     private static boolean isValidSubject(LivingEntity candidate, BlockPos pos, Vec3 origin) {
-        if (!candidate.isAlive()) return false; // If the candidate is the holder or dead, return
+        if (!candidate.isAlive()) return false; // If the candidate is dead, return
 
         if (candidate.distanceToSqr(origin) > RADIUS * RADIUS) return false; // Get sphere(scandelous) instead of box around holder
 
-        return true;
+        return isLookingAt(candidate, pos);
+    }
+
+    // Check if entity is looking at the block
+    private static boolean isLookingAt(LivingEntity candidate, BlockPos pos) {
+        HitResult hit = candidate.pick(RADIUS+1, 1.0f, false);
+
+        return hit instanceof BlockHitResult blockHit && //If it returns BlockHitResult
+                blockHit.getType() == HitResult.Type.BLOCK && // Was a block and not a miss
+                pos.equals(blockHit.getBlockPos()); // Hit position is where the block is
     }
 
     private static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
