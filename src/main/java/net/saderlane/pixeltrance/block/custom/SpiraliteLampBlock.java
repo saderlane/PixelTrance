@@ -25,6 +25,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
+import net.saderlane.pixeltrance.hypno.HypnoTargeting;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.util.ModTags;
@@ -108,28 +109,15 @@ public class SpiraliteLampBlock extends Block {
 
         int slots = 1; //TODO Make this variable/scale in the future based on perks
 
-        List<LivingEntity> chosen = selectTargets(candidates, origin, slots);
+        List<LivingEntity> chosen = HypnoTargeting.selectTargets(candidates, origin, slots);
         for (LivingEntity subject : candidates) {
-
-            int subjectFocus = HypnoData.getFocus(subject);
-            int subjectTrance = HypnoData.getTrance(subject);
 
             if (chosen.contains(subject)) {
 
                 HypnoData.markInfluenced(subject, ModInfluenceSources.SPIRALITE_LAMP.get());
                 InfluenceSource subjectSource = HypnoData.getInfluenceSource(subject);
 
-                if (subjectFocus != HypnoData.MAX)
-                {
-                    HypnoData.addFocus(subject, subjectSource.getFocusGain());
-                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
-                            + " (focus " + HypnoData.getFocus(subject) + ")");
-                }
-                if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
-                    HypnoData.addTrance(subject, subjectSource.getTranceGain());
-                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
-                            + " (trance " + HypnoData.getTrance(subject) + ")");
-                }
+                HypnoTargeting.applyInfluence(subject,subjectSource);
 
             }
         }
@@ -174,14 +162,14 @@ public class SpiraliteLampBlock extends Block {
     }
 
 
-    private static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
-        candidates.sort(
-                Comparator.comparingInt(HypnoData::getFocus).reversed()
-                        .thenComparingDouble(candidate -> candidate.distanceToSqr(origin))
-        );
-
-        return candidates.size() > slots ? candidates.subList(0, slots) : candidates;
-    }
+//    private static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
+//        candidates.sort(
+//                Comparator.comparingInt(HypnoData::getFocus).reversed()
+//                        .thenComparingDouble(candidate -> candidate.distanceToSqr(origin))
+//        );
+//
+//        return candidates.size() > slots ? candidates.subList(0, slots) : candidates;
+//    }
 
 
     public SpiraliteLampBlock(BlockBehaviour.Properties properties) {

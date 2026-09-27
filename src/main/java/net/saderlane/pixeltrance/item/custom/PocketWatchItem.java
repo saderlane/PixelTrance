@@ -19,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
+import net.saderlane.pixeltrance.hypno.HypnoTargeting;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.sound.ModSounds;
@@ -156,28 +157,15 @@ public class PocketWatchItem extends Item {
 
         int slots = 1; //TODO Make this variable/scale in the future based on perks
 
-        List<LivingEntity> chosen = selectTargets(candidates, origin, slots);
+        List<LivingEntity> chosen = HypnoTargeting.selectTargets(candidates, origin, slots);
         for (LivingEntity subject : candidates) {
-
-            int subjectFocus = HypnoData.getFocus(subject);
-            int subjectTrance = HypnoData.getTrance(subject);
 
             if (chosen.contains(subject)) {
 
                 HypnoData.markInfluenced(subject, ModInfluenceSources.POCKET_WATCH.get());
                 InfluenceSource subjectSource = HypnoData.getInfluenceSource(subject);
 
-                if (subjectFocus != HypnoData.MAX)
-                {
-                    HypnoData.addFocus(subject, subjectSource.getFocusGain());
-                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
-                            + " (focus " + HypnoData.getFocus(subject) + ")");
-                }
-                if (subjectFocus == HypnoData.MAX && subjectTrance != HypnoData.MAX) {
-                    HypnoData.addTrance(subject, subjectSource.getTranceGain());
-                    PTLog.debug(subjectSource.getName().getString() + " is influencing " + subject.getName().getString()
-                            + " (trance " + HypnoData.getTrance(subject) + ")");
-                }
+                HypnoTargeting.applyInfluence(subject,subjectSource);
 
             }
         }
@@ -191,15 +179,6 @@ public class PocketWatchItem extends Item {
         if (candidate.distanceToSqr(origin) > RADIUS * RADIUS) return false; // Get sphere(scandelous) instead of box around holder
 
         return true;
-    }
-
-    private static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
-        candidates.sort(
-                Comparator.comparingInt(HypnoData::getFocus).reversed()
-                        .thenComparingDouble(candidate -> candidate.distanceToSqr(origin))
-        );
-
-        return candidates.size() > slots ? candidates.subList(0, slots) : candidates;
     }
 
     @Override
