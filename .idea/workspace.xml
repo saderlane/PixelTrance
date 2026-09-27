@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added subliminals when looking at the spiralite lamp">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModWorldGenProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModBiomeModifiers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModConfiguredFeatures.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModPlacedFeatures.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="set up datagen for worldgen">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModOrePlacements.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModBiomeModifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModBiomeModifiers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModConfiguredFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModConfiguredFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModPlacedFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModPlacedFeatures.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,14 +225,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00017" summary="added hypnodata and custom logging tool">
-      <option name="closed" value="true" />
-      <created>1779767338843</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1779767338843</updated>
     </task>
     <task id="LOCAL-00018" summary="trying to fix github build job">
       <option name="closed" value="true" />
@@ -616,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790541673491</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="set up datagen for worldgen">
+      <option name="closed" value="true" />
+      <created>1790542341361</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1790542341361</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +636,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added trance and focus decay, pocket watch is mostly working - needs tuning" />
     <MESSAGE value="added basic trance and focus gain to watch - picks within range of watch (highest focus -&gt; closest)" />
     <MESSAGE value="added core of trance bar - no visuals yet" />
     <MESSAGE value="made spiralite lamp a hypnosis source" />
@@ -659,7 +660,8 @@
     <MESSAGE value="added HypnoTargeting class to re-use logic in all hypno sources" />
     <MESSAGE value="centralized hypnosis targeting across blocks+items - all are now gaze dependent" />
     <MESSAGE value="added subliminals when looking at the spiralite lamp" />
-    <option name="LAST_COMMIT_MESSAGE" value="added subliminals when looking at the spiralite lamp" />
+    <MESSAGE value="set up datagen for worldgen" />
+    <option name="LAST_COMMIT_MESSAGE" value="set up datagen for worldgen" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
