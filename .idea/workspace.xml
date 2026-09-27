@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="hypnotic source trance/focus gain comes from class - added vignette and pulse effect at higher trances">
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="spiralite lamps only work when looking at them">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/block/custom/SpiraliteLampBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockTagProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModBlockTagProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,22 +212,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00011" summary="added smelting for raw spiralite and spiralite ore">
-      <option name="closed" value="true" />
-      <created>1779664904418</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1779664904418</updated>
-    </task>
-    <task id="LOCAL-00012" summary="added deeplate spiralite ore&#10;- block&#10;- smelting">
-      <option name="closed" value="true" />
-      <created>1779665481817</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1779665481817</updated>
     </task>
     <task id="LOCAL-00013" summary="added loot tables for the spiralite blocks - that sucks doing by hand and even loot table generators online aren't fun to use">
       <option name="closed" value="true" />
@@ -603,7 +589,23 @@
       <option name="project" value="LOCAL" />
       <updated>1790142508388</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="spiralite lamps are now redstone powered">
+      <option name="closed" value="true" />
+      <created>1790144265879</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1790144265879</updated>
+    </task>
+    <task id="LOCAL-00061" summary="spiralite lamps only work when looking at them">
+      <option name="closed" value="true" />
+      <created>1790524203624</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1790524203625</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,8 +623,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="moving todo for my own sanity" />
-    <MESSAGE value="fixing layout of lamp block" />
     <MESSAGE value="added test keybinds" />
     <MESSAGE value="added basic networking client -&gt; server" />
     <MESSAGE value="switched to server -&gt; client networking and added basic hypno data" />
@@ -646,7 +646,9 @@
     <MESSAGE value="Fully functional audio for pocket watch + trance and animated trance bar" />
     <MESSAGE value="foundational work creating a influence source class to store future data" />
     <MESSAGE value="hypnotic source trance/focus gain comes from class - added vignette and pulse effect at higher trances" />
-    <option name="LAST_COMMIT_MESSAGE" value="hypnotic source trance/focus gain comes from class - added vignette and pulse effect at higher trances" />
+    <MESSAGE value="spiralite lamps are now redstone powered" />
+    <MESSAGE value="spiralite lamps only work when looking at them" />
+    <option name="LAST_COMMIT_MESSAGE" value="spiralite lamps only work when looking at them" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

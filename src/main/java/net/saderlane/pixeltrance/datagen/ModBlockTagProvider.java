@@ -3,10 +3,12 @@ package net.saderlane.pixeltrance.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.saderlane.pixeltrance.PixelTrance;
 import net.saderlane.pixeltrance.block.ModBlocks;
+import net.saderlane.pixeltrance.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -27,5 +29,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SPIRALITE_BLOCK.get())
                 .add(ModBlocks.SPIRALITE_ORE.get())
                 .add(ModBlocks.DEEPSLATE_SPIRALITE_ORE.get());
+
+        tag(ModTags.Blocks.UNOBFUSCATED_GAZE)
+                .addTag(Tags.Blocks.GLASS_BLOCKS_COLORLESS)
+                .addTag(Tags.Blocks.GLASS_PANES_COLORLESS);
     }
 }

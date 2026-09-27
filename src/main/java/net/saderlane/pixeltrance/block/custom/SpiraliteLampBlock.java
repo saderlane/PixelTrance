@@ -8,6 +8,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RedstoneTorchBlock;
@@ -19,10 +21,13 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
+import net.saderlane.pixeltrance.util.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.Comparator;
@@ -142,12 +147,32 @@ public class SpiraliteLampBlock extends Block {
 
     // Check if entity is looking at the block
     private static boolean isLookingAt(LivingEntity candidate, BlockPos pos) {
-        HitResult hit = candidate.pick(RADIUS+1, 1.0f, false);
+        HitResult hit = customPick(candidate, RADIUS+1, 1.0f, false);
 
         return hit instanceof BlockHitResult blockHit && //If it returns BlockHitResult
                 blockHit.getType() == HitResult.Type.BLOCK && // Was a block and not a miss
                 pos.equals(blockHit.getBlockPos()); // Hit position is where the block is
     }
+
+    private static HitResult customPick(LivingEntity candidate, double hitDistance, float partialTicks, boolean hitFluids) {
+        Vec3 eyePosition = candidate.getEyePosition(partialTicks);
+        Vec3 lookDirection = candidate.getViewVector(partialTicks);
+        Vec3 lookRange = eyePosition.add(lookDirection.x * hitDistance, lookDirection.y * hitDistance, lookDirection.z * hitDistance);
+
+        ClipContext context = new ClipContext(eyePosition, lookRange, ClipContext.Block.OUTLINE, hitFluids ? ClipContext.Fluid.ANY : ClipContext.Fluid.NONE, candidate){
+            @Override
+            public VoxelShape getBlockShape(BlockState blockState, BlockGetter level, BlockPos pos) {
+                if (blockState.is(ModTags.Blocks.UNOBFUSCATED_GAZE)) {
+                    return Shapes.empty();
+                }
+                return super.getBlockShape(blockState, level, pos);
+
+            }
+        };
+
+        return candidate.level().clip(context);
+    }
+
 
     private static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
         candidates.sort(
