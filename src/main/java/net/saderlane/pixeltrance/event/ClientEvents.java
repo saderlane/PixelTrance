@@ -39,15 +39,20 @@ import static net.saderlane.pixeltrance.hypno.HypnoTargeting.customPick;
 public class ClientEvents {
 
     // Locations of trance bar images
-    private static final ResourceLocation ICON_BG = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_bg");
-    private static final ResourceLocation ICON_PARTIAL = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_partial");
-    private static final ResourceLocation ICON_FULL = ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_full");
+    private static final ResourceLocation[] ICON_STAGES = {
+            ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_bg"),
+            ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_quarter"),
+            ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_half"),
+            ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_3quarter"),
+            ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, "trance_icon_full")
+    };
+
 
     // Icon final variables
     private static final int ICON_COUNT = 9;
     private static final int ICON_SIZE = 8;
     private static final int ICON_SPACING = 9;
-    private static final int PER_ICON = 100 / ICON_COUNT;
+    private static final float PER_ICON = 100f / ICON_COUNT;
 
     // Wave variables so I don't kms
     private static final double WAVE_SPEED = 4.0;
@@ -89,8 +94,8 @@ public class ClientEvents {
         if (player == null) return;   // clicks can drain on a tick with no world loaded
 
         // Every tick, update player's hypno values
-        int trance = ClientHypnoCache.getTrance();
-        int focus = ClientHypnoCache.getFocus();
+        float trance = ClientHypnoCache.getTrance();
+        float focus = ClientHypnoCache.getFocus();
 
         // When K key is pressed
         while (ModKeyMappings.PRESS_K.consumeClick()) {
@@ -137,7 +142,7 @@ public class ClientEvents {
     }
 
     private static void renderSubliminalText(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
-        int trance = ClientHypnoCache.getTrance();
+        float trance = ClientHypnoCache.getTrance();
 
         String subliminal = CURRENT_SUBLIMINAL; // Chosen in the tick, not per frame
 
@@ -172,7 +177,7 @@ public class ClientEvents {
     }
 
 
-    private static void updateTranceSound(int trance) {
+    private static void updateTranceSound(float trance) {
         boolean isInTrance = trance >= 50;
         SoundManager soundManager = Minecraft.getInstance().getSoundManager();
 
@@ -209,8 +214,8 @@ public class ClientEvents {
         // If gui isn't hidden and player isn't in creative
         if (mcInstance.options.hideGui || mcInstance.player.isCreative()) return;
 
-        int trance = ClientHypnoCache.getTrance(); // Get their current trance
-        int full_icons = trance / PER_ICON; // Find how many full trance icons there are
+        float trance = ClientHypnoCache.getTrance(); // Get their current trance
+        int full_icons = (int) (trance / PER_ICON); // Find how many full trance icons there are
         boolean partial_icon = trance % PER_ICON > 0; // Is there a partially filled icon?
 
         int left = guiGraphics.guiWidth() / 2 + 10; // Left spacing for trance bar
@@ -231,19 +236,15 @@ public class ClientEvents {
                 y += (int) Math.round(Math.sin(phase) * WAVE_AMP * waveStrength);
             }
 
-            guiGraphics.blitSprite(ICON_BG, x, y, ICON_SIZE, ICON_SIZE);
-
-            if (i < full_icons) { // If there needs to be more trance icons
-                guiGraphics.blitSprite(ICON_FULL, x, y, ICON_SIZE, ICON_SIZE);
-            } else if (i == full_icons && partial_icon) { // If there needs to be a partial icon
-                guiGraphics.blitSprite(ICON_PARTIAL, x, y, ICON_SIZE, ICON_SIZE);
-            }
+            float fill = Mth.clamp( (trance - i * PER_ICON) / PER_ICON, 0f, 1f ); // How full is the icon
+            int quarters = Mth.ceil(fill * 4); // Which quarter of the icon is going to be drawn
+            guiGraphics.blitSprite(ICON_STAGES[quarters], x, y, ICON_SIZE, ICON_SIZE);
         }
 
     }
 
     private static void renderTranceVignette(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
-        int trance = ClientHypnoCache.getTrance();
+        float trance = ClientHypnoCache.getTrance();
 
         // If trance isn't high enough for a vignette
         if (trance < VIGNETTE_START || Minecraft.getInstance().options.hideGui) return;

@@ -7,7 +7,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.saderlane.pixeltrance.PixelTrance;
 
-public record HypnoDataS2C(int trance, int focus) implements CustomPacketPayload {
+public record HypnoDataS2C(float trance, float focus) implements CustomPacketPayload {
 
     // registers ID of the packet to "sync_hypno"
     public static final Type<HypnoDataS2C> TYPE =
@@ -16,11 +16,11 @@ public record HypnoDataS2C(int trance, int focus) implements CustomPacketPayload
     // Encodes and decodes the data in packet
     public static final StreamCodec<ByteBuf, HypnoDataS2C> STREAM_CODEC = StreamCodec.composite(
             // Send trance data
-            ByteBufCodecs.VAR_INT,
+            ByteBufCodecs.FLOAT,
             HypnoDataS2C::trance,
 
             // Send focus data
-            ByteBufCodecs.VAR_INT,
+            ByteBufCodecs.FLOAT,
             HypnoDataS2C::focus,
 
             HypnoDataS2C::new

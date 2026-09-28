@@ -12,67 +12,67 @@ import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
 public final class HypnoData {
 
     // Min and max trance/focus
-    public static final int MIN = 0;
-    public static final int MAX = 100;
+    public static final float MIN = 0;
+    public static final float MAX = 100;
 
     public static final int INFLUENCE_GRACE_TICKS = 10;
 
     public static final int DECAY_INTERVAL = 10; // Ticks per decay
 
     // Temporarily here, will be specific to each source's decay
-    private static final int FOCUS_DECAY = 10;
-    private static final int TRANCE_DECAY = 5;
+    private static final float FOCUS_DECAY = 10;
+    private static final float TRANCE_DECAY = 5;
 
     private HypnoData() {}
 
     // ======= Trance =======
 
-    public static int getTrance(LivingEntity subject) {
+    public static float getTrance(LivingEntity subject) {
         return subject.getData(ModData.TRANCE);
     }
 
-    public static void setTrance(LivingEntity subject, int value) {
-        int clamped = Mth.clamp(value, MIN, MAX);
+    public static void setTrance(LivingEntity subject, float value) {
+        float clamped = Mth.clamp(value, MIN, MAX);
         if (clamped == getTrance(subject)) return;   // no change -> don't burn a packet
         subject.setData(ModData.TRANCE, clamped);
         sync(subject);
     }
 
-    public static void addTrance(LivingEntity subject, int amount) {
+    public static void addTrance(LivingEntity subject, float amount) {
         lastInfluenced(subject);
         setTrance(subject, getTrance(subject) + amount);
     }
 
-    public static void subTrance(LivingEntity subject, int amount) {
+    public static void subTrance(LivingEntity subject, float amount) {
         setTrance(subject, getTrance(subject) - amount);
     }
 
     // ======= Focus =======
 
-    public static int getFocus(LivingEntity subject) {
+    public static float getFocus(LivingEntity subject) {
         return subject.getData(ModData.FOCUS);
     }
 
-    public static void setFocus(LivingEntity subject, int value) {
-        int clamped = Mth.clamp(value, MIN, MAX);
+    public static void setFocus(LivingEntity subject, float value) {
+        float clamped = Mth.clamp(value, MIN, MAX);
         if (clamped == getFocus(subject)) return;
         subject.setData(ModData.FOCUS, clamped);
         sync(subject);
     }
 
-    public static void addFocus(LivingEntity subject, int amount) {
+    public static void addFocus(LivingEntity subject, float amount) {
         lastInfluenced(subject);
         setFocus(subject, getFocus(subject) + amount);
     }
 
-    public static void subFocus(LivingEntity subject, int amount) {
+    public static void subFocus(LivingEntity subject, float amount) {
         setFocus(subject, getFocus(subject) - amount);
     }
 
     // Add per tick or every X ticks to this logic
     public static void tickDecay(LivingEntity subject) {
-        int focus = getFocus(subject);
-        int trance = getTrance(subject);
+        float focus = getFocus(subject);
+        float trance = getTrance(subject);
 
         if (focus <= MIN && trance <= MIN) return;
         if (recentlyInfluenced(subject)) return;

@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="set up datagen for worldgen">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModOrePlacements.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="Official release of v0.1&#10;- Working hypnotic block and pocket watch&#10;- Visual and audio effects to show trance&#10;- Added world gen so mod ores can spawn naturally">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModBiomeModifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModBiomeModifiers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModConfiguredFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModConfiguredFeatures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModPlacedFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/worldgen/ModPlacedFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/client/ClientHypnoCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/client/ClientHypnoCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dataattachment/ModData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/dataattachment/ModData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ClientEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoTargeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoTargeting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/ModInfluenceSources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/ModInfluenceSources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/networking/packet/HypnoDataS2C.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/networking/packet/HypnoDataS2C.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/pixeltrance/textures/gui/sprites/trance_icon_partial.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,14 +228,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00018" summary="trying to fix github build job">
-      <option name="closed" value="true" />
-      <created>1779768773210</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1779768773210</updated>
     </task>
     <task id="LOCAL-00019" summary="trying to fix github build job again">
       <option name="closed" value="true" />
@@ -618,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790542341361</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Official release of v0.1&#10;- Working hypnotic block and pocket watch&#10;- Visual and audio effects to show trance&#10;- Added world gen so mod ores can spawn naturally">
+      <option name="closed" value="true" />
+      <created>1790544349425</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1790544349425</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +639,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added basic trance and focus gain to watch - picks within range of watch (highest focus -&gt; closest)" />
     <MESSAGE value="added core of trance bar - no visuals yet" />
     <MESSAGE value="made spiralite lamp a hypnosis source" />
     <MESSAGE value="tidied some source logic" />
@@ -661,7 +663,8 @@
     <MESSAGE value="centralized hypnosis targeting across blocks+items - all are now gaze dependent" />
     <MESSAGE value="added subliminals when looking at the spiralite lamp" />
     <MESSAGE value="set up datagen for worldgen" />
-    <option name="LAST_COMMIT_MESSAGE" value="set up datagen for worldgen" />
+    <MESSAGE value="Official release of v0.1&#10;- Working hypnotic block and pocket watch&#10;- Visual and audio effects to show trance&#10;- Added world gen so mod ores can spawn naturally" />
+    <option name="LAST_COMMIT_MESSAGE" value="Official release of v0.1&#10;- Working hypnotic block and pocket watch&#10;- Visual and audio effects to show trance&#10;- Added world gen so mod ores can spawn naturally" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

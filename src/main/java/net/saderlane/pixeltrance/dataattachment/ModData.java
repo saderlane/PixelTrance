@@ -16,11 +16,11 @@ public class ModData {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
             DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, PixelTrance.MOD_ID);
 
-    public static final Supplier<AttachmentType<Integer>> TRANCE = ATTACHMENT_TYPES.register("trance",
-            () -> AttachmentType.<Integer>builder(() -> 0).serialize(Codec.INT).build());
+    public static final Supplier<AttachmentType<Float>> TRANCE = ATTACHMENT_TYPES.register("trance",
+            () -> AttachmentType.<Float>builder(() -> 0.0f).serialize(Codec.FLOAT).build());
 
-    public static final Supplier<AttachmentType<Integer>> FOCUS = ATTACHMENT_TYPES.register("focus",
-            () -> AttachmentType.<Integer>builder(() -> 0).serialize(Codec.INT).build());
+    public static final Supplier<AttachmentType<Float>> FOCUS = ATTACHMENT_TYPES.register("focus",
+            () -> AttachmentType.<Float>builder(() -> 0.0f).serialize(Codec.FLOAT).build());
 
     public static final Supplier<AttachmentType<Long>> LAST_INFLUENCED = ATTACHMENT_TYPES.register("last_influenced",
             () -> AttachmentType.<Long>builder(() -> 0L).serialize(Codec.LONG).build());

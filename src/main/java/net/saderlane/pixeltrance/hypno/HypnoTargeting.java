@@ -24,7 +24,7 @@ public class HypnoTargeting {
 
     public static List<LivingEntity> selectTargets(List<LivingEntity> candidates, Vec3 origin, int slots) {
         candidates.sort(
-                Comparator.comparingInt(HypnoData::getFocus).reversed()
+                Comparator.comparing(HypnoData::getFocus).reversed()
                         .thenComparingDouble(candidate -> candidate.distanceToSqr(origin))
         );
 
@@ -32,8 +32,8 @@ public class HypnoTargeting {
     }
 
     public static void applyInfluence(LivingEntity subject, InfluenceSource source) {
-        int subjectFocus = HypnoData.getFocus(subject);
-        int subjectTrance = HypnoData.getTrance(subject);
+        float subjectFocus = HypnoData.getFocus(subject);
+        float subjectTrance = HypnoData.getTrance(subject);
 
 
         if (subjectFocus != HypnoData.MAX)

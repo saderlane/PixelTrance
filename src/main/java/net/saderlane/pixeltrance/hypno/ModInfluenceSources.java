@@ -27,10 +27,10 @@ public class ModInfluenceSources {
             INFLUENCE_SOURCES.register("none", () -> new InfluenceSource(0,0));
 
     public static DeferredHolder<InfluenceSource, InfluenceSource> POCKET_WATCH =
-            INFLUENCE_SOURCES.register("pocket_watch", () -> new InfluenceSource(7,3));
+            INFLUENCE_SOURCES.register("pocket_watch", () -> new InfluenceSource(14,2));
 
     public static DeferredHolder<InfluenceSource, InfluenceSource> SPIRALITE_LAMP =
-            INFLUENCE_SOURCES.register("spiralite_lamp", () -> new InfluenceSource(4,2));
+            INFLUENCE_SOURCES.register("spiralite_lamp", () -> new InfluenceSource(10,1));
 
     private static void registerRegistry(NewRegistryEvent event) {
         event.register(REGISTRY);
