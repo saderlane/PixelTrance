@@ -15,7 +15,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.hypno.HypnoTargeting;
-import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 
 import javax.annotation.Nullable;

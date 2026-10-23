@@ -85,7 +85,7 @@ These are mostly visual effects I will implement later as I want to move onto ac
 
 ### Simple Mob Interaction
 - [ ] Villagers pause and focus on hypnotist
-- [ ] Animals slow down and follow player
+- [X] Animals slow down and follow player
 - [ ] Whitelist/blacklist toggle for mob support
 
 ---

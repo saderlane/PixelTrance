@@ -1,12 +1,10 @@
 package net.saderlane.pixeltrance.item.custom;
 
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,27 +12,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.hypno.HypnoTargeting;
-import net.saderlane.pixeltrance.hypno.InfluenceSource;
 import net.saderlane.pixeltrance.hypno.ModInfluenceSources;
 import net.saderlane.pixeltrance.sound.ModSounds;
-import net.saderlane.pixeltrance.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class PocketWatchItem extends Item {
