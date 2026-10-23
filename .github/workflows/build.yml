@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
@@ -80,13 +80,14 @@ jobs:
       - name: Create GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOTES: ${{ steps.commit_msg.outputs.message }}
         run: |
           tag="${{ steps.gradle_props.outputs.mod_name }}-${{ steps.gradle_props.outputs.minecraft_version }}-neoforge-${{ steps.gradle_props.outputs.mod_version }}"
           gh release create "$tag" \
             "build/libs/${{ steps.rename_jar.outputs.jar_name }}" \
             --repo="$GITHUB_REPOSITORY" \
             --title="$tag" \
-            --notes="${{ steps.commit_msg.outputs.message }}"
+            --notes="$NOTES"
 
   publish-curseforge:
     runs-on: ubuntu-latest
