@@ -1,13 +1,19 @@
 package net.saderlane.pixeltrance.hypno;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.saderlane.pixeltrance.dataattachment.ModData;
 import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.effect.ModEffects;
 import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public final class HypnoData {
 
@@ -119,10 +125,38 @@ public final class HypnoData {
         return subject.getData(ModData.LAST_INFLUENCE_SOURCE);
     }
 
-    // Public function to allow thinks to mark influenced (stops random decay)
-    public static void markInfluenced(LivingEntity subject, InfluenceSource source) {
+    // Private function that is called by public markInfluenced
+    private static void influenceMarker(LivingEntity subject, InfluenceSource source) {
         lastInfluenced(subject);
         subject.setData(ModData.LAST_INFLUENCE_SOURCE, source);
         sync(subject);
     }
+
+    // Public functions  to allow things to mark influenced (stops random decay)
+    public static void markInfluenced(LivingEntity subject, InfluenceSource source, Entity influencer) {
+        influenceMarker(subject, source); // Set the influenced source
+        subject.setData(ModData.INFLUENCE_SOURCE_UUID, influencer.getUUID());
+        subject.removeData(ModData.INFLUENCE_SOURCE_VEC3); // Remove the block source if an entity source happens
+        PTLog.debug(subject.getName().getString() + " has been influenced by " + getInfluencerUUID(subject));
+    }
+    // Get the last influencing source UUID
+    public static Optional<UUID> getInfluencerUUID(LivingEntity subject) {
+        if (!subject.hasData(ModData.INFLUENCE_SOURCE_UUID)) return Optional.empty();
+        return Optional.of(subject.getData(ModData.INFLUENCE_SOURCE_UUID));
+    }
+
+
+    public static void markInfluenced(LivingEntity subject, InfluenceSource source, BlockPos pos) {
+        influenceMarker(subject, source); // Set the influenced source
+        subject.setData(ModData.INFLUENCE_SOURCE_VEC3, pos.getCenter());
+        subject.removeData(ModData.INFLUENCE_SOURCE_UUID); // Remove the entity source if a block source happens
+        PTLog.debug(subject.getName().getString() + " has been influenced by a block at " + getInfluencerVec3(subject));
+    }
+    // Get the last influencing source Vec3
+    public static Optional<Vec3> getInfluencerVec3(LivingEntity subject) {
+        if (!subject.hasData(ModData.INFLUENCE_SOURCE_VEC3)) return Optional.empty();
+        return Optional.of(subject.getData(ModData.INFLUENCE_SOURCE_VEC3));
+    }
+
+
 }

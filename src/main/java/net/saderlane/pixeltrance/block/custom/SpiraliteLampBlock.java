@@ -101,7 +101,7 @@ public class SpiraliteLampBlock extends Block {
 
             if (chosen.contains(subject)) {
 
-                HypnoData.markInfluenced(subject, ModInfluenceSources.SPIRALITE_LAMP.get());
+                HypnoData.markInfluenced(subject, ModInfluenceSources.SPIRALITE_LAMP.get(), pos);
 
                 HypnoTargeting.applyInfluence(subject,ModInfluenceSources.SPIRALITE_LAMP.get());
 

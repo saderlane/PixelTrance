@@ -1,0 +1,48 @@
+name: Dev2Prod
+
+on:
+  push:
+    branches: [dev]
+    paths: ['gradle.properties']
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.compare.outputs.changed }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compare dev and main versions
+        id: compare
+        run: |
+          dev_mod_version=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2 | tr -d '[:space:]')
+          main_mod_version=$(git show origin/main:gradle.properties | grep '^mod_version=' | cut -d'=' -f2 | tr -d '[:space:]')
+          echo "dev: $dev_mod_version, main: $main_mod_version"
+          if [ "$dev_mod_version" != "$main_mod_version" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Merge dev into main
+        if: steps.compare.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git merge --no-edit origin/dev
+          git push origin main
+
+  release:
+    needs: promote
+    if: needs.promote.outputs.changed == 'true'
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
