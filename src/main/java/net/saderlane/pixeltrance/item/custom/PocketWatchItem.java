@@ -172,7 +172,7 @@ public class PocketWatchItem extends Item {
 
             if (chosen.contains(subject)) {
 
-                HypnoData.markInfluenced(subject, ModInfluenceSources.POCKET_WATCH.get());
+                HypnoData.markInfluenced(subject, ModInfluenceSources.POCKET_WATCH.get(), holder);
 
                 HypnoTargeting.applyInfluence(subject,ModInfluenceSources.POCKET_WATCH.get());
 

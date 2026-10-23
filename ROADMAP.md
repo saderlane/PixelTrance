@@ -45,10 +45,9 @@
   - [X] Ticking sound
   - [ ] Visual particles
 - [ ] Implement basic **Passive Focus Lock**
-  - [ ] Add some conditional logic (gaze, etc)
+  - [X] Add some conditional logic (gaze, etc)
   - [ ] Add screen pull to players
   - [ ] Screen pulls attention to source of Focus Lock
-    - Can't get this to work for mobs - I'll likely have to build a full mob controller or something
 - [X] Only functions when eye contact is established
 - [X] Re-implement trance gain from pocket watch
 
