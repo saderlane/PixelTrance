@@ -10,11 +10,9 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 
 import java.util.Collection;
-import java.util.List;
 
 public class TranceCommand {
 

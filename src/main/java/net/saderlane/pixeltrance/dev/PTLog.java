@@ -1,8 +1,6 @@
 package net.saderlane.pixeltrance.dev;
 
 import com.mojang.logging.LogUtils;
-import net.saderlane.pixeltrance.PixelTrance;
-
 import org.slf4j.Logger;
 
 public class PTLog {

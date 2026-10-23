@@ -72,22 +72,40 @@ public class HypnoTargeting {
 
         if (candidate.distanceToSqr(origin) > radius * radius) return false; // Get sphere(scandelous) instead of box around holder
 
-        return isLookingAt(candidate, pos, radius);
+        return isLookingAt(candidate, pos);
     }
 
     // Check if entity is looking at the block
-    private static boolean isLookingAt(LivingEntity candidate, BlockPos pos, float radius) {
-        HitResult hit = customPick(candidate, radius+1);
-
-        return hit instanceof BlockHitResult blockHit && //If it returns BlockHitResult
-                blockHit.getType() == HitResult.Type.BLOCK && // Was a block and not a miss
-                pos.equals(blockHit.getBlockPos()); // Hit position is where the block is
+    private static boolean isLookingAt(LivingEntity candidate, BlockPos pos) {
+        Vec3 lookDirection = candidate.getViewVector(1.0F).normalize();
+        Vec3 viewLine = pos.getCenter().subtract(candidate.getEyePosition());
+        double distance = viewLine.length();
+        viewLine = viewLine.normalize();
+        double d1 = lookDirection.dot(viewLine); // Cosine of angle between facing and target (1 = dead on)
+        return d1 > 1.0 - 0.1 / distance ? !gazeObstructed(candidate, pos) : false;
     }
 
+
+    private static boolean gazeObstructed(LivingEntity candidate, BlockPos pos) {
+        Vec3 candidateEyePosition = candidate.getEyePosition();
+        Vec3 blockCenter = pos.getCenter();
+
+        ClipContext context = gazeClip(candidateEyePosition, blockCenter, candidate);
+        HitResult hit = candidate.level().clip(context);
+
+
+        // Only obstructed if it hit some OTHER block first.
+        return hit instanceof BlockHitResult blockHit
+                && blockHit.getType() == HitResult.Type.BLOCK
+                && !blockHit.getBlockPos().equals(pos);
+    }
+
+
+    // A precise ray is fine for players (they aim with a crosshair); mobs use the cone above.
     public static HitResult customPick(LivingEntity candidate, double hitDistance) {
         Vec3 eyePosition = candidate.getEyePosition();
         Vec3 lookDirection = candidate.getViewVector(1.0f);
-        Vec3 lookRange = eyePosition.add(lookDirection.x * hitDistance, lookDirection.y * hitDistance, lookDirection.z * hitDistance);
+        Vec3 lookRange = eyePosition.add(lookDirection.scale(hitDistance));
 
         ClipContext context = gazeClip(eyePosition, lookRange, candidate);
 

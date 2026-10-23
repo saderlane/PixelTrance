@@ -13,7 +13,6 @@ import net.saderlane.pixeltrance.block.ModBlocks;
 import net.saderlane.pixeltrance.item.ModItems;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {

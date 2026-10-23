@@ -30,10 +30,10 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.saderlane.pixeltrance.PixelTrance;
 import net.saderlane.pixeltrance.block.custom.SpiraliteLampBlock;
 import net.saderlane.pixeltrance.client.ClientHypnoCache;
+import net.saderlane.pixeltrance.hypno.HypnoTargeting;
 import net.saderlane.pixeltrance.sound.ModSounds;
 import net.saderlane.pixeltrance.util.ModKeyMappings;
 
-import static net.saderlane.pixeltrance.hypno.HypnoTargeting.customPick;
 
 @EventBusSubscriber(modid = PixelTrance.MOD_ID, value = Dist.CLIENT)
 public class ClientEvents {
@@ -116,7 +116,7 @@ public class ClientEvents {
 
 
         Level level = player.level();
-        HitResult hit = customPick(player, 8);
+        HitResult hit = HypnoTargeting.customPick(player, 8);
 
         LAMP_SUBLIMINAL = false;
 
