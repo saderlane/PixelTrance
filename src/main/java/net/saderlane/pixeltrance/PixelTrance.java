@@ -9,6 +9,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.saderlane.pixeltrance.ai.ModActivities;
 import net.saderlane.pixeltrance.block.ModBlocks;
 import net.saderlane.pixeltrance.component.ModDataComponentTypes;
 import net.saderlane.pixeltrance.dataattachment.ModData;
@@ -67,6 +68,10 @@ public class PixelTrance {
         // Register Influence Sources
         PTLog.info("[PixelTrance] Registering Influence Sources");
         ModInfluenceSources.register(modEventBus);
+
+        // Register Brain Activities
+        PTLog.info("[PixelTrance] Registering Brain Activities");
+        ModActivities.register(modEventBus);
 
 
         // Register the item to a creative tab

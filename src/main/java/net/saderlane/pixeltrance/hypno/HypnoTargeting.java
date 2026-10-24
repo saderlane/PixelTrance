@@ -86,7 +86,7 @@ public class HypnoTargeting {
     }
 
 
-    private static boolean gazeObstructed(LivingEntity candidate, BlockPos pos) {
+    public static boolean gazeObstructed(LivingEntity candidate, BlockPos pos) {
         Vec3 candidateEyePosition = candidate.getEyePosition();
         Vec3 blockCenter = pos.getCenter();
 
@@ -133,7 +133,7 @@ public class HypnoTargeting {
         return d1 > 1.0 - 0.1 / distance ? !gazeObstructed(candidate, holder) : false;
     }
 
-    private static boolean gazeObstructed(LivingEntity candidate, LivingEntity holder) {
+    public static boolean gazeObstructed(LivingEntity candidate, LivingEntity holder) {
         Vec3 candidateEyePosition = candidate.getEyePosition();
         Vec3 holderEyePosition = holder.getEyePosition();
 

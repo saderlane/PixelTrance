@@ -4,8 +4,16 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.behavior.BlockPosTracker;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.memory.MemoryStatus;
+import net.minecraft.world.entity.ai.memory.WalkTarget;
 import net.minecraft.world.phys.Vec3;
+import net.saderlane.pixeltrance.ai.ModActivities;
+import net.saderlane.pixeltrance.ai.memory.HypnoEntityTracker;
+import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.hypno.InfluenceSource;
 
@@ -46,27 +54,64 @@ public class TranceFollowGoal extends Goal {
 
     @Override
     public void stop() {
+        if (mob.getBrain().isActive(ModActivities.ENTRANCED_ACTIVITY.value())) {
+            mob.getBrain().useDefaultActivity();
+            PTLog.debug(mob.getName().getString() + " is stopping ENTRANCED activity and returned to default");
+        }
+
         this.mob.getNavigation().stop();
     }
 
     @Override
     public void tick() {
+        boolean isBrainMob = mob.getBrain().checkMemory(MemoryModuleType.LOOK_TARGET, MemoryStatus.REGISTERED);
+        Brain<Mob> mobBrain = (Brain<Mob>) mob.getBrain();
 
-        if (influenceEntity != null) {
-            this.mob.getLookControl().setLookAt(this.influenceEntity);
-            if (this.mob.distanceToSqr(this.influenceEntity) < (double)6.25F) {
-                this.mob.getNavigation().stop();
-            } else {
-                this.mob.getNavigation().moveTo(this.influenceEntity, this.speedModifier);
+        if (isBrainMob && !mobBrain.isActive(ModActivities.ENTRANCED_ACTIVITY.value()) && mob.level() instanceof ServerLevel serverLevel)
+        {
+            mobBrain.stopAll(serverLevel, mob);
+            mobBrain.setActiveActivityIfPossible(ModActivities.ENTRANCED_ACTIVITY.value()); // Add the entrnaced activity
+
+            if (!mobBrain.isActive(ModActivities.ENTRANCED_ACTIVITY.value())) {
+                ModActivities.attachTo(mobBrain);
+                mobBrain.setActiveActivityIfPossible(ModActivities.ENTRANCED_ACTIVITY.value());
             }
         }
 
+
+        // If influencer is entity
+        if (influenceEntity != null) {
+
+            if (isBrainMob) {
+                mobBrain.setMemory(MemoryModuleType.LOOK_TARGET,new HypnoEntityTracker(influenceEntity, true));
+                mobBrain.setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(influenceEntity, (float)this.speedModifier/2, 4));
+            }
+            else {
+                this.mob.getLookControl().setLookAt(this.influenceEntity);
+                if (this.mob.distanceToSqr(this.influenceEntity) < (double)6.25F) {
+                    this.mob.getNavigation().stop();
+                } else {
+                    this.mob.getNavigation().moveTo(this.influenceEntity, this.speedModifier);
+                }
+            }
+
+        }
+
+
+        // If influencer is a block
         if (influenceSourceVec3 != null) {
-            this.mob.getLookControl().setLookAt(this.influenceSourceVec3);
-            if (this.mob.distanceToSqr(this.influenceSourceVec3) < (double) 6.25F) {
-                this.mob.getNavigation().stop();
-            } else {
-                this.mob.getNavigation().moveTo(this.influenceSourceVec3.x, this.influenceSourceVec3.y, this.influenceSourceVec3.z, this.speedModifier);
+
+            if (isBrainMob) {
+                mobBrain.setMemory(MemoryModuleType.LOOK_TARGET, new BlockPosTracker(influenceSourceVec3));
+                mobBrain.setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(influenceSourceVec3, (float)this.speedModifier/2, 4));
+            }
+            else {
+                this.mob.getLookControl().setLookAt(this.influenceSourceVec3);
+                if (this.mob.distanceToSqr(this.influenceSourceVec3) < (double) 6.25F) {
+                    this.mob.getNavigation().stop();
+                } else {
+                    this.mob.getNavigation().moveTo(this.influenceSourceVec3.x, this.influenceSourceVec3.y, this.influenceSourceVec3.z, this.speedModifier);
+                }
             }
         }
 
