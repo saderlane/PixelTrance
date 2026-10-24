@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="added mob goals so they now look at players when focus &gt; 0 and follow them when trance == 100&#10;also optimized some imports and tweaked trance/focus gain values&#10;Villagers and newer mobs are broken with this cause they don't use goals cause mojang hates me">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/promote.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/promote.yml" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="villagers and other brain mobs are impacted by hypnotic sources">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModEntityTypeTagProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/ROADMAP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/goal/FocusLookGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/goal/FocusLookGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/DataGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/DataGenerators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ModEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ModEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoTargeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoTargeting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,36 +96,36 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Git.Working.Tree.Tab.closed.by.user": "opened",
-    "Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-vcs.commit.finished": "3 files committed",
-    "Notification.DoNotAsk-vcs.commit.finished": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "dev",
-    "git.auto.fetch.suggestion.counter": "1",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/sounds",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Git.Working.Tree.Tab.closed.by.user&quot;: &quot;opened&quot;,
+    &quot;Gradle.PixelTrance [:net.neoforged.devlaunch.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-vcs.commit.finished&quot;: &quot;3 files committed&quot;,
+    &quot;Notification.DoNotAsk-vcs.commit.finished&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/NONAM/Documents/Pixel/PixelTrance/src/main/resources/assets/pixeltrance/sounds&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\NONAM\Documents\Pixel\PixelTrance\src\main\resources\assets\pixeltrance\sounds" />
@@ -229,30 +235,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00022" summary="getting github to auto push a release">
-      <option name="closed" value="true" />
-      <created>1779769943222</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1779769943222</updated>
-    </task>
-    <task id="LOCAL-00023" summary="auto release update">
-      <option name="closed" value="true" />
-      <created>1779770120236</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1779770120236</updated>
-    </task>
-    <task id="LOCAL-00024" summary="New NeoForge version of PixelTrance - version 0.0.1 - No functionality">
-      <option name="closed" value="true" />
-      <created>1779771180765</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1779771180765</updated>
     </task>
     <task id="LOCAL-00025" summary="readme update">
       <option name="closed" value="true" />
@@ -622,7 +604,31 @@
       <option name="project" value="LOCAL" />
       <updated>1792729167747</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="updating ymls for new github actions">
+      <option name="closed" value="true" />
+      <created>1792729310815</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1792729310815</updated>
+    </task>
+    <task id="LOCAL-00072" summary="fixed ymls to include the commit message when promoting to prod">
+      <option name="closed" value="true" />
+      <created>1792729512235</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1792729512235</updated>
+    </task>
+    <task id="LOCAL-00073" summary="villagers and other brain mobs are impacted by hypnotic sources">
+      <option name="closed" value="true" />
+      <created>1792873143174</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1792873143175</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,9 +646,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="functional trance bar and craftable spiralite lamp" />
-    <MESSAGE value="fixing issue with key mappings registering on server side, breaking server runs" />
-    <MESSAGE value="forgot to change client events and switch to public methods" />
     <MESSAGE value="added trance and focus commands" />
     <MESSAGE value="added comments and tweaked spiralite lamp trance/focus values" />
     <MESSAGE value="added custom hypnotized effect - currently just makes the player slower" />
@@ -665,7 +668,10 @@
     <MESSAGE value="reworked trance/focus to be floats instead of ints and added 4 stages to icons to make it a little smoother&#10;also adjusted the rates for focus and trance to feel better until the focus system is added" />
     <MESSAGE value="added better workflows and added more influence source data" />
     <MESSAGE value="added mob goals so they now look at players when focus &gt; 0 and follow them when trance == 100&#10;also optimized some imports and tweaked trance/focus gain values&#10;Villagers and newer mobs are broken with this cause they don't use goals cause mojang hates me" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mob goals so they now look at players when focus &gt; 0 and follow them when trance == 100&#10;also optimized some imports and tweaked trance/focus gain values&#10;Villagers and newer mobs are broken with this cause they don't use goals cause mojang hates me" />
+    <MESSAGE value="updating ymls for new github actions" />
+    <MESSAGE value="fixed ymls to include the commit message when promoting to prod" />
+    <MESSAGE value="villagers and other brain mobs are impacted by hypnotic sources" />
+    <option name="LAST_COMMIT_MESSAGE" value="villagers and other brain mobs are impacted by hypnotic sources" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

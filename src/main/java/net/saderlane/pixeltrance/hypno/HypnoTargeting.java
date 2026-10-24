@@ -86,7 +86,7 @@ public class HypnoTargeting {
     }
 
 
-    private static boolean gazeObstructed(LivingEntity candidate, BlockPos pos) {
+    public static boolean gazeObstructed(LivingEntity candidate, BlockPos pos) {
         Vec3 candidateEyePosition = candidate.getEyePosition();
         Vec3 blockCenter = pos.getCenter();
 
@@ -116,7 +116,12 @@ public class HypnoTargeting {
 
     //================ Item based targeting ================
     public static boolean isValidSubject(LivingEntity candidate, LivingEntity holder, Vec3 origin, float radius) {
-        if (candidate == holder || !candidate.isAlive() || candidate instanceof ArmorStand || candidate.isSpectator()) return false; // If the candidate is the holder or dead, return
+        if (candidate == holder || // Is the holder
+                !candidate.isAlive() || // Is dead
+                candidate instanceof ArmorStand || // Is an armor stand
+                candidate.isSpectator() || // Is in spectator mode
+                candidate.getType().is(ModTags.EntityTypes.HYPNOSIS_IMMUNE) // Is immune to hypnosis
+        ) return false; // If the candidate is the holder or dead, return
 
         if (candidate.distanceToSqr(origin) > radius * radius) return false;
 
@@ -133,7 +138,7 @@ public class HypnoTargeting {
         return d1 > 1.0 - 0.1 / distance ? !gazeObstructed(candidate, holder) : false;
     }
 
-    private static boolean gazeObstructed(LivingEntity candidate, LivingEntity holder) {
+    public static boolean gazeObstructed(LivingEntity candidate, LivingEntity holder) {
         Vec3 candidateEyePosition = candidate.getEyePosition();
         Vec3 holderEyePosition = holder.getEyePosition();
 

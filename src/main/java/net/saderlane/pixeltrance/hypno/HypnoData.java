@@ -137,7 +137,7 @@ public final class HypnoData {
         influenceMarker(subject, source); // Set the influenced source
         subject.setData(ModData.INFLUENCE_SOURCE_UUID, influencer.getUUID());
         subject.removeData(ModData.INFLUENCE_SOURCE_VEC3); // Remove the block source if an entity source happens
-        PTLog.debug(subject.getName().getString() + " has been influenced by " + getInfluencerUUID(subject));
+//        PTLog.debug(subject.getName().getString() + " has been influenced by " + getInfluencerUUID(subject));
     }
     // Get the last influencing source UUID
     public static Optional<UUID> getInfluencerUUID(LivingEntity subject) {
@@ -150,7 +150,7 @@ public final class HypnoData {
         influenceMarker(subject, source); // Set the influenced source
         subject.setData(ModData.INFLUENCE_SOURCE_VEC3, pos.getCenter());
         subject.removeData(ModData.INFLUENCE_SOURCE_UUID); // Remove the entity source if a block source happens
-        PTLog.debug(subject.getName().getString() + " has been influenced by a block at " + getInfluencerVec3(subject));
+//        PTLog.debug(subject.getName().getString() + " has been influenced by a block at " + getInfluencerVec3(subject));
     }
     // Get the last influencing source Vec3
     public static Optional<Vec3> getInfluencerVec3(LivingEntity subject) {
