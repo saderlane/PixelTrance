@@ -48,5 +48,8 @@ public class DataGenerators {
 
         // Add world gen
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
+
+        // Add entity type generator
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

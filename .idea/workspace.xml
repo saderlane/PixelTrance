@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="fixed ymls to include the commit message when promoting to prod">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/ModActivities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/memory/HypnoEntityTracker.java" afterDir="false" />
+    <list default="true" id="891a0ade-0a4f-4f85-a384-1c577ea55b5b" name="Changes" comment="villagers and other brain mobs are impacted by hypnotic sources">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/ModEntityTypeTagProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/ROADMAP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/PixelTrance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/goal/FocusLookGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/goal/FocusLookGoal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/goal/TranceFollowGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/ai/goal/TranceFollowGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/DataGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/datagen/DataGenerators.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ModEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/event/ModEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoTargeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/hypno/HypnoTargeting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/saderlane/pixeltrance/util/ModTags.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,14 +235,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779493865586</updated>
-    </task>
-    <task id="LOCAL-00024" summary="New NeoForge version of PixelTrance - version 0.0.1 - No functionality">
-      <option name="closed" value="true" />
-      <created>1779771180765</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1779771180765</updated>
     </task>
     <task id="LOCAL-00025" summary="readme update">
       <option name="closed" value="true" />
@@ -629,7 +620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792729512235</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="villagers and other brain mobs are impacted by hypnotic sources">
+      <option name="closed" value="true" />
+      <created>1792873143174</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1792873143175</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +646,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="forgot to change client events and switch to public methods" />
     <MESSAGE value="added trance and focus commands" />
     <MESSAGE value="added comments and tweaked spiralite lamp trance/focus values" />
     <MESSAGE value="added custom hypnotized effect - currently just makes the player slower" />
@@ -672,7 +670,8 @@
     <MESSAGE value="added mob goals so they now look at players when focus &gt; 0 and follow them when trance == 100&#10;also optimized some imports and tweaked trance/focus gain values&#10;Villagers and newer mobs are broken with this cause they don't use goals cause mojang hates me" />
     <MESSAGE value="updating ymls for new github actions" />
     <MESSAGE value="fixed ymls to include the commit message when promoting to prod" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed ymls to include the commit message when promoting to prod" />
+    <MESSAGE value="villagers and other brain mobs are impacted by hypnotic sources" />
+    <option name="LAST_COMMIT_MESSAGE" value="villagers and other brain mobs are impacted by hypnotic sources" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

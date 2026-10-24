@@ -116,7 +116,12 @@ public class HypnoTargeting {
 
     //================ Item based targeting ================
     public static boolean isValidSubject(LivingEntity candidate, LivingEntity holder, Vec3 origin, float radius) {
-        if (candidate == holder || !candidate.isAlive() || candidate instanceof ArmorStand || candidate.isSpectator()) return false; // If the candidate is the holder or dead, return
+        if (candidate == holder || // Is the holder
+                !candidate.isAlive() || // Is dead
+                candidate instanceof ArmorStand || // Is an armor stand
+                candidate.isSpectator() || // Is in spectator mode
+                candidate.getType().is(ModTags.EntityTypes.HYPNOSIS_IMMUNE) // Is immune to hypnosis
+        ) return false; // If the candidate is the holder or dead, return
 
         if (candidate.distanceToSqr(origin) > radius * radius) return false;
 

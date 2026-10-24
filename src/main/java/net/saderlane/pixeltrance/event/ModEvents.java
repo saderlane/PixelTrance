@@ -1,6 +1,5 @@
 package net.saderlane.pixeltrance.event;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -24,7 +23,6 @@ import net.saderlane.pixeltrance.ai.goal.FocusLookGoal;
 import net.saderlane.pixeltrance.ai.goal.TranceFollowGoal;
 import net.saderlane.pixeltrance.command.FocusCommand;
 import net.saderlane.pixeltrance.command.TranceCommand;
-import net.saderlane.pixeltrance.dev.PTLog;
 import net.saderlane.pixeltrance.hypno.HypnoData;
 import net.saderlane.pixeltrance.networking.ClientPayloadHandler;
 import net.saderlane.pixeltrance.networking.packet.HypnoDataS2C;

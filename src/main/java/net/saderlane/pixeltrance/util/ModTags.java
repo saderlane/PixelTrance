@@ -1,9 +1,11 @@
 package net.saderlane.pixeltrance.util;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.saderlane.pixeltrance.PixelTrance;
@@ -26,6 +28,14 @@ public class ModTags {
 
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, name));
+        }
+    }
+
+    public static class EntityTypes {
+        public static final TagKey<EntityType<?>> HYPNOSIS_IMMUNE = createTag("hypnosis_immune");
+
+        private static TagKey<EntityType<?>> createTag(String name) {
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(PixelTrance.MOD_ID, name));
         }
     }
 }
